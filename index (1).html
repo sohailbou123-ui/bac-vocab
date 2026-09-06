@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocab Trainer — متعدد الوحدات</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<meta property="og:title" content="Vocab Trainer — BAC 2027">
+<meta property="og:description" content="تدريب المصطلحات لجميع وحدات الباك: بطاقات، كتابة، كويز، تحدي، وجُمل.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vocab Trainer — BAC 2027">
+<meta name="twitter:description" content="تدريب المصطلحات لجميع وحدات الباك في مكان واحد.">
+<meta name="twitter:image" content="og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f2efe6;
+    --panel:#fffdf7;
+    --panel-raised:#ffffff;
+    --ink:#14171f;
+    --ink-dim:#4b4940;
+    --ink-faint:#8d8878;
+    --line:#14171f;
+    --line-soft:#d8d2bf;
+    --yellow:#ffd23f;
+    --yellow-soft:#fff2c4;
+    --blue:#3a5ef7;
+    --blue-soft:#dde4ff;
+    --pink:#ff4d6d;
+    --pink-soft:#ffe0e6;
+    --good:#159a5a;
+    --good-soft:#d7f5e3;
+    --radius:9px;
+    --sh:3px; --sh-lg:5px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(20,23,31,0.035) 28px),
+      var(--bg);
+    color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 60px;
+  }
+  .wrap{ width:100%; max-width:720px; }
+  .masthead{
+    display:flex; align-items:center; justify-content:center;
+    border-bottom:none;
+    padding-bottom:20px; margin-bottom:24px;
+    gap:14px; flex-wrap:wrap; text-align:center;
+    flex-direction:column;
+  }
+  .masthead-icon{
+    font-size:30px; width:64px; height:64px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--yellow);
+    border:2.5px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--sh-lg) var(--sh-lg) 0 0 var(--line);
+    transform:rotate(-6deg);
+  }
+  .masthead-titles{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .title-row{ display:flex; align-items:center; gap:10px; }
+  .bac-badge{ font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:#fff; background:var(--blue); padding:4px 11px; border:2px solid var(--line); border-radius:5px; transform:rotate(4deg); letter-spacing:.5px; box-shadow:2px 2px 0 0 var(--line); }
+  .masthead h1{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:27px; margin:0; color:var(--ink); letter-spacing:-.5px; text-decoration:underline; text-decoration-color:var(--yellow); text-decoration-thickness:6px; text-underline-offset:-2px; }
+  .masthead .byline{ font-family:'Tajawal',sans-serif; font-size:13px; font-weight:500; color:var(--ink-dim); }
+  .masthead .byline b{ color:var(--ink); font-weight:800; background:var(--yellow-soft); padding:1px 6px; border-radius:4px; }
+  .creator-credit{ font-family:'Tajawal',sans-serif; font-size:16px; font-weight:500; color:var(--ink-dim); margin-top:2px; }
+  .creator-credit b{ font-size:19px; font-weight:800; color:var(--ink); letter-spacing:.2px; }
+  .creator-credit .thanks{ font-size:11px; color:var(--ink-faint); }
+  .top-contact{ display:inline-flex; align-items:center; gap:7px; margin-top:10px; padding:8px 18px; border:2.5px solid var(--line); border-radius:var(--radius); background:var(--blue); color:#fff; text-decoration:none; font-family:'Tajawal',sans-serif; font-weight:700; font-size:13px; transition:.1s; box-shadow:var(--sh) var(--sh) 0 0 var(--line); }
+  .top-contact:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 0 var(--line); }
+  .top-contact svg{ width:16px; height:16px; }
+  .dua{ margin-top:10px; font-family:'Tajawal',sans-serif; font-size:12.5px; font-style:italic; color:var(--ink-faint); max-width:320px; line-height:1.6; }
+  .landing-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:10px 0 20px; }
+  @media(max-width:500px){ .landing-grid{grid-template-columns:1fr;} }
+  .unit-card{ background:var(--panel); border:2.5px solid var(--line); box-shadow:var(--sh-lg) var(--sh-lg) 0 0 var(--line); border-radius:var(--radius); padding:22px 16px; cursor:pointer; transition:transform .1s, box-shadow .1s; text-align:center; }
+  .unit-card:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 0 var(--line); }
+  .unit-card .icon{ font-size:36px; }
+  .unit-card .name{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:19px; color:var(--ink); margin-top:4px; direction:ltr; letter-spacing:-.2px; }
+  .unit-card .sub{ font-family:'Tajawal',sans-serif; font-weight:700; font-size:14px; color:var(--blue); margin-top:2px; }
+  .unit-card .desc{ font-family:'Tajawal',sans-serif; font-size:13px; color:var(--ink-dim); margin-top:8px; }
+  .unit-card .count{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--ink); background:var(--yellow-soft); padding:2px 8px; border:1.5px solid var(--line); border-radius:4px; margin-top:10px; }
+  .back-btn{ display:inline-block; margin-bottom:16px; padding:7px 16px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:700; background:var(--panel); border:2px solid var(--line); border-radius:var(--radius); color:var(--ink); cursor:pointer; box-shadow:2px 2px 0 0 var(--line); }
+  .back-btn:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 0 var(--line); }
+  #unitBar{ display:flex; flex-direction:column; gap:8px; background:var(--panel); border:2.5px solid var(--line); box-shadow:var(--sh) var(--sh) 0 0 var(--line); border-radius:var(--radius); padding:11px 16px; margin-bottom:16px; font-family:'Tajawal',sans-serif; }
+  #unitBar .unitBar-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  #unitBar .cur{ font-size:13px; color:var(--ink-dim); }
+  #unitBar .cur b{ color:var(--ink); background:var(--yellow-soft); padding:0 5px; border-radius:3px; font-family:'Space Grotesk',sans-serif; direction:ltr; unicode-bidi:isolate; }
+  #unitBar .cur-ar{ color:var(--blue); font-weight:700; font-family:'Tajawal',sans-serif; }
+  #unitBar button{ font-family:'Tajawal',sans-serif; font-size:12px; font-weight:700; padding:7px 14px; border-radius:6px; cursor:pointer; border:2px solid var(--line); background:var(--yellow); color:var(--ink); box-shadow:2px 2px 0 0 var(--line); }
+  #unitBar button:hover{ transform:translate(-1px,-1px); box-shadow:3px 3px 0 0 var(--line); }
+  .unit-progress{ display:flex; gap:12px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); border-top:2px dashed var(--line-soft); padding-top:8px; }
+  .unit-progress span b{ color:var(--ink); }
+  .speak-btn{ border:2px solid var(--line); background:var(--blue-soft); color:var(--blue); border-radius:50%; width:40px; height:40px; min-width:40px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; padding:0; line-height:1; transition:.1s; flex-shrink:0; box-shadow:2px 2px 0 0 var(--line); }
+  .speak-btn:hover{ transform:translate(-1px,-1px); box-shadow:3px 3px 0 0 var(--line); background:var(--blue); color:#fff; }
+  .speak-btn.lg{ width:48px; height:48px; font-size:19px; }
+  .fc-audio{ display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:12px; font-family:'Tajawal',sans-serif; font-size:12px; color:var(--ink-faint); }
+  .term-list{ display:flex; flex-direction:column; gap:9px; max-height:420px; overflow-y:auto; padding-right:4px; }
+  .term-row{ display:flex; align-items:center; gap:10px; padding:12px 15px; background:var(--panel); border:2px solid var(--line); border-radius:7px; box-shadow:2px 2px 0 0 var(--line); }
+  .term-row-num{ font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); min-width:22px; }
+  .term-row-en{ font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:700; color:var(--ink); flex:1; direction:ltr; text-align:left; }
+  .term-row-ar{ font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--blue); flex:1; text-align:right; }
+  .tabs{ display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; }
+  .tab{ flex:1; text-align:center; padding:10px 6px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:700; background:var(--panel); color:var(--ink-dim); border:2px solid var(--line); border-radius:7px; cursor:pointer; transition:.1s; min-width:55px; box-shadow:2px 2px 0 0 var(--line); }
+  .tab.active{ background:var(--yellow); color:var(--ink); transform:translate(-1px,-1px); box-shadow:3px 3px 0 0 var(--line); }
+  .tab:hover:not(.active){ color:var(--ink); transform:translate(-1px,-1px); box-shadow:3px 3px 0 0 var(--line); }
+  .stage{ background:var(--panel); border:2.5px solid var(--line); box-shadow:var(--sh-lg) var(--sh-lg) 0 0 var(--line); border-radius:var(--radius); padding:28px 22px; min-height:340px; display:flex; flex-direction:column; position:relative; }
+  .meta-bar{ display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:12px; border-top:2px dashed var(--line-soft); font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); }
+  .meta-bar span b{ color:var(--ink); }
+  .fc-progress{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-faint); text-align:center; margin-bottom:16px; }
+  .flip-card{ flex:1; perspective:1200px; cursor:pointer; min-height:200px; }
+  .flip-inner{ position:relative; width:100%; height:100%; min-height:200px; transition:transform .5s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d; }
+  .flip-card.flipped .flip-inner{ transform:rotateY(180deg); }
+  .face{ position:absolute; inset:0; backface-visibility:hidden; border:2.5px solid var(--line); border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; text-align:center; background:var(--panel-raised); box-shadow:4px 4px 0 0 var(--line); }
+  .face.back{ transform:rotateY(180deg); background:var(--yellow-soft); }
+  .face .label{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--blue); margin-bottom:14px; font-weight:700; }
+  .face .term-en{ font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; color:var(--ink); display:flex; align-items:center; gap:10px; }
+  .face .term-ar{ font-family:'Tajawal',sans-serif; font-size:28px; font-weight:800; color:var(--ink); }
+  .face .hint{ margin-top:16px; font-size:12px; color:var(--ink-faint); font-family:'Tajawal',sans-serif; }
+  .fc-controls{ display:flex; justify-content:center; gap:16px; margin-top:18px; flex-wrap:wrap; }
+  .fc-controls .btn{ min-width:80px; }
+  .drill-prompt{ text-align:center; margin-bottom:22px; }
+  .drill-prompt .label{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--blue); margin-bottom:12px; font-weight:700; }
+  .drill-prompt .word{ font-family:'Tajawal',sans-serif; font-size:30px; font-weight:800; color:var(--ink); }
+  .drill-input{ width:100%; padding:14px 16px; font-size:18px; font-family:'JetBrains Mono',monospace; direction:ltr; text-align:center; background:var(--panel-raised); border:2.5px solid var(--line); border-radius:7px; color:var(--ink); outline:none; }
+  .drill-input:focus{ box-shadow:3px 3px 0 0 var(--line); }
+  .drill-input.correct{ border-color:var(--good); color:var(--good); background:var(--good-soft); }
+  .drill-input.wrong{ border-color:var(--pink); color:var(--pink); background:var(--pink-soft); }
+  .drill-feedback{ margin-top:12px; text-align:center; font-family:'Tajawal',sans-serif; font-size:14px; min-height:40px; color:var(--ink-dim); }
+  .drill-feedback .answer{ color:var(--ink); font-family:'JetBrains Mono',monospace; font-weight:700; background:var(--yellow-soft); padding:0 5px; border-radius:3px; }
+  .drill-actions{ margin-top:20px; display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+  .quiz-prompt{ text-align:center; margin-bottom:22px; }
+  .quiz-prompt .label{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--blue); margin-bottom:12px; font-weight:700; }
+  .quiz-prompt .word{ font-family:'Tajawal',sans-serif; font-size:30px; font-weight:800; color:var(--ink); }
+  .quiz-options{ display:flex; flex-direction:column; gap:10px; }
+  .quiz-opt{ padding:14px 18px; text-align:left; direction:ltr; font-family:'JetBrains Mono',monospace; font-size:15px; font-weight:600; background:var(--panel-raised); border:2.5px solid var(--line); border-radius:7px; color:var(--ink); cursor:pointer; transition:.1s; display:flex; align-items:center; justify-content:space-between; gap:10px; box-shadow:2px 2px 0 0 var(--line); }
+  .quiz-opt:hover:not(.locked){ transform:translate(-2px,-2px); box-shadow:4px 4px 0 0 var(--line); background:var(--yellow-soft); }
+  .quiz-opt.correct{ border-color:var(--good); background:var(--good-soft); color:var(--good); animation:pop .3s ease; }
+  .quiz-opt.wrong{ border-color:var(--pink); background:var(--pink-soft); color:var(--pink); animation:shake .4s ease; }
+  .quiz-opt.locked{ cursor:default; }
+  .quiz-actions{ margin-top:20px; display:flex; justify-content:center; }
+  .chal-topbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-faint); }
+  .chal-timer-track{ width:100%; height:8px; background:var(--panel-raised); border:2px solid var(--line); border-radius:5px; overflow:hidden; margin-bottom:20px; }
+  .chal-timer-fill{ height:100%; background:var(--blue); width:100%; transition:width .1s linear, background .2s; }
+  .chal-timer-fill.urgent{ background:var(--pink); animation:pulse .5s infinite; }
+  .chal-prompt{ text-align:center; margin-bottom:20px; }
+  .chal-prompt .label{ font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--blue); margin-bottom:10px; font-weight:700; }
+  .chal-prompt .word{ font-family:'Tajawal',sans-serif; font-size:28px; font-weight:800; color:var(--ink); }
+  .chal-options{ display:flex; flex-direction:column; gap:9px; }
+  .chal-opt{ padding:13px 16px; text-align:left; direction:ltr; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:600; background:var(--panel-raised); border:2.5px solid var(--line); border-radius:7px; color:var(--ink); cursor:pointer; transition:.1s; box-shadow:2px 2px 0 0 var(--line); }
+  .chal-opt:hover:not(.locked){ transform:translate(-2px,-2px); box-shadow:4px 4px 0 0 var(--line); background:var(--yellow-soft); }
+  .chal-opt.correct{ border-color:var(--good); background:var(--good-soft); color:var(--good); animation:pop .3s ease; }
+  .chal-opt.wrong{ border-color:var(--pink); background:var(--pink-soft); color:var(--pink); animation:shake .4s ease; }
+  .chal-opt.locked{ cursor:default; }
+  .chal-timeout-msg{ text-align:center; font-family:'Tajawal',sans-serif; font-size:13px; color:var(--pink); margin-top:12px; min-height:18px; }
+  .badge{ display:inline-block; margin-top:14px; padding:9px 20px; border:2.5px solid var(--line); border-radius:20px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:800; color:var(--ink); background:var(--yellow); box-shadow:3px 3px 0 0 var(--line); }
+  .btn{ font-family:'Tajawal',sans-serif; font-size:14px; font-weight:700; padding:11px 22px; border-radius:8px; cursor:pointer; border:2.5px solid var(--line); background:var(--panel); color:var(--ink); transition:.1s; box-shadow:2px 2px 0 0 var(--line); }
+  .btn:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 0 var(--line); }
+  .btn.primary{ background:var(--yellow); border-color:var(--line); color:var(--ink); font-weight:800; }
+  .btn.good{ background:var(--good); border-color:var(--line); color:#fff; }
+  .btn.bad{ background:var(--pink); border-color:var(--line); color:#fff; }
+  .results{ text-align:center; padding:20px 0; }
+  .results .big{ font-family:'Space Grotesk',sans-serif; font-size:52px; font-weight:700; color:var(--ink); -webkit-text-stroke:1px var(--line); text-shadow:4px 4px 0 var(--yellow); }
+  .results .sub{ font-family:'Tajawal',sans-serif; color:var(--ink-dim); margin-top:10px; font-size:14px; }
+  .results .btn{ margin-top:22px; }
+  .contact-foot{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; margin-top:26px; padding:18px 14px; border-top:2px dashed var(--line-soft); font-family:'Tajawal',sans-serif; font-size:15px; font-weight:500; color:var(--ink-dim); text-align:center; }
+  .contact-foot a{ display:flex; align-items:center; gap:8px; padding:10px 20px; border:2.5px solid var(--line); border-radius:var(--radius); background:var(--blue); color:#fff; text-decoration:none; font-weight:700; font-size:14px; transition:.1s; box-shadow:3px 3px 0 0 var(--line); }
+  .contact-foot a:hover{ transform:translate(-2px,-2px); box-shadow:5px 5px 0 0 var(--line); }
+  .contact-foot svg{ width:20px; height:20px; }
+  @keyframes shake{ 0%,100%{transform:translateX(0);} 20%{transform:translateX(-10px);} 40%{transform:translateX(10px);} 60%{transform:translateX(-6px);} 80%{transform:translateX(6px);} }
+  @keyframes pop{ 0%{transform:scale(1);} 35%{transform:scale(1.08);} 100%{transform:scale(1);} }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+  @keyframes floatUp{ 0%{opacity:0;transform:translate(-50%,14px);} 15%{opacity:1;transform:translate(-50%,0);} 78%{opacity:1;transform:translate(-50%,0);} 100%{opacity:0;transform:translate(-50%,-8px);} }
+  .float-up{ animation:floatUp .9s ease forwards; }
+  @media(max-width:600px){
+    body{ padding:16px 8px 44px; }
+    .wrap{ max-width:100%; }
+    .masthead{ padding-bottom:16px; margin-bottom:16px; gap:8px; }
+    .masthead-icon{ width:50px; height:50px; font-size:24px; border-radius:7px; }
+    .masthead h1{ font-size:20px; }
+    .bac-badge{ font-size:10px; padding:3px 9px; }
+    .masthead .byline{ font-size:11px; }
+    .creator-credit{ font-size:14px; }
+    .creator-credit b{ font-size:17px; }
+    #unitBar{ padding:9px 12px; gap:6px; }
+    #unitBar .unitBar-top{ gap:6px; }
+    #unitBar .cur{ font-size:12px; }
+    #unitBar button{ font-size:11px; padding:7px 12px; white-space:nowrap; }
+    .unit-progress{ gap:8px 10px; font-size:10px; }
+    .tabs{ gap:4px; }
+    .tab{ font-size:10.5px; padding:9px 3px; min-width:0; flex:1 1 30%; }
+    .stage{ padding:18px 12px; min-height:280px; }
+    .landing-grid{ grid-template-columns:1fr; gap:10px; }
+    .unit-card{ padding:16px 14px; }
+    .unit-card .icon{ font-size:30px; }
+    .unit-card .name{ font-size:16px; }
+    .unit-card .count{ font-size:10px; }
+    .fc-audio{ font-size:11px; gap:8px; }
+    .term-row{ padding:9px 10px; gap:8px; }
+    .term-row-en{ font-size:14px; }
+    .term-row-ar{ font-size:13.5px; }
+    .term-list{ max-height:360px; }
+    .speak-btn{ width:38px; height:38px; min-width:38px; font-size:15px; }
+    .speak-btn.lg{ width:44px; height:44px; font-size:18px; }
+    .face .term-en{ font-size:22px; gap:6px; }
+    .face .term-ar{ font-size:20px; }
+    .face{ padding:14px; }
+    .fc-controls{ gap:10px; }
+    .fc-controls .btn{ min-width:0; flex:1; font-size:12px; padding:10px 8px; }
+    .drill-prompt .word, .quiz-prompt .word, .chal-prompt .word{ font-size:20px; }
+    .drill-input{ font-size:16px; padding:12px 10px; }
+    .quiz-opt, .chal-opt{ padding:11px 12px; font-size:13.5px; }
+    .meta-bar{ font-size:10.5px; flex-wrap:wrap; gap:6px; }
+    .results .big{ font-size:34px; }
+    .contact-foot{ font-size:12px; gap:8px; padding:14px 8px; }
+    .contact-foot a{ padding:8px 14px; font-size:12px; }
+  }
+  @media(max-width:360px){
+    .tabs{ flex-wrap:wrap; }
+    .tab{ flex:1 1 45%; }
+    .masthead h1{ font-size:17px; }
+    .drill-prompt .word, .quiz-prompt .word, .chal-prompt .word{ font-size:18px; }
+    .face .term-en{ font-size:19px; }
+    .face .term-ar{ font-size:18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="masthead">
+    <div class="masthead-icon">✏️</div>
+    <div class="masthead-titles">
+      <div class="title-row">
+        <h1>Vocab Trainer</h1>
+        <span class="bac-badge">BAC 2027</span>
+      </div>
+      <div class="byline">تدريب المصطلحات — <b><span id="unitCount">4</span> وحدات</b></div>
+      <div class="creator-credit">by <b>awwab sohail</b> <span class="thanks">· big thanks to 0048</span></div>
+    </div>
+  </div>
+  <div id="unitBar" style="display:none;"></div>
+  <div id="stage"></div>
+  <div class="contact-foot">
+    <a class="top-contact" href="https://t.me/slam3likm" target="_blank" rel="noopener">
+      <svg viewBox="0 0 240 240" fill="currentColor"><path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm55.6 82.1-19.6 92.5c-1.5 6.6-5.4 8.2-10.9 5.1l-30.2-22.3-14.6 14c-1.6 1.6-3 3-6.1 3l2.2-30.9 56.3-50.9c2.4-2.2-.5-3.4-3.8-1.2l-69.6 43.9-30-9.4c-6.5-2-6.6-6.5 1.4-9.6l117.4-45.3c5.4-2 10.1 1.3 8.4 9.1z"/></svg>
+      <span>تواصل معي على تيليجرام</span>
+    </a>
+    <div class="dua">🤲 استغفر الله عدد خلقه ورضى نفسه وزنة عرشه ومداد كلماته</div>
+    <div class="dua">🙏 ادعولنا نجيبو الباك بالمعدل لي حابينه</div>
+  </div>
+</div>
+<script>
+// Created by awwab sohail — STOPWORDS & HELPERS
+// ============================================================
+//  STOPWORDS & HELPERS
+// ============================================================
+const STOPWORDS = new Set('a an the is are was were of in on at to and but that this it its we they he she i you with for as has have had will can could may might be been being than so from into about after before because if when more most some many much very'.split(' '));
+
+function norm(s){ return s.toLowerCase().trim().replace(/\s+/g,' ').replace(/^to\s+/,'').replace(/[-_]/g,' '); }
+
+function shuffle(arr){ const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+// Created by awwab sohail — TEXT TO SPEECH
+// ============================================================
+//  TEXT TO SPEECH
+// ============================================================
+function speak(text){
+  if(!text || !('speechSynthesis' in window)) return;
+  try{
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-US';
+    utter.rate = 0.92;
+    window.speechSynthesis.speak(utter);
+  }catch(err){ /* التشغيل الصوتي غير مدعوم في هذه البيئة، نتجاهل الخطأ بصمت */ }
+}
+function speakBtn(text, size){
+  const safe = String(text).replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+  return `<button type="button" class="speak-btn${size==='lg'?' lg':''}" data-speak="${safe}" title="🔊 استمع للنطق">🔊</button>`;
+}
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.speak-btn');
+  if(btn){
+    e.preventDefault();
+    e.stopPropagation();
+    if(typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+    speak(btn.dataset.speak);
+  }
+}, true);
+
+// Created by awwab sohail — PROGRESS STORAGE + SPACED REPETITION
+// ============================================================
+//  PROGRESS STORAGE (localStorage) + SPACED REPETITION
+// ============================================================
+const STORAGE_KEY = 'vocabTrainerProgress_v1';
+let progressData = loadProgressData();
+
+function loadProgressData(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  }catch(err){ return {}; }
+}
+function saveProgressData(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData)); }catch(err){ /* التخزين غير متاح، نتجاهل بصمت */ }
+}
+function getUnitProgress(unitId){
+  if(!progressData[unitId]) progressData[unitId] = { words:{}, best:{} };
+  return progressData[unitId];
+}
+function getWordBox(unitId, termId){
+  const up = getUnitProgress(unitId);
+  return (up.words[termId] && up.words[termId].box) || 1;
+}
+// box 1..5: كل ما زاد الرقم كل ما كانت الكلمة متقنة أكثر. إجابة غلط ترجعها لصندوق 1 (مراجعة قريبة)
+function recordWordResult(unitId, termId, correct){
+  if(!unitId) return;
+  const up = getUnitProgress(unitId);
+  if(!up.words[termId]) up.words[termId] = { box:1, correct:0, wrong:0 };
+  const w = up.words[termId];
+  if(correct){ w.box = Math.min(5, w.box+1); w.correct++; }
+  else { w.box = 1; w.wrong++; }
+  saveProgressData();
+}
+function recordBest(unitId, key, pct){
+  if(!unitId) return null;
+  const up = getUnitProgress(unitId);
+  const prev = up.best[key];
+  if(prev===undefined || pct > prev) up.best[key] = pct;
+  saveProgressData();
+  return prev===undefined ? null : prev;
+}
+function getUnitMasteryPct(unitId, total){
+  if(!total) return 0;
+  const up = progressData[unitId];
+  if(!up) return 0;
+  let mastered = 0;
+  Object.values(up.words).forEach(w=>{ if(w.box>=4) mastered++; });
+  return Math.round((mastered/total)*100);
+}
+// ترتيب "ذكي": الكلمات الضعيفة/غير المُراجَعة تطلع أول، والمتقنة تتأخر — بدل ترتيب عشوائي بحت
+function smartOrder(unitId, n, terms){
+  const idxs = shuffle([...Array(n).keys()]);
+  if(!unitId) return idxs;
+  idxs.sort((a,b)=> getWordBox(unitId, terms[a].id) - getWordBox(unitId, terms[b].id));
+  return idxs;
+}
+
+function showFloatingFeedback(text, type){
+  const el = document.createElement('div');
+  el.textContent = text;
+  el.style.cssText = `
+    position:fixed;left:50%;bottom:22px;transform:translate(-50%,0);
+    font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;
+    max-width:min(88vw,360px);width:max-content;text-align:center;
+    line-height:1.4;word-break:break-word;
+    color:var(--ink);
+    background:${type==='good'?'var(--good-soft)':'var(--pink-soft)'};
+    padding:10px 18px;border-radius:10px;
+    border:2px solid ${type==='good'?'var(--good)':'var(--pink)'};
+    box-shadow:2px 2px 0 0 var(--line);
+    z-index:999;pointer-events:none;
+    animation:floatUp .9s ease forwards;
+  `;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 900);
+}
+
+const CHEERS = ['ممتاز! 🌟','رائع! 🎉','أحسنت! 💪','عبقري! 🧠','مذهل! ✨','استمر! 🔥','ممتاز جداً! 👏'];
+
+// Created by awwab sohail — UNIT 1: SAFETY (90 terms)
+// ============================================================
+//  UNIT 1: SAFETY (90 terms)
+// ============================================================
+const safetyTerms = [
+  {id:0,en:'Advertising',ar:'إعلان',cat:'marketing',easyEn:'Advertising is everywhere on TV.',easyAr:'الإعلان موجود في كل مكان في التلفاز.',challengeEn:'The company spent millions on advertising.',challengeAr:'أنفقت الشركة ملايين على الإعلان.'},
+  {id:1,en:'Consumer',ar:'مستهلك',cat:'marketing',easyEn:'The consumer bought a new phone.',easyAr:'اشترى المستهلك هاتفًا جديدًا.',challengeEn:'Consumers have the right to accurate information.',challengeAr:'للمستهلكين الحق في معلومات دقيقة.'},
+  {id:2,en:'Cost',ar:'تكلفة',cat:'business',easyEn:'The price of milk is low.',easyAr:'سعر الحليب منخفض.',challengeEn:'The cost of the product increased last month.',challengeAr:'ارتفعت تكلفة المنتج الشهر الماضي.'},
+  {id:3,en:'Processed food',ar:'أغذية مصنعة',cat:'food',easyEn:"I don't like processed food.",easyAr:'لا أحب الأغذية المصنعة.',challengeEn:'Eating too much processed food can harm your health.',challengeAr:'تناول الكثير من الأغذية المصنعة يمكن أن يضر بصحتك.'},
+  {id:4,en:'Organic food',ar:'أطعمة عضوية',cat:'food',easyEn:'Organic food is expensive.',easyAr:'الأطعمة العضوية غالية الثمن.',challengeEn:'More people are choosing organic food over processed food.',challengeAr:'يختار المزيد من الناس الأطعمة العضوية بدل الأغذية المصنعة.'},
+  {id:5,en:'Junk food',ar:'وجبات سريعة',cat:'food',easyEn:'I ate junk food yesterday.',easyAr:'أكلت وجبات سريعة أمس.',challengeEn:'Junk food is linked to obesity in children.',challengeAr:'ترتبط الوجبات السريعة بالسمنة عند الأطفال.'},
+  {id:6,en:'Safety',ar:'سلامة',cat:'safety',easyEn:'Safety is important at work.',easyAr:'السلامة مهمة في العمل.',challengeEn:'The factory improved its safety standards after the accident.',challengeAr:'حسّنت المصنع معايير السلامة بعد الحادثة.'},
+  {id:7,en:'Persuasion',ar:'إقناع',cat:'marketing',easyEn:'Advertising uses persuasion.',easyAr:'يستخدم الإعلان الإقناع.',challengeEn:'The advertisement relied on persuasion rather than facts.',challengeAr:'اعتمد الإعلان على الإقناع بدل الحقائق.'},
+  {id:8,en:'Snack',ar:'وجبة خفيفة',cat:'food',easyEn:'I want a snack.',easyAr:'أريد وجبة خفيفة.',challengeEn:'Children often prefer snacks over healthy meals.',challengeAr:'غالبًا ما يفضل الأطفال الوجبات الخفيفة على الوجبات الصحية.'},
+  {id:9,en:'Label',ar:'ملصقة',cat:'marketing',easyEn:'Read the label before buying.',easyAr:'اقرأ الملصقة قبل الشراء.',challengeEn:'The label did not show all the ingredients.',challengeAr:'لم تُظهر الملصقة كل المكونات.'},
+  {id:10,en:'Habit',ar:'عادة',cat:'psychology',easyEn:'Good habits keep you healthy.',easyAr:'العادات الجيدة تحافظ على صحتك.',challengeEn:'Advertising can change our shopping habits.',challengeAr:'يمكن للإعلان أن يغيّر عاداتنا الشرائية.'},
+  {id:11,en:'Balance',ar:'توازن',cat:'health',easyEn:'You need a balance in your diet.',easyAr:'تحتاج إلى توازن في نظامك الغذائي.',challengeEn:'A balance between work and rest is important.',challengeAr:'التوازن بين العمل والراحة مهم.'},
+  {id:12,en:'Product',ar:'منتج',cat:'business',easyEn:'This shop sells many products.',easyAr:'يبيع هذا المحل منتجات كثيرة.',challengeEn:'The company recalled several products due to contamination.',challengeAr:'سحبت الشركة عدة منتجات بسبب التلوث.'},
+  {id:13,en:'Decaying',ar:'تعفن',cat:'food',easyEn:'The fruit is rotting.',easyAr:'الفاكهة تتعفن.',challengeEn:'Decaying food can cause serious illness.',challengeAr:'يمكن أن يسبب الطعام المتعفن مرضًا خطيرًا.'},
+  {id:14,en:'Expiry date',ar:'تاريخ الصلاحية',cat:'food',easyEn:'Check the expiry date.',easyAr:'تحقق من تاريخ الصلاحية.',challengeEn:'Never eat food after its expiry date.',challengeAr:'لا تأكل الطعام أبدًا بعد تاريخ صلاحيته.'},
+  {id:15,en:'Contamination',ar:'تلوث',cat:'safety',easyEn:'The water had contamination.',easyAr:'كان الماء ملوثًا.',challengeEn:'Contamination of the food supply caused many illnesses.',challengeAr:'تسبب تلوث الإمدادات الغذائية في أمراض كثيرة.'},
+  {id:16,en:'Competition',ar:'منافسة',cat:'business',easyEn:'There is a lot of competition here.',easyAr:'يوجد منافسة كبيرة هنا.',challengeEn:'Competition between brands leads to lower prices.',challengeAr:'تؤدي المنافسة بين العلامات التجارية إلى أسعار أقل.'},
+  {id:17,en:'Slogan',ar:'شعار',cat:'marketing',easyEn:'The brand has a nice slogan.',easyAr:'للعلامة التجارية شعار جميل.',challengeEn:'A catchy slogan can attract more customers.',challengeAr:'يمكن لشعار جذاب أن يجذب المزيد من الزبائن.'},
+  {id:18,en:'Brand',ar:'علامة تجارية',cat:'marketing',easyEn:'I like this brand.',easyAr:'أحب هذه العلامة التجارية.',challengeEn:"The brand's reputation depends on product quality.",challengeAr:'تعتمد سمعة العلامة التجارية على جودة المنتج.'},
+  {id:19,en:'Weight',ar:'وزن',cat:'health',easyEn:'Check the weight of the bag.',easyAr:'تحقق من وزن الحقيبة.',challengeEn:'Junk food can affect your weight.',challengeAr:'يمكن أن تؤثر الوجبات السريعة على وزنك.'},
+  {id:20,en:'Indigestion',ar:'عسر هضم',cat:'health',easyEn:'I have indigestion.',easyAr:'أعاني من عسر الهضم.',challengeEn:'Eating too fast can cause indigestion.',challengeAr:'الأكل بسرعة يمكن أن يسبب عسر الهضم.'},
+  {id:21,en:'Billboard',ar:'لوحة إعلانات',cat:'marketing',easyEn:'There is a big billboard on the road.',easyAr:'يوجد لوحة إعلانات كبيرة على الطريق.',challengeEn:'The billboard advertised a new soft drink.',challengeAr:'أعلنت لوحة الإعلانات عن مشروب غازي جديد.'},
+  {id:22,en:'Irritability',ar:'تهيج',cat:'health',easyEn:'Too much sugar causes irritability.',easyAr:'السكر الزائد يسبب التهيج.',challengeEn:'Some additives may cause irritability in children.',challengeAr:'بعض المواد المضافة قد تسبب التهيج عند الأطفال.'},
+  {id:23,en:'Market',ar:'سوق',cat:'business',easyEn:'I go to the market every day.',easyAr:'أذهب إلى السوق كل يوم.',challengeEn:'New markets opened in the city center.',challengeAr:'افتُتحت أسواق جديدة في وسط المدينة.'},
+  {id:24,en:'Amount',ar:'كمية',cat:'business',easyEn:'I need a small amount of salt.',easyAr:'أحتاج كمية صغيرة من الملح.',challengeEn:'The label shows the exact amount of sugar.',challengeAr:'تُظهر الملصقة الكمية الدقيقة من السكر.'},
+  {id:25,en:'Content',ar:'محتوى',cat:'food',easyEn:'Check the sugar content.',easyAr:'تحقق من محتوى السكر.',challengeEn:'The fat content in this meal is very high.',challengeAr:'محتوى الدهون في هذه الوجبة مرتفع جدًا.'},
+  {id:26,en:'Preservative',ar:'مادة حافظة',cat:'food',easyEn:'This food has preservatives.',easyAr:'يحتوي هذا الطعام على مواد حافظة.',challengeEn:'Too many preservatives can be harmful to health.',challengeAr:'يمكن أن تكون المواد الحافظة الكثيرة ضارة بالصحة.'},
+  {id:27,en:'Environment',ar:'بيئة',cat:'environment',easyEn:'We must protect the environment.',easyAr:'يجب أن نحمي البيئة.',challengeEn:'Plastic packaging harms the environment.',challengeAr:'تضر التغليف البلاستيكي بالبيئة.'},
+  {id:28,en:'Obesity',ar:'سمنة',cat:'health',easyEn:'Obesity is a health problem.',easyAr:'السمنة مشكلة صحية.',challengeEn:'Junk food advertising is linked to childhood obesity.',challengeAr:'يرتبط الإعلان عن الوجبات السريعة بسمنة الأطفال.'},
+  {id:29,en:'Genetically Modified',ar:'معدل وراثيًا',cat:'food',easyEn:'This corn is genetically modified.',easyAr:'هذه الذرة معدلة جينيًا.',challengeEn:'Some consumers avoid genetically modified food.',challengeAr:'يتجنب بعض المستهلكين الطعام المعدل جينيًا.'},
+  {id:30,en:'Flavoring',ar:'نكهة صناعية',cat:'food',easyEn:'This drink has artificial flavorings.',easyAr:'يحتوي هذا المشروب على نكهات صناعية.',challengeEn:'Flavorings are added to make food taste better.',challengeAr:'تُضاف النكهات لتحسين طعم الطعام.'},
+  {id:31,en:'Shopping',ar:'تسوق',cat:'marketing',easyEn:'I like shopping on weekends.',easyAr:'أحب التسوق في عطلة نهاية الأسبوع.',challengeEn:'Online shopping has changed consumer habits.',challengeAr:'غيّر التسوق عبر الإنترنت عادات المستهلكين.'},
+  {id:32,en:'Impact',ar:'تأثير',cat:'misc',easyEn:'Ads have a big impact on children.',easyAr:'للإعلانات تأثير كبير على الأطفال.',challengeEn:'Advertising has a strong influence on buying decisions.',challengeAr:'للإعلان تأثير قوي على قرارات الشراء.'},
+  {id:33,en:'Package',ar:'علبة',cat:'marketing',easyEn:'The package is very small.',easyAr:'العلبة صغيرة جدًا.',challengeEn:'The package did not list all the ingredients.',challengeAr:'لم تُدرج العلبة كل المكونات.'},
+  {id:34,en:'Ingredient',ar:'مكون',cat:'food',easyEn:'Read the ingredients first.',easyAr:'اقرأ المكونات أولاً.',challengeEn:'Some ingredients can cause allergies.',challengeAr:'يمكن أن تسبب بعض المكونات حساسية.'},
+  {id:35,en:'Farming',ar:'زراعة',cat:'business',easyEn:'His family works in farming.',easyAr:'تعمل عائلته في الزراعة.',challengeEn:'Modern agriculture uses many pesticides.',challengeAr:'تستخدم الزراعة الحديثة الكثير من المبيدات.'},
+  {id:36,en:'Safety standards',ar:'معايير السلامة',cat:'safety',easyEn:'This factory follows safety standards.',easyAr:'يتبع هذا المصنع معايير السلامة.',challengeEn:'The company violated basic safety standards.',challengeAr:'انتهكت الشركة معايير السلامة الأساسية.'},
+  {id:37,en:'Advertisement',ar:'إعلان',cat:'marketing',easyEn:'I saw many advertisements today.',easyAr:'رأيت إعلانات كثيرة اليوم.',challengeEn:"Advertisements often exaggerate a product's benefits.",challengeAr:'غالبًا ما تبالغ الإعلانات في فوائد المنتج.'},
+  {id:38,en:'Treatment',ar:'علاج',cat:'health',easyEn:'He needs medical treatment.',easyAr:'يحتاج إلى علاج طبي.',challengeEn:'Food poisoning requires immediate treatment.',challengeAr:'يتطلب التسمم الغذائي علاجًا فوريًا.'},
+  {id:39,en:'Persuade',ar:'يقنع',cat:'verb',easyEn:'The ad tries to persuade us.',easyAr:'يحاول الإعلان أن يقنعنا.',challengeEn:'Companies use famous people to persuade customers.',challengeAr:'تستخدم الشركات المشاهير لإقناع الزبائن.'},
+  {id:40,en:'Shopaholic',ar:'مدمن تسوق',cat:'psychology',easyEn:'My sister is a shopaholic.',easyAr:'أختي مدمنة على التسوق.',challengeEn:'Advertising can turn people into shopaholics.',challengeAr:'يمكن للإعلان أن يحوّل الناس إلى مدمنين على التسوق.'},
+  {id:41,en:'Hygiene',ar:'نظافة صحية',cat:'health',easyEn:'Hygiene is important in the kitchen.',easyAr:'النظافة الصحية مهمة في المطبخ.',challengeEn:'Poor hygiene in the factory led to contamination.',challengeAr:'أدت النظافة الصحية السيئة في المصنع إلى التلوث.'},
+  {id:42,en:'Banned',ar:'ممنوع',cat:'legal',easyEn:'This product is banned.',easyAr:'هذا المنتج ممنوع.',challengeEn:'The harmful additive was banned by the government.',challengeAr:'حظرت الحكومة المادة المضافة الضارة.'},
+  {id:43,en:'Customer',ar:'زبون',cat:'marketing',easyEn:'The shop has many customers.',easyAr:'للمحل زبائن كثيرون.',challengeEn:'Customers complained about the poor product quality.',challengeAr:'اشتكى الزبائن من جودة المنتج السيئة.'},
+  {id:44,en:'Colouring',ar:'ملون صناعي',cat:'food',easyEn:'This candy has bright colourings.',easyAr:'تحتوي هذه الحلوى على ملونات زاهية.',challengeEn:'Artificial colourings may cause allergic reactions.',challengeAr:'قد تسبب الملونات الصناعية ردود فعل تحسسية.'},
+  {id:45,en:'Produce',ar:'ينتج',cat:'verb',easyEn:'The factory produces bread.',easyAr:'ينتج المصنع الخبز.',challengeEn:'The company produces thousands of products daily.',challengeAr:'تنتج الشركة آلاف المنتجات يوميًا.'},
+  {id:46,en:'Purchase',ar:'يشتري',cat:'verb',easyEn:'I want to buy milk.',easyAr:'أريد أن أشتري حليبًا.',challengeEn:'Consumers should think before they purchase a product.',challengeAr:'يجب على المستهلكين التفكير قبل شراء المنتج.'},
+  {id:47,en:'Promote',ar:'يروّج',cat:'verb',easyEn:'The ad promotes a new drink.',easyAr:'يروّج الإعلان لمشروب جديد.',challengeEn:'Celebrities are often paid to promote products.',challengeAr:'غالبًا ما يُدفع للمشاهير للترويج للمنتجات.'},
+  {id:48,en:'Damage',ar:'ضرر',cat:'misc',easyEn:'The storm caused a lot of damage.',easyAr:'سببت العاصفة أضرارًا كثيرة.',challengeEn:'Junk food can cause damage to your health over time.',challengeAr:'يمكن أن تسبب الوجبات السريعة ضررًا لصحتك مع الوقت.'},
+  {id:49,en:'Attract',ar:'يجذب',cat:'verb',easyEn:'Bright colors attract children.',easyAr:'تجذب الألوان الزاهية الأطفال.',challengeEn:'Advertisements attract customers with false promises.',challengeAr:'تجذب الإعلانات الزبائن بوعود كاذبة.'},
+  {id:50,en:'Consume',ar:'يستهلك',cat:'verb',easyEn:'We consume a lot of sugar.',easyAr:'نستهلك الكثير من السكر.',challengeEn:'People consume more processed food than before.',challengeAr:'يستهلك الناس أغذية مصنعة أكثر من قبل.'},
+  {id:51,en:'React',ar:'يتفاعل',cat:'verb',easyEn:'Some people react to certain foods.',easyAr:'يتفاعل بعض الناس مع أطعمة معينة.',challengeEn:'His body reacted badly to the preservatives.',challengeAr:'تفاعل جسمه بشكل سيء مع المواد الحافظة.'},
+  {id:52,en:'Cook',ar:'يطبخ',cat:'verb',easyEn:'I cook dinner every night.',easyAr:'أطبخ العشاء كل ليلة.',challengeEn:'Cooking at home is healthier than fast food.',challengeAr:'الطبخ في المنزل أصح من الوجبات السريعة.'},
+  {id:53,en:'Commercialize',ar:'يسوّق',cat:'verb',easyEn:'They want to commercialize the product.',easyAr:'يريدون تسويق المنتج.',challengeEn:'The company decided to commercialize the new drink globally.',challengeAr:'قررت الشركة تسويق المشروب الجديد عالميًا.'},
+  {id:54,en:'Poisoning',ar:'تسمم',cat:'health',easyEn:'He had food poisoning.',easyAr:'أصيب بتسمم غذائي.',challengeEn:'Food poisoning sent several customers to the hospital.',challengeAr:'أدى التسمم الغذائي بعدة زبائن إلى المستشفى.'},
+  {id:55,en:'Harmful',ar:'ضار',cat:'descriptive',easyEn:'This chemical is harmful.',easyAr:'هذه المادة الكيميائية ضارة.',challengeEn:'The report proved the additive was harmful to children.',challengeAr:'أثبت التقرير أن المادة المضافة ضارة بالأطفال.'},
+  {id:56,en:'Healthy',ar:'صحي',cat:'descriptive',easyEn:'Vegetables are healthy.',easyAr:'الخضروات صحية.',challengeEn:'Advertising rarely promotes healthy food choices.',challengeAr:'نادرًا ما يروّج الإعلان لخيارات الطعام الصحية.'},
+  {id:57,en:'Endorsement',ar:'تأييد',cat:'marketing',easyEn:'The product needs official approval.',easyAr:'يحتاج المنتج إلى موافقة رسمية.',challengeEn:"The celebrity's endorsement boosted the product's sales.",challengeAr:'عزز تأييد المشهور مبيعات المنتج.'},
+  {id:58,en:'Sales',ar:'مبيعات',cat:'business',easyEn:'Sales increased this month.',easyAr:'ارتفعت المبيعات هذا الشهر.',challengeEn:'The advertising campaign boosted overall sales.',challengeAr:'عززت الحملة الإعلانية المبيعات الإجمالية.'},
+  {id:59,en:'Overweight',ar:'زائد الوزن',cat:'health',easyEn:'He is a little overweight.',easyAr:'هو زائد الوزن قليلاً.',challengeEn:'Many children today are overweight because of junk food.',challengeAr:'كثير من الأطفال اليوم زائدو الوزن بسبب الوجبات السريعة.'},
+  {id:60,en:'Manufactured',ar:'مصنع',cat:'descriptive',easyEn:'This toy is manufactured in China.',easyAr:'هذه اللعبة مصنعة في الصين.',challengeEn:'The product is manufactured using several chemicals.',challengeAr:'يُصنع المنتج باستخدام عدة مواد كيميائية.'},
+  {id:61,en:'Export',ar:'يصدّر',cat:'verb',easyEn:'The country exports oil.',easyAr:'يصدّر البلد النفط.',challengeEn:'The company exports its products to many countries.',challengeAr:'تصدّر الشركة منتجاتها إلى دول كثيرة.'},
+  {id:62,en:'Import',ar:'يستورد',cat:'verb',easyEn:'We import fruit from Spain.',easyAr:'نستورد الفاكهة من إسبانيا.',challengeEn:'The country imports most of its processed food.',challengeAr:'يستورد البلد معظم أغذيته المصنعة.'},
+  {id:63,en:'Debate',ar:'جدال',cat:'misc',easyEn:'There was a debate about the new law.',easyAr:'كان هناك جدال حول القانون الجديد.',challengeEn:'There is an ongoing debate about food safety regulations.',challengeAr:'هناك جدال مستمر حول لوائح سلامة الغذاء.'},
+  {id:64,en:'Dirt',ar:'وسخ',cat:'misc',easyEn:'There is dirt on the table.',easyAr:'يوجد وسخ على الطاولة.',challengeEn:'Inspectors found dirt and filth in the factory kitchen.',challengeAr:'وجد المفتشون أوساخًا في مطبخ المصنع.'},
+  {id:65,en:'Protect',ar:'يحمي',cat:'verb',easyEn:'We must protect our health.',easyAr:'يجب أن نحمي صحتنا.',challengeEn:'Regulations exist to protect consumers from harmful products.',challengeAr:'توجد لوائح لحماية المستهلكين من المنتجات الضارة.'},
+  {id:66,en:'Sufficient',ar:'كافٍ',cat:'descriptive',easyEn:'This is not sufficient food.',easyAr:'هذا ليس طعامًا كافيًا.',challengeEn:'The label did not provide sufficient information about the ingredients.',challengeAr:'لم تقدم الملصقة معلومات كافية عن المكونات.'},
+  {id:67,en:'Energy',ar:'طاقة',cat:'health',easyEn:'This drink gives me energy.',easyAr:'يمنحني هذا المشروب طاقة.',challengeEn:'Energy drinks are popular but not always healthy.',challengeAr:'مشروبات الطاقة شائعة لكنها ليست دائمًا صحية.'},
+  {id:68,en:'Regulation',ar:'لائحة',cat:'legal',easyEn:'We must follow the regulations.',easyAr:'يجب أن نتبع القوانين.',challengeEn:'New regulations require clearer food labels.',challengeAr:'تتطلب اللوائح الجديدة ملصقات غذائية أوضح.'},
+  {id:69,en:'Nutrition',ar:'تغذية',cat:'health',easyEn:'Good nutrition keeps you strong.',easyAr:'التغذية الجيدة تجعلك قويًا.',challengeEn:'Poor nutrition among children is a growing concern.',challengeAr:'سوء التغذية لدى الأطفال مصدر قلق متزايد.'},
+  {id:70,en:'System',ar:'نظام',cat:'misc',easyEn:'This is a new system.',easyAr:'هذا نظام جديد.',challengeEn:'The company improved its food safety system.',challengeAr:'حسّنت الشركة نظام سلامة الغذاء لديها.'},
+  {id:71,en:'Meal',ar:'وجبة',cat:'food',easyEn:'I had a big meal.',easyAr:'تناولت وجبة كبيرة.',challengeEn:'A balanced meal includes vegetables and protein.',challengeAr:'تتضمن الوجبة المتوازنة الخضروات والبروتين.'},
+  {id:72,en:'Awareness',ar:'وعي',cat:'psychology',easyEn:'We need more awareness about health.',easyAr:'نحتاج إلى وعي أكبر حول الصحة.',challengeEn:'The campaign raised awareness about food additives.',challengeAr:'رفعت الحملة الوعي حول المواد المضافة الغذائية.'},
+  {id:73,en:'Health warning',ar:'تحذير صحي',cat:'safety',easyEn:'The pack has a health warning.',easyAr:'تحمل العلبة تحذيرًا صحيًا.',challengeEn:'Health warnings on cigarette packs did not stop smokers.',challengeAr:'لم توقف التحذيرات الصحية على علب السجائر المدخنين.'},
+  {id:74,en:'Complain',ar:'يشكو',cat:'verb',easyEn:'She complained about the food.',easyAr:'اشتكت من الطعام.',challengeEn:'Many customers suffered after eating the contaminated meat.',challengeAr:'عانى كثير من الزبائن بعد أكل اللحم الملوث.'},
+  {id:75,en:'Contain',ar:'يحتوي',cat:'verb',easyEn:'This drink contains sugar.',easyAr:'يحتوي هذا المشروب على سكر.',challengeEn:'The label failed to state that the product contained nuts.',challengeAr:'فشلت الملصقة في ذكر أن المنتج يحتوي على مكسرات.'},
+  {id:76,en:'Design',ar:'يصمم',cat:'verb',easyEn:'They design new packages every year.',easyAr:'يصممون علبًا جديدة كل عام.',challengeEn:'Advertisers design ads to appeal to children.',challengeAr:'يصمم المعلنون الإعلانات لتجذب الأطفال.'},
+  {id:77,en:'Leisure',ar:'وقت فراغ',cat:'misc',easyEn:'I spend my leisure time reading.',easyAr:'أقضي وقت فراغي في القراءة.',challengeEn:'People often shop during their leisure time.',challengeAr:'غالبًا ما يتسوق الناس في وقت فراغهم.'},
+  {id:78,en:'Boycott',ar:'يقاطع',cat:'verb',easyEn:'We decided to boycott the brand.',easyAr:'قررنا مقاطعة العلامة التجارية.',challengeEn:'Consumers boycotted the company after the scandal.',challengeAr:'قاطع المستهلكون الشركة بعد الفضيحة.'},
+  {id:79,en:'Entertainment',ar:'ترفيه',cat:'misc',easyEn:'TV is a form of entertainment.',easyAr:'التلفاز شكل من أشكال الترفيه.',challengeEn:'Ads often use entertainment to attract viewers.',challengeAr:'غالبًا ما يستخدم الإعلان الترفيه لجذب المشاهدين.'},
+  {id:80,en:'Rotten food',ar:'طعام متعفن',cat:'food',easyEn:"Don't eat rotten food.",easyAr:'لا تأكل طعامًا متعفنًا.',challengeEn:'The restaurant was closed for serving rotten food.',challengeAr:'أُغلق المطعم بسبب تقديم طعام متعفن.'},
+  {id:81,en:'Hospitalized',ar:'مُدخل إلى المستشفى',cat:'health',easyEn:'He was hospitalized yesterday.',easyAr:'دخل المستشفى أمس.',challengeEn:'Several customers were hospitalized after the food poisoning.',challengeAr:'دخل عدة زبائن المستشفى بعد التسمم الغذائي.'},
+  {id:82,en:'Conventional food',ar:'غذاء تقليدي',cat:'food',easyEn:'Conventional food is cheaper than organic.',easyAr:'الغذاء التقليدي أرخص من العضوي.',challengeEn:'Conventional food often contains more pesticides than organic food.',challengeAr:'غالبًا ما يحتوي الغذاء التقليدي على مبيدات أكثر من الغذاء العضوي.'},
+  {id:83,en:'Corporation',ar:'شركة',cat:'business',easyEn:'He works for a big company.',easyAr:'يعمل في شركة كبيرة.',challengeEn:'The corporation was fined for false advertising.',challengeAr:'غُرّمت الشركة بسبب الإعلان الكاذب.'},
+  {id:84,en:'Infection',ar:'عدوى',cat:'health',easyEn:'He has a skin infection.',easyAr:'لديه التهاب جلدي.',challengeEn:'Contaminated food can spread serious infections.',challengeAr:'يمكن أن ينشر الطعام الملوث عدوى خطيرة.'},
+  {id:85,en:'Value',ar:'قيمة',cat:'business',easyEn:'This product has good value.',easyAr:'لهذا المنتج قيمة جيدة.',challengeEn:'Consumers question the real value of the product.',challengeAr:'يشكك المستهلكون في القيمة الحقيقية للمنتج.'},
+  {id:86,en:'Industry',ar:'صناعة',cat:'business',easyEn:'He works in the food industry.',easyAr:'يعمل في صناعة الغذاء.',challengeEn:'The advertising industry spends billions every year.',challengeAr:'تنفق صناعة الإعلان مليارات كل عام.'},
+  {id:87,en:'Pesticide',ar:'مبيد حشرات',cat:'food',easyEn:'Farmers use pesticide on crops.',easyAr:'يستخدم المزارعون مبيدات الحشرات على المحاصيل.',challengeEn:'High levels of pesticide were found in the vegetables.',challengeAr:'وُجدت مستويات عالية من المبيدات في الخضروات.'},
+  {id:88,en:'Drinks',ar:'مشروبات',cat:'food',easyEn:'I like cold drinks.',easyAr:'أحب المشروبات الباردة.',challengeEn:'Sugary drinks are heavily advertised to children.',challengeAr:'يُعلن بكثافة عن المشروبات السكرية للأطفال.'},
+  {id:89,en:'Diet',ar:'حمية غذائية',cat:'health',easyEn:'She is on a diet.',easyAr:'هي في حمية غذائية.',challengeEn:'A poor diet can lead to serious health problems.',challengeAr:'يمكن أن تؤدي الحمية الغذائية السيئة إلى مشاكل صحية خطيرة.'}
+];
+
+// Created by awwab sohail — UNIT 2: BUSINESS (137 terms) — partial for brevity, full in part 2
+// ============================================================
+//  UNIT 2: BUSINESS (137 terms) — partial for brevity, full in part 2
+// ============================================================
+const businessTerms = [
+  {id:0,en:'Lend',ar:'يُقرض',cat:'verb',easyEn:'Can you lend me some money?',easyAr:'هل يمكنك أن تقرضني بعض المال؟',challengeEn:'Banks lend money to small businesses.',challengeAr:'تُقرض البنوك المال للشركات الصغيرة.'},
+  {id:1,en:'Prison',ar:'سجن',cat:'legal',easyEn:'He went to prison.',easyAr:'ذهب إلى السجن.',challengeEn:'The businessman went to prison for fraud.',challengeAr:'ذهب رجل الأعمال إلى السجن بسبب الاحتيال.'},
+  {id:2,en:'Wealth',ar:'ثروة',cat:'business',easyEn:'His family has great wealth.',easyAr:'عائلته تملك ثروة كبيرة.',challengeEn:'His wealth grew after the merger.',challengeAr:'نمت ثروته بعد عملية الاندماج.'},
+  {id:3,en:'Lobbying',ar:'ضغط سياسي',cat:'crime',easyEn:'The company started lobbying.',easyAr:'بدأت الشركة بالضغط السياسي.',challengeEn:'The company used lobbying to change the law.',challengeAr:'استخدمت الشركة الضغط السياسي لتغيير القانون.'},
+  {id:4,en:'Ban',ar:'حظر',cat:'legal',easyEn:'There is a ban on plastic bags.',easyAr:'يوجد حظر على الأكياس البلاستيكية.',challengeEn:'The government imposed a ban on the product.',challengeAr:'فرضت الحكومة حظرًا على المنتج.'},
+  {id:5,en:'Reputation',ar:'سمعة',cat:'ethics',easyEn:'This shop has a bad reputation.',easyAr:'لهذا المحل سمعة سيئة.',challengeEn:'The scandal damaged the company\'s reputation.',challengeAr:'أضرت الفضيحة بسمعة الشركة.'},
+  {id:6,en:'Narcotics',ar:'مخدرات',cat:'crime',easyEn:'Narcotics are illegal in this country.',easyAr:'المخدرات غير قانونية في هذا البلد.',challengeEn:'Police seized a large amount of narcotics.',challengeAr:'صادرت الشرطة كمية كبيرة من المخدرات.'},
+  {id:7,en:'Abuse',ar:'إساءة استخدام',cat:'ethics',easyEn:'This is abuse of power.',easyAr:'هذا إساءة استخدام للسلطة.',challengeEn:'He was fired for the abuse of company funds.',challengeAr:'فُصل بسبب إساءة استخدام أموال الشركة.'},
+  {id:8,en:'Loyalty',ar:'ولاء',cat:'ethics',easyEn:'She shows loyalty to her company.',easyAr:'تُظهر الولاء لشركتها.',challengeEn:'Customer loyalty increased after the discount.',challengeAr:'زاد ولاء العملاء بعد الخصم.'},
+  {id:9,en:'Unemployment',ar:'بطالة',cat:'social',easyEn:'Unemployment is a big problem.',easyAr:'البطالة مشكلة كبيرة.',challengeEn:'Unemployment rose sharply last year.',challengeAr:'ارتفعت البطالة بشكل حاد العام الماضي.'},
+  {id:10,en:'Justice',ar:'عدالة',cat:'legal',easyEn:'We want justice for the victims.',easyAr:'نريد العدالة للضحايا.',challengeEn:'The court finally delivered justice.',challengeAr:'حققت المحكمة العدالة أخيرًا.'},
+  {id:11,en:'Institution',ar:'مؤسسة',cat:'business',easyEn:'The university is a big institution.',easyAr:'الجامعة مؤسسة كبيرة.',challengeEn:'The bank is a trusted financial institution.',challengeAr:'البنك مؤسسة مالية موثوقة.'},
+  {id:12,en:'Investment',ar:'استثمار',cat:'business',easyEn:'This is a good investment.',easyAr:'هذا استثمار جيد.',challengeEn:'Foreign investment boosted the economy.',challengeAr:'عزز الاستثمار الأجنبي الاقتصاد.'},
+  {id:13,en:'Audit',ar:'تدقيق',cat:'business',easyEn:'The company needs an audit.',easyAr:'تحتاج الشركة إلى تدقيق.',challengeEn:'The company failed the annual audit.',challengeAr:'فشلت الشركة في التدقيق السنوي.'},
+  {id:14,en:'Greedy',ar:'طماع',cat:'descriptive',easyEn:'The manager is very greedy.',easyAr:'المدير طماع جدًا.',challengeEn:'The greedy manager stole from clients.',challengeAr:'سرق المدير الطماع من العملاء.'},
+  {id:15,en:'Imitation',ar:'تقليد',cat:'misc',easyEn:'This bag is just an imitation.',easyAr:'هذه الحقيبة مجرد تقليد.',challengeEn:'The market was full of cheap imitations.',challengeAr:'كان السوق مليئًا بالتقليد الرخيص.'},
+  {id:16,en:'Harm',ar:'ضرر',cat:'ethics',easyEn:'Smoking can harm your health.',easyAr:'يمكن أن يضر التدخين بصحتك.',challengeEn:'Pollution can harm public health.',challengeAr:'يمكن أن يضر التلوث بالصحة العامة.'},
+  {id:17,en:'Ethical',ar:'أخلاقي',cat:'ethics',easyEn:'This is an ethical choice.',easyAr:'هذا خيار أخلاقي.',challengeEn:'It was not an ethical decision.',challengeAr:'لم يكن قرارًا أخلاقيًا.'},
+  {id:18,en:'Unethical',ar:'غير أخلاقي',cat:'ethics',easyEn:'Lying to customers is unethical.',easyAr:'الكذب على الزبائن غير أخلاقي.',challengeEn:'Bribery is considered unethical.',challengeAr:'تُعتبر الرشوة غير أخلاقية.'},
+  {id:19,en:'Punishment',ar:'عقاب',cat:'legal',easyEn:'The punishment was very harsh.',easyAr:'كانت العقوبة قاسية جدًا.',challengeEn:'The punishment for fraud is severe.',challengeAr:'عقوبة الاحتيال قاسية.'},
+  {id:20,en:'Commerce',ar:'تجارة',cat:'business',easyEn:'Commerce is important for the city.',easyAr:'التجارة مهمة للمدينة.',challengeEn:'Commerce between the two countries grew.',challengeAr:'نمطر التجارة بين البلدين.'},
+  {id:21,en:'Advice',ar:'نصيحة',cat:'misc',easyEn:'She gave me good advice.',easyAr:'أعطتني نصيحة جيدة.',challengeEn:'He gave good advice about investing.',challengeAr:'قدّم نصيحة جيدة حول الاستثمار.'},
+  {id:22,en:'Company',ar:'شركة',cat:'business',easyEn:'He works for a big company.',easyAr:'يعمل في شركة كبيرة.',challengeEn:'The company hired new employees.',challengeAr:'وظّفت الشركة موظفين جدد.'},
+  {id:23,en:'Against',ar:'ضد',cat:'misc',easyEn:'I am against this idea.',easyAr:'أنا ضد هذه الفكرة.',challengeEn:'The law is against unfair competition.',challengeAr:'القانون ضد المنافسة غير العادلة.'},
+  {id:24,en:'Laws',ar:'قوانين',cat:'legal',easyEn:'We must follow the laws.',easyAr:'يجب أن نتبع القوانين.',challengeEn:'New laws were passed to fight corruption.',challengeAr:'أُقرت قوانين جديدة لمكافحة الفساد.'},
+  {id:25,en:'Legal',ar:'قانوني',cat:'legal',easyEn:'This action is legal.',easyAr:'هذا التصرف قانوني.',challengeEn:'The contract must be legal.',challengeAr:'يجب أن يكون العقد قانونيًا.'},
+  {id:26,en:'Illegal',ar:'غير قانوني',cat:'legal',easyEn:'Stealing is illegal.',easyAr:'السرقة غير قانونية.',challengeEn:'Selling counterfeit goods is illegal.',challengeAr:'بيع السلع المقلدة غير قانوني.'},
+  {id:27,en:'Increase',ar:'زيادة',cat:'verb',easyEn:'There was an increase in prices.',easyAr:'كان هناك ارتفاع في الأسعار.',challengeEn:'Prices saw a sudden increase.',challengeAr:'شهدت الأسعار زيادة مفاجئة.'},
+  {id:28,en:'Decrease',ar:'انخفاض',cat:'verb',easyEn:'There was a decrease in sales.',easyAr:'كان هناك انخفاض في المبيعات.',challengeEn:'Sales showed a clear decrease.',challengeAr:'أظهرت المبيعات انخفاضًا واضحًا.'},
+  {id:29,en:'Genuine',ar:'أصلي',cat:'descriptive',easyEn:'Is this watch genuine?',easyAr:'هل هذه الساعة أصلية؟',challengeEn:'Make sure the product is genuine.',challengeAr:'تأكد أن المنتج أصلي.'},
+  {id:30,en:'Factory',ar:'مصنع',cat:'misc',easyEn:'My father works in a factory.',easyAr:'يعمل والدي في مصنع.',challengeEn:'The factory produces electronics.',challengeAr:'يُنتج المصنع إلكترونيات.'},
+  {id:31,en:'Exploitation',ar:'استغلال',cat:'crime',easyEn:'This is exploitation of workers.',easyAr:'هذا استغلال للعمال.',challengeEn:'The report criticized worker exploitation.',challengeAr:'انتقد التقرير استغلال العمال.'},
+  {id:32,en:'Industry',ar:'صناعة',cat:'business',easyEn:'He works in the car industry.',easyAr:'يعمل في صناعة السيارات.',challengeEn:'The oil industry is very profitable.',challengeAr:'صناعة النفط مربحة جدًا.'},
+  {id:33,en:'Drugs',ar:'مخدرات',cat:'crime',easyEn:'Drugs are dangerous.',easyAr:'المخدرات خطيرة.',challengeEn:'The gang was smuggling drugs.',challengeAr:'كانت العصابة تهرّب المخدرات.'},
+  {id:34,en:'Properties',ar:'عقارات',cat:'business',easyEn:'He has many properties.',easyAr:'يملك عقارات كثيرة.',challengeEn:'He owns several properties abroad.',challengeAr:'يملك عدة عقارات في الخارج.'},
+  {id:35,en:'Prosper',ar:'يزدهر',cat:'verb',easyEn:'I hope your business will prosper.',easyAr:'أتمنى أن يزدهر عملك.',challengeEn:'Small businesses can prosper with support.',challengeAr:'يمكن أن تزدهر الشركات الصغيرة بالدعم.'},
+  {id:36,en:'Taxes',ar:'ضرائب',cat:'business',easyEn:'We pay taxes every year.',easyAr:'ندفع الضرائب كل عام.',challengeEn:'The company avoided paying taxes.',challengeAr:'تجنبت الشركة دفع الضرائب.'},
+  {id:37,en:'Effects',ar:'آثار',cat:'misc',easyEn:'The medicine has side effects.',easyAr:'للدواء آثار جانبية.',challengeEn:'The scandal had serious effects on the market.',challengeAr:'كان للفضيحة آثار خطيرة على السوق.'},
+  {id:38,en:'Huge',ar:'ضخم',cat:'descriptive',easyEn:'That is a huge building.',easyAr:'هذا مبنى ضخم.',challengeEn:'The company made a huge profit.',challengeAr:'حققت الشركة ربحًا ضخمًا.'},
+  {id:39,en:'Strict',ar:'صارم',cat:'descriptive',easyEn:'Our teacher is very strict.',easyAr:'معلمنا صارم جدًا.',challengeEn:'The new regulations are very strict.',challengeAr:'اللوائح الجديدة صارمة جدًا.'},
+  {id:40,en:'Bribery',ar:'رشوة',cat:'crime',easyEn:'Bribery is a crime.',easyAr:'الرشوة جريمة.',challengeEn:'He was arrested for bribery.',challengeAr:'قُبض عليه بتهمة الرشوة.'},
+  {id:41,en:'Corruption',ar:'فساد',cat:'crime',easyEn:'Corruption is a big problem.',easyAr:'الفساد مشكلة كبيرة.',challengeEn:'Corruption is common in some sectors.',challengeAr:'الفساد شائع في بعض القطاعات.'},
+  {id:42,en:'Embezzlement',ar:'اختلاس',cat:'crime',easyEn:'He was arrested for embezzlement.',easyAr:'قُبض عليه بتهمة الاختلاس.',challengeEn:'She was charged with embezzlement.',challengeAr:'اتُهمت بالاختلاس.'},
+  {id:43,en:'Tax Evasion',ar:'تهرب ضريبي',cat:'crime',easyEn:'Tax evasion is against the law.',easyAr:'التهرب الضريبي مخالف للقانون.',challengeEn:'Tax evasion is a serious crime.',challengeAr:'التهرب الضريبي جريمة خطيرة.'},
+  {id:44,en:'Extortion',ar:'ابتزاز',cat:'crime',easyEn:'Extortion is a crime.',easyAr:'الابتزاز جريمة.',challengeEn:'The gang used extortion to get money.',challengeAr:'استخدمت العصابة الابتزاز للحصول على المال.'},
+  {id:45,en:'Counterfeiting',ar:'تزييف',cat:'crime',easyEn:'Counterfeiting money is illegal.',easyAr:'تزييف النقود غير قانوني.',challengeEn:'Counterfeiting damages the brand\'s image.',challengeAr:'يضر التزييف بصورة العلامة التجارية.'},
+  {id:46,en:'Money Laundering',ar:'غسل الأموال',cat:'crime',easyEn:'Money laundering is illegal.',easyAr:'غسل الأموال غير قانوني.',challengeEn:'The bank was fined for money laundering.',challengeAr:'غُرّم البنك بسبب غسل الأموال.'},
+  {id:47,en:'Nepotism',ar:'محسوبية',cat:'crime',easyEn:'Nepotism is unfair.',easyAr:'المحسوبية غير عادلة.',challengeEn:'Nepotism hurt the company\'s growth.',challengeAr:'أضرت المحسوبية بنمو الشركة.'},
+  {id:48,en:'Smuggling',ar:'تهريب',cat:'crime',easyEn:'Smuggling drugs is dangerous.',easyAr:'تهريب المخدرات خطير.',challengeEn:'They were caught smuggling goods.',challengeAr:'قُبض عليهم وهم يهرّبون البضائع.'},
+  {id:49,en:'Cheating',ar:'غش',cat:'crime',easyEn:'Cheating in exams is wrong.',easyAr:'الغش في الامتحانات خطأ.',challengeEn:'Cheating in exams is a form of dishonesty.',challengeAr:'الغش في الامتحانات شكل من أشكال عدم الأمانة.'},
+  {id:50,en:'Child Labour',ar:'عمالة الأطفال',cat:'crime',easyEn:'Child labour is illegal.',easyAr:'عمالة الأطفال غير قانونية.',challengeEn:'Child labour is banned in most countries.',challengeAr:'عمالة الأطفال محظورة في معظم الدول.'},
+  {id:51,en:'Theft',ar:'سرقة',cat:'crime',easyEn:'Stealing is a crime.',easyAr:'السرقة جريمة.',challengeEn:'Stealing from a company is a crime.',challengeAr:'السرقة من شركة جريمة.'},
+  {id:52,en:'Ill-gotten gains',ar:'مكاسب غير مشروعة',cat:'crime',easyEn:'He lost his ill-gotten gains.',easyAr:'خسر أمواله المكتسبة بطرق غير مشروعة.',challengeEn:'The judge ordered the return of the ill-gotten gains.',challengeAr:'أمر القاضي بإعادة الأموال المكتسبة بطرق غير مشروعة.'},
+  {id:53,en:'Profit',ar:'ربح',cat:'business',easyEn:'The shop made a profit.',easyAr:'حقق المحل ربحًا.',challengeEn:'The company reported a large profit.',challengeAr:'أعلنت الشركة عن ربح كبير.'},
+  {id:54,en:'Payment',ar:'دفع',cat:'business',easyEn:'I made the payment today.',easyAr:'قمت بالدفع اليوم.',challengeEn:'The payment was made in cash.',challengeAr:'تم الدفع نقدًا.'},
+  {id:55,en:'Deception',ar:'خداع',cat:'crime',easyEn:'This was a case of deception.',easyAr:'كانت هذه حالة خداع.',challengeEn:'The scheme relied on deception.',challengeAr:'اعتمدت الخطة على الخداع.'},
+  {id:56,en:'Commitment',ar:'التزام',cat:'ethics',easyEn:'He shows real commitment to his job.',easyAr:'يُظهر التزامًا حقيقيًا بعمله.',challengeEn:'The manager showed strong commitment.',challengeAr:'أظهر المدير التزامًا قويًا.'},
+  {id:57,en:'Economy',ar:'اقتصاد',cat:'business',easyEn:'The economy is growing.',easyAr:'الاقتصاد ينمو.',challengeEn:'The economy grew by three percent.',challengeAr:'نما الاقتصاد بنسبة ثلاثة بالمئة.'},
+  {id:58,en:'Such As',ar:'مثل',cat:'misc',easyEn:'I like fruits, such as apples.',easyAr:'أحب الفواكه، مثل التفاح.',challengeEn:'Crimes such as fraud are increasing.',challengeAr:'الجرائم مثل الاحتيال في ازدياد.'},
+  {id:59,en:'Source',ar:'مصدر',cat:'business',easyEn:'What is the source of this news?',easyAr:'ما مصدر هذا الخبر؟',challengeEn:'The journalist protected her source.',challengeAr:'حمت الصحفية مصدرها.'},
+  {id:60,en:'Creative Accounting',ar:'محاسبة إبداعية',cat:'crime',easyEn:'The company used creative accounting.',easyAr:'استخدمت الشركة محاسبة إبداعية.',challengeEn:'The firm used creative accounting to hide losses.',challengeAr:'استخدمت الشركة محاسبة إبداعية لإخفاء الخسائر.'},
+  {id:61,en:'Varying',ar:'متفاوت',cat:'descriptive',easyEn:'The prices are varying.',easyAr:'الأسعار متفاوتة.',challengeEn:'The results were varying across regions.',challengeAr:'كانت النتائج متفاوتة عبر المناطق.'},
+  {id:62,en:'Currency Counterfeiting',ar:'تزييف العملة',cat:'crime',easyEn:'Currency counterfeiting is a serious crime.',easyAr:'تزييف العملة جريمة خطيرة.',challengeEn:'Currency counterfeiting weakens the economy.',challengeAr:'يُضعف تزييف العملة الاقتصاد.'},
+  {id:63,en:'Underground',ar:'سري',cat:'misc',easyEn:'There is an underground market.',easyAr:'يوجد سوق سري.',challengeEn:'An underground market for stolen goods exists.',challengeAr:'يوجد سوق سري للبضائع المسروقة.'},
+  {id:64,en:'Blackmailing',ar:'ابتزاز',cat:'crime',easyEn:'Blackmailing is a crime.',easyAr:'الابتزاز جريمة.',challengeEn:'He was accused of blackmailing his boss.',challengeAr:'اتُهم بابتزاز مديره.'},
+  {id:65,en:'To Engage',ar:'ينخرط',cat:'verb',easyEn:"Don't engage in fraud.",easyAr:'لا تنخرط في الاحتيال.',challengeEn:'Employees should not engage in fraud.',challengeAr:'يجب ألا ينخرط الموظفون في الاحتيال.'},
+  {id:66,en:'Key',ar:'مفتاح',cat:'descriptive',easyEn:'Trust is the key to success.',easyAr:'الثقة هي مفتاح النجاح.',challengeEn:'Transparency is key to trust.',challengeAr:'الشفافية هي المفتاح للثقة.'},
+  {id:67,en:'The Process',ar:'العملية',cat:'business',easyEn:'The process is very slow.',easyAr:'العملية بطيئة جدًا.',challengeEn:'The process took several months.',challengeAr:'استغرقت العملية عدة أشهر.'},
+  {id:68,en:'Transactions',ar:'معاملات',cat:'business',easyEn:'All transactions are safe.',easyAr:'جميع المعاملات آمنة.',challengeEn:'All transactions are recorded.',challengeAr:'تُسجل جميع المعاملات.'},
+  {id:69,en:'Appearance',ar:'مظهر',cat:'misc',easyEn:'Her appearance was calm.',easyAr:'كان مظهرها هادئًا.',challengeEn:'The report gave an appearance of success.',challengeAr:'أعطى التقرير مظهر النجاح.'},
+  {id:70,en:'Amount',ar:'مبلغ',cat:'business',easyEn:'I need a small amount of sugar.',easyAr:'أحتاج كمية صغيرة من السكر.',challengeEn:'A large amount of money was missing.',challengeAr:'كان هناك مبلغ كبير من المال مفقود.'},
+  {id:71,en:'Destination',ar:'وجهة',cat:'misc',easyEn:'What is your destination?',easyAr:'ما وجهتك؟',challengeEn:'The funds\' destination was unclear.',challengeAr:'كانت وجهة الأموال غير واضحة.'},
+  {id:72,en:'To Obtain',ar:'يحصل على',cat:'verb',easyEn:'I want to obtain a visa.',easyAr:'أريد الحصول على تأشيرة.',challengeEn:'He tried to obtain the contract illegally.',challengeAr:'حاول الحصول على العقد بطريقة غير قانونية.'},
+  {id:73,en:'Serious',ar:'خطير',cat:'descriptive',easyEn:'This is a serious problem.',easyAr:'هذه مشكلة خطيرة.',challengeEn:'This is a serious accusation.',challengeAr:'هذه تهمة خطيرة.'},
+  {id:74,en:'Legitimate',ar:'مشروع',cat:'descriptive',easyEn:'This is a legitimate business.',easyAr:'هذا عمل مشروع.',challengeEn:'The business is completely legitimate.',challengeAr:'العمل مشروع تمامًا.'},
+  {id:75,en:'Operation',ar:'عملية',cat:'business',easyEn:'The operation was successful.',easyAr:'كانت العملية ناجحة.',challengeEn:'The police shut down the illegal operation.',challengeAr:'أغلقت الشرطة العملية غير القانونية.'},
+  {id:76,en:'Disguise',ar:'تمويه',cat:'crime',easyEn:'He wore a disguise.',easyAr:'ارتدى تنكرًا.',challengeEn:'The scam was a disguise for theft.',challengeAr:'كانت الخدعة تمويهًا للسرقة.'},
+  {id:77,en:'Office',ar:'مكتب',cat:'misc',easyEn:'I work in an office.',easyAr:'أعمل في مكتب.',challengeEn:'The audit began at the head office.',challengeAr:'بدأ التدقيق في المكتب الرئيسي.'},
+  {id:78,en:'Law',ar:'قانون',cat:'legal',easyEn:'We must obey the law.',easyAr:'يجب أن نطيع القانون.',challengeEn:'The new law targets corruption.',challengeAr:'يستهدف القانون الجديد الفساد.'},
+  {id:79,en:'The Fact',ar:'الحقيقة',cat:'misc',easyEn:'The fact is simple.',easyAr:'الحقيقة بسيطة.',challengeEn:'The fact remains that he lied.',challengeAr:'تبقى الحقيقة أنه كذب.'},
+  {id:80,en:'The Comptroller',ar:'المراقب المالي',cat:'business',easyEn:'The comptroller checked the money.',easyAr:'تحقق المراقب المالي من الأموال.',challengeEn:'The comptroller reviewed the accounts.',challengeAr:'راجع المراقب المالي الحسابات.'},
+  {id:81,en:'Value',ar:'قيمة',cat:'business',easyEn:'This ring has great value.',easyAr:'لهذا الخاتم قيمة كبيرة.',challengeEn:'The stolen goods had high value.',challengeAr:'كانت للبضائع المسروقة قيمة عالية.'},
+  {id:82,en:'Common',ar:'شائع',cat:'descriptive',easyEn:'This problem is very common.',easyAr:'هذه المشكلة شائعة جدًا.',challengeEn:'Bribery is common in this industry.',challengeAr:'الرشوة شائعة في هذه الصناعة.'},
+  {id:83,en:'Ownership',ar:'ملكية',cat:'business',easyEn:'He has ownership of the house.',easyAr:'يملك البيت.',challengeEn:'Ownership of the company changed hands.',challengeAr:'انتقلت ملكية الشركة إلى يد أخرى.'},
+  {id:84,en:'Result',ar:'نتيجة',cat:'misc',easyEn:'The result was good.',easyAr:'كانت النتيجة جيدة.',challengeEn:'The result of the audit was alarming.',challengeAr:'كانت نتيجة التدقيق مقلقة.'},
+  {id:85,en:'Wider',ar:'أوسع',cat:'descriptive',easyEn:'We need a wider road.',easyAr:'نحتاج طريقًا أوسع.',challengeEn:'The scandal had a wider impact.',challengeAr:'كان للفضيحة تأثير أوسع.'},
+  {id:86,en:'Related',ar:'مرتبط',cat:'descriptive',easyEn:'These two problems are related.',easyAr:'هاتان المشكلتان مرتبطتان.',challengeEn:'The two cases are related.',challengeAr:'القضيتان مرتبطتان.'},
+  {id:87,en:'To Involve',ar:'يشمل',cat:'verb',easyEn:'The plan will involve everyone.',easyAr:'ستشمل الخطة الجميع.',challengeEn:'The case involves several companies.',challengeAr:'تشمل القضية عدة شركات.'},
+  {id:88,en:'Property',ar:'ملكية',cat:'business',easyEn:'This is my property.',easyAr:'هذه ملكيتي.',challengeEn:'He hid his property overseas.',challengeAr:'أخفى ممتلكاته في الخارج.'},
+  {id:89,en:'Government',ar:'حكومة',cat:'legal',easyEn:'The government helps poor people.',easyAr:'تساعد الحكومة الفقراء.',challengeEn:'The government launched an investigation.',challengeAr:'أطلقت الحكومة تحقيقًا.'},
+  {id:90,en:'Court',ar:'محكمة',cat:'legal',easyEn:'He went to court.',easyAr:'ذهب إلى المحكمة.',challengeEn:'The case went to court.',challengeAr:'ذهبت القضية إلى المحكمة.'},
+  {id:91,en:'Private',ar:'خاص',cat:'descriptive',easyEn:'This is a private matter.',easyAr:'هذا أمر خاص.',challengeEn:'It was a private financial matter.',challengeAr:'كانت مسألة مالية خاصة.'},
+  {id:92,en:'To Perceive',ar:'يدرك',cat:'verb',easyEn:'I perceive him as honest.',easyAr:'أراه شخصًا صادقًا.',challengeEn:'People perceive the company as corrupt.',challengeAr:'يرى الناس الشركة على أنها فاسدة.'},
+  {id:93,en:'Score',ar:'درجة',cat:'business',easyEn:'She got a high score.',easyAr:'حصلت على درجة عالية.',challengeEn:'The country\'s corruption score improved.',challengeAr:'تحسّنت درجة الفساد في البلاد.'},
+  {id:94,en:'Individuals',ar:'أفراد',cat:'social',easyEn:'Some individuals helped us.',easyAr:'ساعدنا بعض الأفراد.',challengeEn:'Several individuals were arrested.',challengeAr:'قُبض على عدة أفراد.'},
+  {id:95,en:'According To',ar:'وفقًا لـ',cat:'misc',easyEn:'According to him, it is true.',easyAr:'وفقًا له، هذا صحيح.',challengeEn:'According to the report, losses were huge.',challengeAr:'وفقًا للتقرير، كانت الخسائر ضخمة.'},
+  {id:96,en:'Perception',ar:'تصور',cat:'ethics',easyEn:'My perception of him changed.',easyAr:'تغيّر تصوري عنه.',challengeEn:'Public perception of the bank changed.',challengeAr:'تغيّر تصور الجمهور تجاه البنك.'},
+  {id:97,en:'Drug Dealer',ar:'تاجر مخدرات',cat:'crime',easyEn:'The police caught the drug dealer.',easyAr:'قبضت الشرطة على تاجر المخدرات.',challengeEn:'The drug dealer was arrested at the border.',challengeAr:'قُبض على تاجر المخدرات عند الحدود.'},
+  {id:98,en:'Transparency',ar:'شفافية',cat:'ethics',easyEn:'We need more transparency.',easyAr:'نحتاج إلى مزيد من الشفافية.',challengeEn:'The company promised more transparency.',challengeAr:'وعدت الشركة بمزيد من الشفافية.'},
+  {id:99,en:'Index',ar:'مؤشر',cat:'business',easyEn:'The index shows the ranking.',easyAr:'يُظهر المؤشر الترتيب.',challengeEn:'The country ranked low on the corruption index.',challengeAr:'احتلت البلاد مرتبة متدنية في مؤشر الفساد.'},
+  {id:100,en:'To Corrupt',ar:'يفسد',cat:'crime',easyEn:'Money can corrupt people.',easyAr:'يمكن للمال أن يفسد الناس.',challengeEn:'Power can corrupt people.',challengeAr:'يمكن للسلطة أن تفسد الناس.'},
+  {id:101,en:'Review',ar:'مراجعة',cat:'business',easyEn:'Please review my work.',easyAr:'من فضلك راجع عملي.',challengeEn:'The board ordered a full review.',challengeAr:'أمر مجلس الإدارة بمراجعة كاملة.'},
+  {id:102,en:'Lower',ar:'أدنى',cat:'descriptive',easyEn:'The price is lower now.',easyAr:'السعر أقل الآن.',challengeEn:'The company reported lower profits.',challengeAr:'أعلنت الشركة عن أرباح أقل.'},
+  {id:103,en:'Complex',ar:'معقد',cat:'descriptive',easyEn:'This question is complex.',easyAr:'هذا السؤال معقد.',challengeEn:'The financial scheme was very complex.',challengeAr:'كانت الخطة المالية معقدة جدًا.'},
+  {id:104,en:'Drawbacks',ar:'عيوب',cat:'misc',easyEn:'Every job has drawbacks.',easyAr:'لكل عمل عيوب.',challengeEn:'Every policy has some drawbacks.',challengeAr:'لكل سياسة بعض العيوب.'},
+  {id:105,en:'To Consider',ar:'يعتبر',cat:'verb',easyEn:'Please consider my offer.',easyAr:'من فضلك ضع عرضي في الاعتبار.',challengeEn:'Investors should consider the risks.',challengeAr:'يجب على المستثمرين أن يأخذوا المخاطر بعين الاعتبار.'},
+  {id:106,en:'To Recognize',ar:'يعترف',cat:'verb',easyEn:'I recognize this problem.',easyAr:'أتعرف على هذه المشكلة.',challengeEn:'It is hard to recognize fraud early.',challengeAr:'من الصعب التعرف على الاحتيال مبكرًا.'},
+  {id:107,en:'Ranking',ar:'ترتيب',cat:'business',easyEn:'Our team\'s ranking is high.',easyAr:'ترتيب فريقنا عالٍ.',challengeEn:'The company\'s ranking dropped this year.',challengeAr:'انخفض ترتيب الشركة هذا العام.'},
+  {id:108,en:'Generally',ar:'عموماً',cat:'descriptive',easyEn:'Generally, I like coffee.',easyAr:'عمومًا، أحب القهوة.',challengeEn:'Generally, small firms pay less tax.',challengeAr:'عمومًا، تدفع الشركات الصغيرة ضرائب أقل.'},
+  {id:109,en:'Prominent',ar:'بارز',cat:'descriptive',easyEn:'He is a prominent doctor.',easyAr:'هو طبيب بارز.',challengeEn:'A prominent businessman was arrested.',challengeAr:'قُبض على رجل أعمال بارز.'},
+  {id:110,en:'Held',ar:'عُقد',cat:'verb',easyEn:'The party was held at home.',easyAr:'أُقيمت الحفلة في المنزل.',challengeEn:'The meeting was held in secret.',challengeAr:'عُقد الاجتماع سرًا.'},
+  {id:111,en:'Refugees',ar:'لاجئون',cat:'social',easyEn:'The refugees need help.',easyAr:'يحتاج اللاجئون إلى المساعدة.',challengeEn:'The crisis created thousands of refugees.',challengeAr:'خلقت الأزمة آلاف اللاجئين.'},
+  {id:112,en:'Scandals',ar:'فضائح',cat:'crime',easyEn:'The news is full of scandals.',easyAr:'الأخبار مليئة بالفضائح.',challengeEn:'The bank faced several scandals.',challengeAr:'واجه البنك عدة فضائح.'},
+  {id:113,en:'Institutions',ar:'مؤسسات',cat:'business',easyEn:'Schools are important institutions.',easyAr:'المدارس مؤسسات مهمة.',challengeEn:'Public institutions must be transparent.',challengeAr:'يجب أن تكون المؤسسات العامة شفافة.'},
+  {id:114,en:'To Suffer',ar:'يعاني',cat:'verb',easyEn:'Many people suffer from hunger.',easyAr:'يعاني كثير من الناس من الجوع.',challengeEn:'Small investors suffered heavy losses.',challengeAr:'عانى صغار المستثمرين خسائر فادحة.'},
+  {id:115,en:'Decision',ar:'قرار',cat:'misc',easyEn:'This is an important decision.',easyAr:'هذا قرار مهم.',challengeEn:'The board made a controversial decision.',challengeAr:'اتخذ مجلس الإدارة قرارًا مثيرًا للجدل.'},
+  {id:116,en:'The Report',ar:'التقرير',cat:'business',easyEn:'I read the report.',easyAr:'قرأت التقرير.',challengeEn:'The report exposed the fraud.',challengeAr:'كشف التقرير الاحتيال.'},
+  {id:117,en:'The Worst',ar:'الأسوأ',cat:'descriptive',easyEn:'This is the worst day.',easyAr:'هذا أسوأ يوم.',challengeEn:'This was the worst scandal in years.',challengeAr:'كانت هذه أسوأ فضيحة منذ سنوات.'},
+  {id:118,en:'To Host',ar:'يستضيف',cat:'verb',easyEn:'We will host the party.',easyAr:'سنستضيف الحفلة.',challengeEn:'The city hosted the economic summit.',challengeAr:'استضافت المدينة القمة الاقتصادية.'},
+  {id:119,en:'Bottom',ar:'القاع',cat:'misc',easyEn:'The book is at the bottom.',easyAr:'الكتاب في الأسفل.',challengeEn:'The country is at the bottom of the ranking.',challengeAr:'تحتل البلاد أسفل الترتيب.'},
+  {id:120,en:'To Decline',ar:'ينخفض',cat:'verb',easyEn:'Sales started to decline.',easyAr:'بدأت المبيعات تنخفض.',challengeEn:'Trust in the bank began to decline.',challengeAr:'بدأت الثقة بالبنك تنخفض.'},
+  {id:121,en:'Surrounded',ar:'محاط',cat:'descriptive',easyEn:'The house is surrounded by trees.',easyAr:'البيت محاط بالأشجار.',challengeEn:'The office was surrounded by police.',challengeAr:'أحاطت الشرطة بالمكتب.'},
+  {id:122,en:'Relatively',ar:'نسبياً',cat:'descriptive',easyEn:'The test was relatively easy.',easyAr:'كان الاختبار سهلاً نسبيًا.',challengeEn:'The fine was relatively small.',challengeAr:'كانت الغرامة صغيرة نسبيًا.'},
+  {id:123,en:'Led',ar:'قاد',cat:'verb',easyEn:'His mistake led to a big loss.',easyAr:'أدى خطأه إلى خسارة كبيرة.',challengeEn:'Corruption led to the company\'s collapse.',challengeAr:'أدى الفساد إلى انهيار الشركة.'},
+  {id:124,en:'Migrant',ar:'مهاجر',cat:'social',easyEn:'The migrant found a new job.',easyAr:'وجد المهاجر وظيفة جديدة.',challengeEn:'Many migrant workers were underpaid.',challengeAr:'كثير من العمال المهاجرين كانوا يتقاضون أجورًا زهيدة.'},
+  {id:125,en:'To Follow',ar:'يتبع',cat:'verb',easyEn:'You must follow the rules.',easyAr:'يجب أن تتبع القواعد.',challengeEn:'Employees must follow the code of ethics.',challengeAr:'يجب على الموظفين اتباع مدونة الأخلاقيات.'},
+  {id:126,en:'Fell',ar:'سقط',cat:'verb',easyEn:'The price fell yesterday.',easyAr:'انخفض السعر أمس.',challengeEn:'Stock prices fell sharply.',challengeAr:'انخفضت أسعار الأسهم بشكل حاد.'},
+  {id:127,en:'Massive',ar:'هائل',cat:'descriptive',easyEn:'There was a massive crowd.',easyAr:'كان هناك حشد ضخم.',challengeEn:'The company suffered massive losses.',challengeAr:'تكبدت الشركة خسائر هائلة.'},
+  {id:128,en:'Previous',ar:'سابق',cat:'descriptive',easyEn:'My previous job was easy.',easyAr:'كانت وظيفتي السابقة سهلة.',challengeEn:'The previous CEO was accused of fraud.',challengeAr:'اتُهم الرئيس التنفيذي السابق بالاحتيال.'},
+  {id:129,en:'To Cheat',ar:'يغش',cat:'crime',easyEn:"Don't cheat your friends.",easyAr:'لا تغش أصدقاءك.',challengeEn:'He tried to cheat his business partner.',challengeAr:'حاول أن يغش شريكه في العمل.'},
+  {id:130,en:'Fraud',ar:'احتيال',cat:'crime',easyEn:'This is a case of fraud.',easyAr:'هذه حالة احتيال.',challengeEn:'She was found guilty of fraud.',challengeAr:'أُدينت بتهمة الاحتيال.'},
+  {id:131,en:'Forge',ar:'يزوّر',cat:'crime',easyEn:'He tried to forge a signature.',easyAr:'حاول تزوير توقيع.',challengeEn:'He tried to forge the documents.',challengeAr:'حاول تزوير المستندات.'},
+  {id:132,en:'Price',ar:'سعر',cat:'business',easyEn:'The price is too high.',easyAr:'السعر مرتفع جدًا.',challengeEn:'The price of the shares dropped.',challengeAr:'انخفض سعر الأسهم.'},
+  {id:133,en:'Expiry',ar:'انتهاء الصلاحية',cat:'misc',easyEn:'Check the expiry date.',easyAr:'تحقق من تاريخ الانتهاء.',challengeEn:'Check the expiry date before signing.',challengeAr:'تحقق من تاريخ الانتهاء قبل التوقيع.'},
+  {id:134,en:'Codes',ar:'رموز',cat:'misc',easyEn:'Follow the dress code.',easyAr:'اتبع قواعد اللباس.',challengeEn:'Companies must follow ethical codes.',challengeAr:'يجب على الشركات اتباع مدونات أخلاقية.'},
+  {id:135,en:'Pirate',ar:'قرصان',cat:'crime',easyEn:'He is a software pirate.',easyAr:'هو قرصان برمجيات.',challengeEn:'The website was run by a software pirate.',challengeAr:'كان الموقع يديره قرصان برمجيات.'},
+  {id:136,en:'Harmful',ar:'ضار',cat:'ethics',easyEn:'Smoking is harmful.',easyAr:'التدخين ضار.',challengeEn:'The chemical was harmful to workers.',challengeAr:'كانت المادة الكيميائية ضارة بالعمال.'}
+];
+
+// Created by awwab sohail — UNIT 3: ASTRONOMY (92 terms)
+// ============================================================
+//  UNIT 3: ASTRONOMY (92 terms)
+// ============================================================
+const astronomyTerms = [
+  {id:0,en:'Astronomy',ar:'علم الفلك',cat:'science',easyEn:'I study astronomy at school.',easyAr:'أدرس علم الفلك في المدرسة.',challengeEn:'Astronomy helps us understand the stars and planets.',challengeAr:'يساعد علم الفلك على فهم النجوم والكواكب.'},
+  {id:1,en:'Solar system',ar:'المجموعة الشمسية',cat:'science',easyEn:'Earth is part of the solar system.',easyAr:'الأرض جزء من المجموعة الشمسية.',challengeEn:'The solar system has eight planets orbiting the sun.',challengeAr:'تحتوي المجموعة الشمسية على ثمانية كواكب تدور حول الشمس.'},
+  {id:2,en:'Space',ar:'الفضاء',cat:'science',easyEn:'Astronauts travel to space.',easyAr:'يسافر رواد الفضاء إلى الفضاء.',challengeEn:'Outer space is almost completely empty and silent.',challengeAr:'الفضاء الخارجي فارغ وهادئ تقريبًا بالكامل.'},
+  {id:3,en:'Galaxy',ar:'مجرة',cat:'science',easyEn:'Our galaxy is called the Milky Way.',easyAr:'مجرتنا تسمى درب التبانة.',challengeEn:'The galaxy contains billions of stars and planets.',challengeAr:'تحتوي المجرة على مليارات النجوم والكواكب.'},
+  {id:4,en:'Heavenly body',ar:'جسم سماوي',cat:'science',easyEn:'The moon is a heavenly body.',easyAr:'القمر جسم سماوي.',challengeEn:'Scientists study every heavenly body in our galaxy.',challengeAr:'يدرس العلماء كل جسم سماوي في مجرتنا.'},
+  {id:5,en:'Planets',ar:'كواكب',cat:'science',easyEn:'There are eight planets in our system.',easyAr:'يوجد ثمانية كواكب في نظامنا.',challengeEn:'Each planet has a different size and distance from the sun.',challengeAr:'لكل كوكب حجم ومسافة مختلفة عن الشمس.'},
+  {id:6,en:'Satellite',ar:'قمر صناعي',cat:'science',easyEn:'The moon is a natural satellite.',easyAr:'القمر قمر طبيعي.',challengeEn:'Some planets have many satellites orbiting around them.',challengeAr:'لبعض الكواكب أقمار كثيرة تدور حولها.'},
+  {id:7,en:'Atmosphere',ar:'غلاف جوي',cat:'science',easyEn:'The Earth has an atmosphere.',easyAr:'للأرض غلاف جوي.',challengeEn:'The atmosphere protects Earth from harmful rays.',challengeAr:'يحمي الغلاف الجوي الأرض من الأشعة الضارة.'},
+  {id:8,en:'Orbit',ar:'مدار',cat:'science',easyEn:'The Earth has an orbit around the sun.',easyAr:'للأرض مدار حول الشمس.',challengeEn:'Every planet follows its own orbit around the sun.',challengeAr:'يتبع كل كوكب مداره الخاص حول الشمس.'},
+  {id:9,en:'Stars',ar:'نجوم',cat:'science',easyEn:'I can see stars at night.',easyAr:'أستطيع رؤية النجوم في الليل.',challengeEn:'Millions of stars fill the night sky.',challengeAr:'ملايين النجوم تملأ سماء الليل.'},
+  {id:10,en:'Asteroid',ar:'كويكب',cat:'science',easyEn:'An asteroid is a rocky object in space.',easyAr:'الكويكب جسم صخري في الفضاء.',challengeEn:'Scientists are tracking an asteroid near Earth\'s orbit.',challengeAr:'يتتبع العلماء كويكبًا قرب مدار الأرض.'},
+  {id:11,en:'Meteor',ar:'نيزك',cat:'science',easyEn:'I saw a meteor last night.',easyAr:'رأيت نيزكًا الليلة الماضية.',challengeEn:'The meteor burned up as it entered the atmosphere.',challengeAr:'احترق النيزك عند دخوله الغلاف الجوي.'},
+  {id:12,en:'Universe',ar:'الكون',cat:'science',easyEn:'The universe is very big.',easyAr:'الكون كبير جدًا.',challengeEn:'Scientists still don\'t know the true size of the universe.',challengeAr:'لا يزال العلماء لا يعرفون الحجم الحقيقي للكون.'},
+  {id:13,en:'Astronaut',ar:'رائد فضاء',cat:'science',easyEn:'The astronaut flew to space.',easyAr:'طار رائد الفضاء إلى الفضاء.',challengeEn:'The astronaut spent six months on the space station.',challengeAr:'قضى رائد الفضاء ستة أشهر في محطة الفضاء.'},
+  {id:14,en:'Astronomer',ar:'عالم فلك',cat:'science',easyEn:'The astronomer studies the stars.',easyAr:'يدرس عالم الفلك النجوم.',challengeEn:'The astronomer discovered a new planet last year.',challengeAr:'اكتشف عالم الفلك كوكبًا جديدًا العام الماضي.'},
+  {id:15,en:'Observatory',ar:'مرصد فلكي',cat:'science',easyEn:'We visited an observatory.',easyAr:'زرنا مرصدًا فلكيًا.',challengeEn:'The observatory uses a huge telescope to study galaxies.',challengeAr:'يستخدم المرصد تلسكوبًا ضخمًا لدراسة المجرات.'},
+  {id:16,en:'Telescope',ar:'تلسكوب',cat:'science',easyEn:'I looked through a telescope.',easyAr:'نظرت عبر التلسكوب.',challengeEn:'The telescope helped scientists find a distant planet.',challengeAr:'ساعد التلسكوب العلماء في إيجاد كوكب بعيد.'},
+  {id:17,en:'Nebula',ar:'سديم',cat:'science',easyEn:'A nebula is a cloud of gas and dust.',easyAr:'السديم سحابة من الغاز والغبار.',challengeEn:'New stars are born inside a nebula.',challengeAr:'تولد نجوم جديدة داخل السديم.'},
+  {id:18,en:'Comet',ar:'مذنب',cat:'science',easyEn:'A comet passed near Earth.',easyAr:'مرّ مذنّب قرب الأرض.',challengeEn:'The comet\'s tail glowed brightly as it passed the sun.',challengeAr:'تألق ذيل المذنّب بقوة عند مروره بالشمس.'},
+  {id:19,en:'Gravity',ar:'جاذبية',cat:'science',easyEn:'Gravity pulls things down.',easyAr:'الجاذبية تجذب الأشياء للأسفل.',challengeEn:'Gravity keeps the planets moving around the sun.',challengeAr:'تحافظ الجاذبية على حركة الكواكب حول الشمس.'},
+  {id:20,en:'Twinkle',ar:'يتلألأ',cat:'verb',easyEn:'The stars twinkle at night.',easyAr:'تتلألأ النجوم في الليل.',challengeEn:'The stars seemed to twinkle brighter in the clear sky.',challengeAr:'بدت النجوم تتلألأ بشكل أكثر سطوعًا في السماء الصافية.'},
+  {id:21,en:'Sky',ar:'سماء',cat:'misc',easyEn:'The sky is full of stars.',easyAr:'السماء مليئة بالنجوم.',challengeEn:'The night sky looked clear and full of stars.',challengeAr:'بدت سماء الليل صافية ومليئة بالنجوم.'},
+  {id:22,en:'Spacecraft',ar:'مركبة فضائية',cat:'science',easyEn:'The spacecraft landed safely.',easyAr:'هبطت المركبة الفضائية بأمان.',challengeEn:'The spacecraft traveled millions of kilometers to reach Mars.',challengeAr:'سافرت المركبة الفضائية ملايين الكيلومترات للوصول إلى المريخ.'},
+  {id:23,en:'Rocket',ar:'صاروخ',cat:'science',easyEn:'The rocket flew into space.',easyAr:'انطلق الصاروخ إلى الفضاء.',challengeEn:'The rocket launched successfully after months of preparation.',challengeAr:'انطلق الصاروخ بنجاح بعد أشهر من التحضير.'},
+  {id:24,en:'Collision',ar:'اصطدام',cat:'science',easyEn:'A collision can destroy a satellite.',easyAr:'يمكن للاصطدام أن يدمر قمرًا صناعيًا.',challengeEn:'Scientists worked to prevent a collision between two satellites.',challengeAr:'عمل العلماء على منع اصطدام قمرين صناعيين.'},
+  {id:25,en:'Sun',ar:'الشمس',cat:'science',easyEn:'The sun gives us light.',easyAr:'تمنحنا الشمس الضوء.',challengeEn:'The sun is much bigger than the Earth.',challengeAr:'الشمس أكبر بكثير من الأرض.'},
+  {id:26,en:'Milky Way',ar:'درب التبانة',cat:'science',easyEn:'We live in the Milky Way galaxy.',easyAr:'نعيش في مجرة درب التبانة.',challengeEn:'The Milky Way contains hundreds of billions of stars.',challengeAr:'تحتوي مجرة درب التبانة على مئات المليارات من النجوم.'},
+  {id:27,en:'Weather forecast',ar:'نشرة الأحوال الجوية',cat:'misc',easyEn:'I watched the weather forecast.',easyAr:'شاهدت نشرة الأحوال الجوية.',challengeEn:'The weather forecast predicted a clear night for star watching.',challengeAr:'توقعت نشرة الأحوال الجوية ليلة صافية لمراقبة النجوم.'},
+  {id:28,en:'Shape',ar:'شكل',cat:'misc',easyEn:'Planets have a round shape.',easyAr:'للكواكب شكل دائري.',challengeEn:'Each planet has a slightly different shape and form.',challengeAr:'لكل كوكب شكل وهيئة مختلفان قليلاً.'},
+  {id:29,en:'Gaseous',ar:'غازي',cat:'descriptive',easyEn:'Jupiter is a gaseous planet.',easyAr:'كوكب المشتري كوكب غازي.',challengeEn:'Gaseous planets don\'t have a solid surface.',challengeAr:'الكواكب الغازية ليس لها سطح صلب.'},
+  {id:30,en:'Light year',ar:'سنة ضوئية',cat:'science',easyEn:'A light year measures distance in space.',easyAr:'السنة الضوئية تقيس المسافة في الفضاء.',challengeEn:'The star is thousands of light years away from Earth.',challengeAr:'يبعد النجم آلاف السنين الضوئية عن الأرض.'},
+  {id:31,en:'Diameter',ar:'قطر',cat:'science',easyEn:'The moon\'s diameter is smaller than Earth\'s.',easyAr:'قطر القمر أصغر من قطر الأرض.',challengeEn:'Scientists measured the diameter of the new planet.',challengeAr:'قاس العلماء قطر الكوكب الجديد.'},
+  {id:32,en:'Exploration',ar:'استكشاف',cat:'science',easyEn:'Space exploration is exciting.',easyAr:'استكشاف الفضاء مثير.',challengeEn:'Space exploration has helped us learn many new facts.',challengeAr:'ساعد استكشاف الفضاء في معرفة حقائق جديدة كثيرة.'},
+  {id:33,en:'Space mission',ar:'مهمة فضائية',cat:'science',easyEn:'The space mission was successful.',easyAr:'نجحت المهمة الفضائية.',challengeEn:'The space mission lasted for several months.',challengeAr:'استمرت المهمة الفضائية عدة أشهر.'},
+  {id:34,en:'Space Station',ar:'محطة الفضاء',cat:'science',easyEn:'Astronauts live on the Space Station.',easyAr:'يعيش رواد الفضاء في المحطة الفضائية.',challengeEn:'The Space Station orbits the Earth every ninety minutes.',challengeAr:'تدور المحطة الفضائية حول الأرض كل تسعين دقيقة.'},
+  {id:35,en:'Swarms',ar:'أسراب',cat:'misc',easyEn:'Swarms of small rocks fill that area of space.',easyAr:'أسراب من الصخور الصغيرة تملأ تلك المنطقة من الفضاء.',challengeEn:'Swarms of asteroids move together between Mars and Jupiter.',challengeAr:'تتحرك أسراب من الكويكبات معًا بين المريخ والمشتري.'},
+  {id:36,en:'Remote',ar:'بعيد',cat:'descriptive',easyEn:'That planet is very remote.',easyAr:'ذلك الكوكب بعيد جدًا.',challengeEn:'The telescope can capture images of remote galaxies.',challengeAr:'يستطيع التلسكوب التقاط صور لمجرات بعيدة.'},
+  {id:37,en:'Brightness',ar:'سطوع',cat:'misc',easyEn:'The star\'s light is very strong.',easyAr:'ضوء النجم قوي جدًا.',challengeEn:'The brightness of the star increased suddenly.',challengeAr:'زادت سطوع النجم فجأة.'},
+  {id:38,en:'Size',ar:'حجم',cat:'misc',easyEn:'The sun\'s size is huge.',easyAr:'حجم الشمس ضخم.',challengeEn:'The size of Jupiter is bigger than all other planets combined.',challengeAr:'حجم كوكب المشتري أكبر من كل الكواكب الأخرى مجتمعة.'},
+  {id:39,en:'Rotate',ar:'يدور',cat:'verb',easyEn:'The Earth rotates every day.',easyAr:'تدور الأرض كل يوم.',challengeEn:'The Earth rotates on its axis while it revolves around the sun.',challengeAr:'تدور الأرض حول محورها بينما تدور حول الشمس.'},
+  {id:40,en:'Celestial',ar:'سماوي',cat:'descriptive',easyEn:'The moon is a celestial object.',easyAr:'القمر جسم سماوي.',challengeEn:'Astronomers study many celestial objects every night.',challengeAr:'يدرس علماء الفلك أجسامًا سماوية كثيرة كل ليلة.'},
+  {id:41,en:'Energy',ar:'طاقة',cat:'science',easyEn:'The sun gives us energy.',easyAr:'تمنحنا الشمس الطاقة.',challengeEn:'The sun produces enormous amounts of energy every second.',challengeAr:'تنتج الشمس كميات هائلة من الطاقة كل ثانية.'},
+  {id:42,en:'Extraterrestrial',ar:'خارج كوكب الأرض',cat:'descriptive',easyEn:'Some people believe in extraterrestrial life.',easyAr:'يؤمن بعض الناس بوجود حياة خارج كوكب الأرض.',challengeEn:'Scientists are still searching for extraterrestrial life.',challengeAr:'لا يزال العلماء يبحثون عن حياة خارج كوكب الأرض.'},
+  {id:43,en:'Measurements',ar:'قياسات',cat:'science',easyEn:'Scientists take careful measurements of the stars.',easyAr:'يأخذ العلماء قياسات دقيقة للنجوم.',challengeEn:'Accurate measurements help scientists understand distant planets.',challengeAr:'تساعد القياسات الدقيقة العلماء على فهم الكواكب البعيدة.'},
+  {id:44,en:'Mystery',ar:'غموض',cat:'misc',easyEn:'Space is full of mystery.',easyAr:'الفضاء مليء بالغموض.',challengeEn:'Many mysteries of the universe remain unsolved.',challengeAr:'لا تزال ألغاز كثيرة في الكون بلا حل.'},
+  {id:45,en:'Signals',ar:'إشارات',cat:'science',easyEn:'The satellite sends signals to Earth.',easyAr:'يرسل القمر الصناعي إشارات إلى الأرض.',challengeEn:'Scientists received strange signals from deep space.',challengeAr:'استقبل العلماء إشارات غريبة من أعماق الفضاء.'},
+  {id:46,en:'Hover',ar:'يحلّق',cat:'verb',easyEn:'The spacecraft seemed to hover above Earth.',easyAr:'بدت المركبة الفضائية تحلّق فوق الأرض.',challengeEn:'Clouds of gas swirl slowly around the young star.',challengeAr:'تدور سحب من الغاز ببطء حول النجم الفتي.'},
+  {id:47,en:'Transmit',ar:'يرسل',cat:'verb',easyEn:'The satellite can send messages.',easyAr:'يستطيع القمر الصناعي إرسال رسائل.',challengeEn:'The station transmits data to scientists on Earth.',challengeAr:'ترسل المحطة بيانات إلى العلماء على الأرض.'},
+  {id:48,en:'Reflect',ar:'يعكس',cat:'verb',easyEn:'The moon reflects the sun\'s light.',easyAr:'يعكس القمر ضوء الشمس.',challengeEn:'The moon\'s surface reflects sunlight back to Earth at night.',challengeAr:'يعكس سطح القمر ضوء الشمس نحو الأرض ليلًا.'},
+  {id:49,en:'Distance',ar:'مسافة',cat:'misc',easyEn:'The distance to the moon is huge.',easyAr:'المسافة إلى القمر كبيرة جدًا.',challengeEn:'The distance between Earth and Mars changes throughout the year.',challengeAr:'تتغير المسافة بين الأرض والمريخ على مدار العام.'},
+  {id:50,en:'Disappear',ar:'يختفي',cat:'verb',easyEn:'The old rocket will disappear from view.',easyAr:'سيختفي الصاروخ القديم عن الأنظار.',challengeEn:'The comet seemed to disappear behind the bright sun.',challengeAr:'بدا المذنّب يختفي خلف الشمس الساطعة.'},
+  {id:51,en:'Collide',ar:'يصطدم',cat:'verb',easyEn:'Two rocks can collide in space.',easyAr:'يمكن أن تصطدم صخرتان في الفضاء.',challengeEn:'Scientists fear that the asteroid could collide with Earth.',challengeAr:'يخشى العلماء أن يصطدم الكويكب بالأرض.'},
+  {id:52,en:'Science-fiction',ar:'خيال علمي',cat:'misc',easyEn:'I like reading science-fiction books.',easyAr:'أحب قراءة كتب الخيال العلمي.',challengeEn:'The movie mixed real science with science-fiction ideas.',challengeAr:'مزج الفيلم بين العلم الحقيقي وأفكار الخيال العلمي.'},
+  {id:53,en:'Extinction',ar:'انقراض',cat:'science',easyEn:'A huge meteor caused the dinosaurs\' extinction.',easyAr:'تسبب نيزك ضخم في انقراض الديناصورات.',challengeEn:'Scientists study how asteroid impacts led to mass extinction.',challengeAr:'يدرس العلماء كيف أدت اصطدامات الكويكبات إلى انقراض جماعي.'},
+  {id:54,en:'Equator',ar:'خط الاستواء',cat:'science',easyEn:'The equator divides the Earth in half.',easyAr:'يقسم خط الاستواء الأرض إلى نصفين.',challengeEn:'Rock-ts are often launched near the equator.',challengeAr:'غالبًا ما تُطلق الصواريخ بالقرب من خط الاستواء.'},
+  {id:55,en:'Invasion',ar:'غزو',cat:'misc',easyEn:'The movie is about an alien invasion.',easyAr:'الفيلم عن غزو من الفضائيين.',challengeEn:'Old science-fiction stories often described an alien invasion of Earth.',challengeAr:'كثيرًا ما وصفت قصص الخيال العلمي القديمة غزو الفضائيين للأرض.'},
+  {id:56,en:'Spherical',ar:'كروي',cat:'descriptive',easyEn:'The Earth is spherical.',easyAr:'الأرض كروية الشكل.',challengeEn:'Most planets have a spherical shape because of gravity.',challengeAr:'معظم الكواكب لها شكل كروي بسبب الجاذبية.'},
+  {id:57,en:'Lunar',ar:'قمري',cat:'descriptive',easyEn:'We watched a lunar eclipse.',easyAr:'شاهدنا خسوفًا قمريًا.',challengeEn:'The lunar surface is covered with craters and dust.',challengeAr:'يغطي سطح القمر فوهات وغبار.'},
+  {id:58,en:'Height',ar:'ارتفاع',cat:'misc',easyEn:'The rocket reached a great height.',easyAr:'وصل الصاروخ إلى ارتفاع كبير.',challengeEn:'The satellite orbits Earth at a height of many kilometers.',challengeAr:'يدور القمر الصناعي حول الأرض على ارتفاع كيلومترات كثيرة.'},
+  {id:59,en:'Mass',ar:'كتلة',cat:'science',easyEn:'Objects have less weight on the moon.',easyAr:'تقل أوزان الأشياء على القمر.',challengeEn:'The planet\'s mass affects how strong its gravity is.',challengeAr:'تؤثر كتلة الكوكب في مدى قوة جاذبيته.'},
+  {id:60,en:'Rocky',ar:'صخري',cat:'descriptive',easyEn:'Mars is a rocky planet.',easyAr:'كوكب المريخ صخري.',challengeEn:'Rocky planets like Earth have a solid surface.',challengeAr:'الكواكب الصخرية مثل الأرض لها سطح صلب.'},
+  {id:61,en:'Dimensions',ar:'أبعاد',cat:'misc',easyEn:'The rocket has huge dimensions.',easyAr:'للصاروخ أبعاد ضخمة.',challengeEn:'Scientists calculated the exact dimensions of the new planet.',challengeAr:'حسب العلماء الأبعاد الدقيقة للكوكب الجديد.'},
+  {id:62,en:'Observe',ar:'يراقب',cat:'verb',easyEn:'I like to observe the stars.',easyAr:'أحب مراقبة النجوم.',challengeEn:'Astronomers observe the sky every night with powerful telescopes.',challengeAr:'يراقب علماء الفلك السماء كل ليلة بتلسكوبات قوية.'},
+  {id:63,en:'Settle',ar:'يستقر',cat:'verb',easyEn:'Scientists want to settle on Mars one day.',easyAr:'يريد العلماء الاستقرار على المريخ يومًا ما.',challengeEn:'Humans may settle on the moon in the future.',challengeAr:'قد يستقر البشر على القمر في المستقبل.'},
+  {id:64,en:'Glimpse',ar:'لمحة',cat:'misc',easyEn:'I caught a glimpse of a shooting star.',easyAr:'لمحت نجمًا متساقطًا للحظة.',challengeEn:'The telescope gave scientists a glimpse of a distant galaxy.',challengeAr:'أتاح التلسكوب للعلماء لمحة سريعة لمجرة بعيدة.'},
+  {id:65,en:'Dust',ar:'غبار',cat:'misc',easyEn:'Space is full of dust.',easyAr:'الفضاء مليء بالغبار.',challengeEn:'A cloud of dust surrounds the new star.',challengeAr:'تحيط سحابة من الغبار بالنجم الجديد.'},
+  {id:66,en:'Sparkle',ar:'يتلألأ',cat:'verb',easyEn:'The stars shine at night.',easyAr:'تلمع النجوم في الليل.',challengeEn:'The comet\'s tail sparkled as it flew past Earth.',challengeAr:'تلألأ ذيل المذنّب أثناء مروره بالأرض.'},
+  {id:67,en:'Aliens',ar:'فضائيون',cat:'misc',easyEn:'Do you believe in aliens?',easyAr:'هل تؤمن بوجود الفضائيين؟',challengeEn:'Many movies imagine what aliens might look like.',challengeAr:'تتخيل أفلام كثيرة كيف قد يبدو الفضائيون.'},
+  {id:68,en:'Astrology',ar:'علم التنجيم',cat:'misc',easyEn:'Astrology is different from astronomy.',easyAr:'علم التنجيم يختلف عن علم الفلك.',challengeEn:'Astrology is not based on scientific evidence.',challengeAr:'لا يستند علم التنجيم إلى أدلة علمية.'},
+  {id:69,en:'Astrophysics',ar:'الفيزياء الفلكية',cat:'science',easyEn:'She studies astrophysics at university.',easyAr:'تدرس الفيزياء الفلكية في الجامعة.',challengeEn:'Astrophysics explains how stars are born and die.',challengeAr:'تشرح الفيزياء الفلكية كيف تولد النجوم وتموت.'},
+  {id:70,en:'Objects',ar:'أجسام',cat:'misc',easyEn:'I can see many objects in the sky.',easyAr:'أستطيع رؤية أجسام كثيرة في السماء.',challengeEn:'Telescopes help us study distant objects in space.',challengeAr:'تساعدنا التلسكوبات في دراسة الأجسام البعيدة في الفضاء.'},
+  {id:71,en:'Telecommunication',ar:'اتصالات',cat:'science',easyEn:'Satellites help with telecommunication.',easyAr:'تساعد الأقمار الصناعية في الاتصالات.',challengeEn:'Modern telecommunication depends heavily on satellites in orbit.',challengeAr:'تعتمد الاتصالات الحديثة بشكل كبير على الأقمار الصناعية في المدار.'},
+  {id:72,en:'Broadcasting',ar:'بث',cat:'science',easyEn:'The satellite is used for broadcasting TV.',easyAr:'يُستخدم القمر الصناعي لبث التلفاز.',challengeEn:'Broadcasting signals travel from Earth to satellites and back.',challengeAr:'تنتقل إشارات البث من الأرض إلى الأقمار الصناعية وتعود إليها.'},
+  {id:73,en:'Debris',ar:'حطام',cat:'science',easyEn:'Space is full of small fragments.',easyAr:'الفضاء مليء بشظايا صغيرة.',challengeEn:'Space debris can be dangerous for satellites and spacecraft.',challengeAr:'يمكن أن يكون الحطام الفضائي خطيرًا على الأقمار الصناعية والمركبات.'},
+  {id:74,en:'Incandescent',ar:'متوهج',cat:'descriptive',easyEn:'The sun looks incandescent.',easyAr:'تبدو الشمس متوهجة.',challengeEn:'The star\'s incandescent surface radiates enormous heat.',challengeAr:'يشع سطح النجم المتوهج حرارة هائلة.'},
+  {id:75,en:'Myth',ar:'أسطورة',cat:'misc',easyEn:'Ancient people created myths about the stars.',easyAr:'ابتكر القدماء أساطير عن النجوم.',challengeEn:'Many constellations are named after old Greek myths.',challengeAr:'سُمّيت مجموعات نجمية كثيرة على أساطير يونانية قديمة.'},
+  {id:76,en:'NASA',ar:'ناسا',cat:'science',easyEn:'NASA sends astronauts to space.',easyAr:'ترسل ناسا رواد فضاء إلى الفضاء.',challengeEn:'NASA launched a new mission to explore Mars.',challengeAr:'أطلقت ناسا مهمة جديدة لاستكشاف المريخ.'},
+  {id:77,en:'Planet surface',ar:'سطح الكوكب',cat:'science',easyEn:'The planet surface looks rocky.',easyAr:'يبدو سطح الكوكب صخريًا.',challengeEn:'The rover explored the planet surface for several months.',challengeAr:'استكشفت العربة الجوالة سطح الكوكب لعدة أشهر.'},
+  {id:78,en:'Direction',ar:'اتجاه',cat:'misc',easyEn:'The rocket flew in the right direction.',easyAr:'طار الصاروخ في الاتجاه الصحيح.',challengeEn:'Scientists changed the spacecraft\'s direction to avoid the asteroid.',challengeAr:'غيّر العلماء اتجاه المركبة الفضائية لتجنب الكويكب.'},
+  {id:79,en:'Eclipse',ar:'كسوف',cat:'science',easyEn:'We watched a solar eclipse.',easyAr:'شاهدنا كسوفًا شمسيًا.',challengeEn:'A total eclipse made the sky dark in the middle of the day.',challengeAr:'جعل الكسوف الكلي السماء مظلمة في منتصف النهار.'},
+  {id:80,en:'Constellation',ar:'مجموعة نجمية',cat:'science',easyEn:'I found a constellation in the sky.',easyAr:'وجدت مجموعة نجمية في السماء.',challengeEn:'Sailors used constellations to find their direction at sea.',challengeAr:'استخدم البحارة المجموعات النجمية لمعرفة اتجاههم في البحر.'},
+  {id:81,en:'Gigantic',ar:'ضخم',cat:'descriptive',easyEn:'The sun is gigantic.',easyAr:'الشمس ضخمة جدًا.',challengeEn:'Jupiter is a gigantic planet made mostly of gas.',challengeAr:'كوكب المشتري ضخم ويتكون معظمه من الغاز.'},
+  {id:82,en:'Alteration',ar:'تغير',cat:'misc',easyEn:'Scientists noticed an alteration in the star\'s light.',easyAr:'لاحظ العلماء تغيرًا في ضوء النجم.',challengeEn:'Small alterations in orbit can change a planet\'s climate.',challengeAr:'يمكن للتغيرات الصغيرة في المدار أن تغيّر مناخ الكوكب.'},
+  {id:83,en:'Mercury',ar:'عطارد',cat:'science',easyEn:'Mercury is the closest planet to the sun.',easyAr:'عطارد أقرب كوكب إلى الشمس.',challengeEn:'Mercury has extreme temperatures because it is so close to the sun.',challengeAr:'يشهد عطارد درجات حرارة قاسية لأنه قريب جدًا من الشمس.'},
+  {id:84,en:'Venus',ar:'الزهرة',cat:'science',easyEn:'Venus is very hot.',easyAr:'كوكب الزهرة حار جدًا.',challengeEn:'Venus has a thick atmosphere that traps heat.',challengeAr:'لكوكب الزهرة غلاف جوي كثيف يحبس الحرارة.'},
+  {id:85,en:'Earth',ar:'الأرض',cat:'science',easyEn:'We live on Earth.',easyAr:'نعيش على كوكب الأرض.',challengeEn:'Earth is the only known planet with life.',challengeAr:'الأرض هي الكوكب الوحيد المعروف الذي توجد فيه حياة.'},
+  {id:86,en:'Mars',ar:'المريخ',cat:'science',easyEn:'Mars is called the red planet.',easyAr:'يُسمى المريخ بالكوكب الأحمر.',challengeEn:'Scientists are planning a human mission to Mars.',challengeAr:'يخطط العلماء لمهمة بشرية إلى المريخ.'},
+  {id:87,en:'Jupiter',ar:'المشتري',cat:'science',easyEn:'Jupiter is the largest planet.',easyAr:'كوكب المشتري أكبر الكواكب.',challengeEn:'Jupiter has a huge storm called the Great Red Spot.',challengeAr:'لكوكب المشتري عاصفة ضخمة تسمى البقعة الحمراء الكبرى.'},
+  {id:88,en:'Saturn',ar:'زحل',cat:'science',easyEn:'Saturn has beautiful rings.',easyAr:'لكوكب زحل حلقات جميلة.',challengeEn:'Saturn\'s rings are made of ice and rock.',challengeAr:'تتكون حلقات زحل من الجليد والصخور.'},
+  {id:89,en:'Uranus',ar:'أورانوس',cat:'science',easyEn:'Uranus is a cold planet.',easyAr:'كوكب أورانوس بارد.',challengeEn:'Uranus rotates on its side, unlike other planets.',challengeAr:'يدور أورانوس على جانبه، على عكس الكواكب الأخرى.'},
+  {id:90,en:'Neptune',ar:'نبتون',cat:'science',easyEn:'Neptune is far from the sun.',easyAr:'كوكب نبتون بعيد عن الشمس.',challengeEn:'Neptune has the strongest winds in the solar system.',challengeAr:'لدى نبتون أقوى الرياح في المجموعة الشمسية.'},
+  {id:91,en:'Pluto',ar:'بلوتو',cat:'science',easyEn:'Pluto used to be called a planet.',easyAr:'كان بلوتو يُسمى كوكبًا في السابق.',challengeEn:'Scientists reclassified Pluto as a dwarf planet in 2006.',challengeAr:'أعاد العلماء تصنيف بلوتو كوكبًا قزمًا عام 2006.'}
+];
+
+// Created by awwab sohail — UNIT 4: FEELINGS (46 terms)
+// ============================================================
+//  UNIT 4: FEELINGS (46 terms)
+// ============================================================
+const feelingsTerms = [
+  {id:0,en:'Admire',ar:'يُعجب',cat:'verb',easyEn:'I admire my teacher.',easyAr:'أُعجب بمعلمي.',challengeEn:'She admires people who work hard and never give up.',challengeAr:'تُعجب بالأشخاص الذين يعملون بجد ولا يستسلمون.'},
+  {id:1,en:'Aggression',ar:'عدوانية',cat:'emotion',easyEn:'His aggression scared us.',easyAr:'أخافنا عدوانه.',challengeEn:'The coach worked to control the player\'s aggression on the field.',challengeAr:'عمل المدرب على السيطرة على عدوانية اللاعب في الملعب.'},
+  {id:2,en:'Attitude',ar:'موقف',cat:'emotion',easyEn:'She has a positive attitude.',easyAr:'لديها موقف إيجابي.',challengeEn:'His negative attitude made the meeting difficult for everyone.',challengeAr:'جعل موقفه السلبي الاجتماع صعبًا على الجميع.'},
+  {id:3,en:'Confident',ar:'واثق',cat:'emotion',easyEn:'He is confident in class.',easyAr:'هو واثق في الصف.',challengeEn:'Years of practice made her confident before the competition.',challengeAr:'جعلتها سنوات من التمرين واثقة قبل المسابقة.'},
+  {id:4,en:'Embarrass',ar:'يُحرج',cat:'verb',easyEn:"Don't embarrass me.",easyAr:'لا تُحرجني.',challengeEn:'His mistake in front of everyone embarrassed him deeply.',challengeAr:'خطأه أمام الجميع أحرجه بشدة.'},
+  {id:5,en:'Emotions',ar:'مشاعر',cat:'emotion',easyEn:"I can't hide my emotions.",easyAr:'لا أستطيع إخفاء مشاعري.',challengeEn:'The movie brought out strong emotions in the audience.',challengeAr:'أثار الفيلم مشاعر قوية لدى الجمهور.'},
+  {id:6,en:'Fear',ar:'خوف',cat:'emotion',easyEn:'Fear stopped him from speaking.',easyAr:'منعه الخوف من الكلام.',challengeEn:'Fear of failure kept her from trying new things.',challengeAr:'منعها الخوف من الفشل من تجربة أشياء جديدة.'},
+  {id:7,en:'Friendship',ar:'صداقة',cat:'emotion',easyEn:'Our friendship is strong.',easyAr:'صداقتنا قوية.',challengeEn:'Their friendship survived years of distance and difficulty.',challengeAr:'صمدت صداقتهما رغم سنوات البعد والصعوبات.'},
+  {id:8,en:'Amity',ar:'وئام',cat:'emotion',easyEn:'The two neighbors live in amity.',easyAr:'يعيش الجاران بوئام.',challengeEn:'The peace treaty brought amity between the two nations.',challengeAr:'جلبت معاهدة السلام الوئام بين الدولتين.'},
+  {id:9,en:'Passion',ar:'شغف',cat:'emotion',easyEn:'She has a passion for music.',easyAr:'لديها شغف بالموسيقى.',challengeEn:'His passion for painting pushed him to work every single day.',challengeAr:'دفعه شغفه بالرسم للعمل كل يوم دون توقف.'},
+  {id:10,en:'Laughter',ar:'ضحك',cat:'emotion',easyEn:'I love their laughter.',easyAr:'أحب ضحكهم.',challengeEn:'The room filled with laughter after his funny joke.',challengeAr:'امتلأت الغرفة بالضحك بعد نكتته المضحكة.'},
+  {id:11,en:'Optimism',ar:'تفاؤل',cat:'emotion',easyEn:'I try to have optimism.',easyAr:'أحاول أن أتحلى بالتفاؤل.',challengeEn:'Her optimism helped the whole team stay motivated during hard times.',challengeAr:'ساعد تفاؤلها الفريق كله على البقاء متحمسًا في الأوقات الصعبة.'},
+  {id:12,en:'Pleasure',ar:'متعة',cat:'emotion',easyEn:'Reading gives me pleasure.',easyAr:'القراءة تمنحني متعة.',challengeEn:'It was a pleasure to finally meet the author in person.',challengeAr:'كان من دواعي السرور مقابلة الكاتب أخيرًا شخصيًا.'},
+  {id:13,en:'Relatives',ar:'أقارب',cat:'social',easyEn:'My relatives visited us.',easyAr:'زارنا أقاربنا.',challengeEn:'Many relatives gathered for the family celebration last weekend.',challengeAr:'اجتمع أقارب كثيرون للاحتفال العائلي نهاية الأسبوع الماضي.'},
+  {id:14,en:'Satisfaction',ar:'رضا',cat:'emotion',easyEn:'I feel satisfaction after work.',easyAr:'أشعر بالرضا بعد العمل.',challengeEn:'Finishing the project gave her a deep sense of satisfaction.',challengeAr:'منحها إنهاء المشروع شعورًا عميقًا بالرضا.'},
+  {id:15,en:'Self esteem',ar:'تقدير الذات',cat:'emotion',easyEn:'Sports build self esteem.',easyAr:'الرياضة تبني تقدير الذات.',challengeEn:'Constant criticism can seriously damage a child\'s self esteem.',challengeAr:'يمكن للنقد المستمر أن يضر بشدة بتقدير الطفل لذاته.'},
+  {id:16,en:'Affection',ar:'عاطفة',cat:'emotion',easyEn:'She shows affection to her cat.',easyAr:'تُظهر عاطفة تجاه قطتها.',challengeEn:'He expressed his affection through small, thoughtful gestures.',challengeAr:'عبّر عن عاطفته من خلال لفتات صغيرة ومدروسة.'},
+  {id:17,en:'Anger',ar:'غضب',cat:'emotion',easyEn:"He couldn't hide his anger.",easyAr:'لم يستطع إخفاء غضبه.',challengeEn:'Her anger grew as she waited for hours without an explanation.',challengeAr:'تصاعد غضبها وهي تنتظر ساعات دون تفسير.'},
+  {id:18,en:'Humour',ar:'فكاهة',cat:'emotion',easyEn:'He has a great sense of humour.',easyAr:'لديه حس فكاهة رائع.',challengeEn:'Her humour helped ease the tension during the stressful meeting.',challengeAr:'ساعدت فكاهتها في تخفيف التوتر خلال الاجتماع المرهق.'},
+  {id:19,en:'Discipline',ar:'انضباط',cat:'emotion',easyEn:'Discipline is important at school.',easyAr:'الانضباط مهم في المدرسة.',challengeEn:'Years of discipline helped the athlete reach the Olympics.',challengeAr:'ساعد الانضباط على مدى سنوات الرياضي على الوصول إلى الأولمبياد.'},
+  {id:20,en:'Enjoy',ar:'يستمتع',cat:'verb',easyEn:'I enjoy playing football.',easyAr:'أستمتع بلعب كرة القدم.',challengeEn:'She truly enjoys spending quiet weekends reading in the garden.',challengeAr:'تستمتع حقًا بقضاء عطلات هادئة بالقراءة في الحديقة.'},
+  {id:21,en:'Feel',ar:'يشعر',cat:'verb',easyEn:'I feel happy today.',easyAr:'أشعر بالسعادة اليوم.',challengeEn:'He started to feel more confident after weeks of practice.',challengeAr:'بدأ يشعر بثقة أكبر بعد أسابيع من التمرين.'},
+  {id:22,en:'Fun',ar:'متعة',cat:'emotion',easyEn:'The party was fun.',easyAr:'كانت الحفلة ممتعة.',challengeEn:'The whole trip turned out to be more fun than we expected.',challengeAr:'تبيّن أن الرحلة كلها كانت أكثر متعة مما توقعنا.'},
+  {id:23,en:'Idleness',ar:'كسل',cat:'emotion',easyEn:'Idleness makes him bored.',easyAr:'الكسل يجعله يشعر بالملل.',challengeEn:'Long idleness during the holidays left him feeling restless.',challengeAr:'تركه الكسل الطويل خلال العطلة يشعر بالضيق.'},
+  {id:24,en:'Joy',ar:'بهجة',cat:'emotion',easyEn:'Her joy was obvious.',easyAr:'كانت بهجتها واضحة.',challengeEn:'Tears of joy filled her eyes when she heard the good news.',challengeAr:'ملأت دموع الفرح عينيها عندما سمعت الخبر السار.'},
+  {id:25,en:'Delight',ar:'بهجة',cat:'emotion',easyEn:'The children shouted with delight.',easyAr:'صرخ الأطفال من البهجة.',challengeEn:'The chef watched with delight as guests enjoyed his new dish.',challengeAr:'راقب الطاهي بابتهاج وهو يرى الضيوف يستمتعون بطبقه الجديد.'},
+  {id:26,en:'Mood',ar:'مزاج',cat:'emotion',easyEn:"I'm in a good mood.",easyAr:'أنا في مزاج جيد.',challengeEn:'Rainy weather always puts him in a quiet, reflective mood.',challengeAr:'يضعه الطقس الممطر دائمًا في مزاج هادئ وتأملي.'},
+  {id:27,en:'Temper',ar:'طبع',cat:'emotion',easyEn:'Watch your temper.',easyAr:'انتبه لمزاجك.',challengeEn:'His quick temper caused several problems at work this month.',challengeAr:'تسبب طبعه الحاد في عدة مشاكل في العمل هذا الشهر.'},
+  {id:28,en:'Calm',ar:'هادئ',cat:'emotion',easyEn:'The sea is calm today.',easyAr:'البحر هادئ اليوم.',challengeEn:'She stayed calm even when everyone else started to panic.',challengeAr:'بقيت هادئة حتى عندما بدأ الجميع بالذعر.'},
+  {id:29,en:'Pacific',ar:'مسالم',cat:'emotion',easyEn:'He has a pacific nature.',easyAr:'لديه طبيعة مسالمة.',challengeEn:'The pacific tone of his speech calmed the angry crowd.',challengeAr:'هدّأت نبرة خطابه المسالمة الحشد الغاضب.'},
+  {id:30,en:'Pity',ar:'شفقة',cat:'emotion',easyEn:'I feel pity for him.',easyAr:'أشعر بالشفقة عليه.',challengeEn:'She felt a deep pity for the stray animals in the street.',challengeAr:'شعرت بشفقة عميقة تجاه الحيوانات الضالة في الشارع.'},
+  {id:31,en:'Relationship',ar:'علاقة',cat:'social',easyEn:'We have a good relationship.',easyAr:'لدينا علاقة جيدة.',challengeEn:'Their relationship grew stronger after they solved the misunderstanding.',challengeAr:'أصبحت علاقتهما أقوى بعد أن حلّا سوء الفهم.'},
+  {id:32,en:'Sad',ar:'حزين',cat:'emotion',easyEn:'I feel sad today.',easyAr:'أشعر بالحزن اليوم.',challengeEn:'She felt sad when her best friend moved to another city.',challengeAr:'شعرت بالحزن عندما انتقلت صديقتها المقربة إلى مدينة أخرى.'},
+  {id:33,en:'Depressing',ar:'محبط',cat:'emotion',easyEn:'The news was depressing.',easyAr:'كان الخبر محبطًا.',challengeEn:'The gray, empty street looked depressing on a cold winter morning.',challengeAr:'بدا الشارع الرمادي الفارغ محبطًا في صباح شتوي بارد.'},
+  {id:34,en:'Self-centred',ar:'أناني',cat:'emotion',easyEn:'He is very self-centred.',easyAr:'هو أناني جدًا.',challengeEn:'Being self-centred made it hard for him to keep close friends.',challengeAr:'جعلته أنانيته من الصعب الحفاظ على أصدقاء مقربين.'},
+  {id:35,en:'Share',ar:'يشارك',cat:'verb',easyEn:'I like to share my food.',easyAr:'أحب أن أشارك طعامي.',challengeEn:'She always shares her ideas openly during team meetings.',challengeAr:'تشارك دائمًا أفكارها بصراحة خلال اجتماعات الفريق.'},
+  {id:36,en:'Active',ar:'نشيط',cat:'emotion',easyEn:'He is an active child.',easyAr:'هو طفل نشيط.',challengeEn:'Staying active every day improved her mood and energy.',challengeAr:'حسّن البقاء نشيطًا كل يوم مزاجها وطاقتها.'},
+  {id:37,en:'Upset',ar:'منزعج',cat:'emotion',easyEn:'She looks upset.',easyAr:'تبدو منزعجة.',challengeEn:'He was upset after losing the match in the final minute.',challengeAr:'شعر بالانزعاج بعد خسارة المباراة في الدقيقة الأخيرة.'},
+  {id:38,en:'Passive',ar:'سلبي',cat:'emotion',easyEn:'He is too passive in class.',easyAr:'هو سلبي جدًا في الصف.',challengeEn:'Being passive during the discussion cost him a chance to be heard.',challengeAr:'كلّفته سلبيته أثناء النقاش فرصة أن يُسمع رأيه.'},
+  {id:39,en:'Vital',ar:'حيوي',cat:'emotion',easyEn:'Sleep is vital for health.',easyAr:'النوم حيوي للصحة.',challengeEn:'Clear communication is vital for any successful relationship.',challengeAr:'التواصل الواضح أمر حيوي لأي علاقة ناجحة.'},
+  {id:40,en:'Hatred',ar:'كراهية',cat:'emotion',easyEn:'I hate waiting in line.',easyAr:'أكره الانتظار في الطابور.',challengeEn:'Years of hatred between the two families finally came to an end.',challengeAr:'انتهت أخيرًا سنوات من الكراهية بين العائلتين.'},
+  {id:41,en:'Confidence',ar:'ثقة',cat:'emotion',easyEn:'She speaks with confidence.',easyAr:'تتحدث بثقة.',challengeEn:'His confidence grew after he won the first competition.',challengeAr:'نمت ثقته بعد فوزه في المسابقة الأولى.'},
+  {id:42,en:'Violence',ar:'عنف',cat:'emotion',easyEn:'Violence is never the answer.',easyAr:'العنف ليس الحل أبدًا.',challengeEn:'The film was criticized for showing too much violence.',challengeAr:'انتُقد الفيلم بسبب إظهاره الكثير من العنف.'},
+  {id:43,en:'Consciousness',ar:'وعي',cat:'emotion',easyEn:'He lost consciousness.',easyAr:'فقد وعيه.',challengeEn:'A strange noise brought her back to consciousness suddenly.',challengeAr:'أعادها صوت غريب إلى وعيها فجأة.'},
+  {id:44,en:'Appreciation',ar:'تقدير',cat:'emotion',easyEn:'I show appreciation for help.',easyAr:'أُظهر تقديري للمساعدة.',challengeEn:'The team showed their appreciation with a small gift for their manager.',challengeAr:'عبّر الفريق عن تقديره بهدية صغيرة لمديره.'},
+  {id:45,en:'Rage',ar:'غضب شديد',cat:'emotion',easyEn:'He shouted in rage.',easyAr:'صرخ بغضب شديد.',challengeEn:'A wave of rage swept through the crowd after the unfair decision.',challengeAr:'اجتاحت موجة من الغضب الشديد الحشد بعد القرار غير العادل.'}
+];
+
+// Created by awwab sohail — COMBINE ALL UNITS
+// ============================================================
+//  COMBINE ALL UNITS
+// ============================================================
+const UNITS = {
+  review: {
+    id:'review', icon:'🧠', title:'Final Review', titleAr:'المراجعة النهائية',
+    desc:'كل مصطلحات الوحدات الأربع مجمّعة في مكان واحد',
+    terms: [
+      ...businessTerms.map(t=>({...t, id:`business_${t.id}`})),
+      ...safetyTerms.map(t=>({...t, id:`safety_${t.id}`})),
+      ...astronomyTerms.map(t=>({...t, id:`astronomy_${t.id}`})),
+      ...feelingsTerms.map(t=>({...t, id:`feelings_${t.id}`}))
+    ]
+  },
+  business: {
+    id:'business', icon:'💼', title:'Ethics in Business', titleAr:'الأخلاق في العمل',
+    desc:'الأخلاق، القوانين، والجرائم المالية',
+    terms: businessTerms
+  },
+  safety: {
+    id:'safety', icon:'🛡️', title:'Safety First', titleAr:'السلامة أولاً',
+    desc:'الإعلانات، المستهلك، والسلامة الغذائية',
+    terms: safetyTerms
+  },
+  astronomy: {
+    id:'astronomy', icon:'🌌', title:'Astronomy', titleAr:'علم الفلك',
+    desc:'المجموعة الشمسية والفضاء',
+    terms: astronomyTerms
+  },
+  feelings: {
+    id:'feelings', icon:'❤️', title:'Feelings & Emotions', titleAr:'المشاعر والانفعالات',
+    desc:'المشاعر، الانفعالات، والسلوك',
+    terms: feelingsTerms
+  }
+};
+
+// Created by awwab sohail — SYNONYMS (for writing drill & sentence check)
+// ============================================================
+//  SYNONYMS (for writing drill & sentence check)
+// ============================================================
+const SYNONYMS = {
+  // Safety
+  advertising: ['publicity','ad','commercial','promotion'],
+  consumer: ['customer','client','buyer','shopper'],
+  safety: ['security','protection'],
+  persuasion: ['convincing','influence'],
+  product: ['item','goods','merchandise'],
+  contamination: ['pollution','tainting'],
+  competition: ['rivalry','contest'],
+  slogan: ['motto','catchphrase'],
+  brand: ['trademark','label','make'],
+  obesity: ['fatness','overweight'],
+  preservative: ['additive','conservative'],
+  environment: ['surroundings','ecology'],
+  impact: ['effect','influence','consequence'],
+  ingredient: ['component','element','constituent'],
+  farming: ['agriculture','cultivation'],
+  purchase: ['buy','acquire'],
+  promote: ['advertise','market','push'],
+  consume: ['use','ingest'],
+  harmful: ['damaging','hurtful','dangerous'],
+  healthy: ['wholesome','nutritious'],
+  endorsement: ['approval','support','backing'],
+  manufacturing: ['production','making'],
+  export: ['sell abroad','ship overseas'],
+  import: ['bring in','buy from abroad'],
+  protect: ['shield','guard','safeguard'],
+  sufficient: ['enough','adequate','ample'],
+  nutrition: ['nourishment','diet','food'],
+  awareness: ['consciousness','knowledge','understanding'],
+  boycott: ['avoid','reject','protest'],
+  // Business
+  lend: ['loan','advance'],
+  prison: ['jail','penitentiary'],
+  wealth: ['riches','affluence','fortune'],
+  ban: ['prohibit','forbid','outlaw'],
+  reputation: ['standing','image','name'],
+  narcotics: ['drugs','controlled substances'],
+  abuse: ['misuse','exploit'],
+  loyalty: ['faithfulness','allegiance','devotion'],
+  unemployment: ['joblessness','worklessness'],
+  justice: ['fairness','equity','impartiality'],
+  institution: ['organization','establishment'],
+  investment: ['capital','funding'],
+  audit: ['inspection','review','check'],
+  greedy: ['avaricious','covetous','rapacious'],
+  imitation: ['copy','replica','fake'],
+  harm: ['damage','injury','hurt'],
+  ethical: ['moral','righteous','principled'],
+  unethical: ['immoral','unprincipled','dishonest'],
+  punishment: ['penalty','sanction','retribution'],
+  commerce: ['trade','business','traffic'],
+  advice: ['guidance','recommendation','counsel'],
+  company: ['firm','corporation','enterprise'],
+  laws: ['rules','regulations','statutes'],
+  legal: ['lawful','legitimate','permissible'],
+  illegal: ['unlawful','illicit','criminal'],
+  increase: ['rise','growth','surge','escalate'],
+  decrease: ['drop','reduction','decline','fall'],
+  genuine: ['authentic','real','original'],
+  factory: ['plant','mill','workshop'],
+  exploitation: ['manipulation','mistreatment','taking advantage'],
+  industry: ['sector','field','business'],
+  drugs: ['narcotics','substances','medicines'],
+  properties: ['assets','estates','holdings'],
+  prosper: ['thrive','flourish','succeed'],
+  taxes: ['levies','duties','tributes'],
+  effects: ['consequences','results','outcomes'],
+  huge: ['enormous','massive','gigantic','vast'],
+  strict: ['rigorous','stringent','harsh'],
+  bribery: ['corruption','graft','payoff'],
+  corruption: ['dishonesty','fraud','graft'],
+  embezzlement: ['misappropriation','theft','stealing'],
+  extortion: ['blackmail','coercion','pressure'],
+  counterfeiting: ['forgery','faking','duplicating'],
+  smuggling: ['trafficking','contraband','bootlegging'],
+  cheating: ['dishonesty','deceit','fraud'],
+  theft: ['stealing','robbery','larceny'],
+  profit: ['earnings','gain','return'],
+  payment: ['pay','remittance','settlement'],
+  deception: ['fraud','trickery','deceit'],
+  commitment: ['dedication','devotion','pledge'],
+  economy: ['market','financial system','trade'],
+  source: ['origin','origin','root','beginning'],
+  varying: ['different','diverse','fluctuating'],
+  underground: ['clandestine','covert','secret','hidden'],
+  key: ['essential','crucial','critical','vital'],
+  amount: ['quantity','sum','total','volume'],
+  destination: ['goal','target','end point'],
+  serious: ['grave','severe','critical','grave'],
+  legitimate: ['valid','lawful','proper','authentic'],
+  operation: ['procedure','process','activity'],
+  disguise: ['camouflage','cover','facade'],
+  law: ['regulation','statute','rule','legislation'],
+  value: ['worth','merit','benefit','importance'],
+  common: ['widespread','prevalent','usual','frequent'],
+  ownership: ['possession','title','control'],
+  result: ['outcome','consequence','effect'],
+  wider: ['broader','larger','more extensive'],
+  related: ['connected','associated','linked','tied'],
+  property: ['asset','possession','goods','belonging'],
+  government: ['administration','regime','authority'],
+  court: ['tribunal','judiciary','courtroom'],
+  private: ['personal','individual','confidential'],
+  perception: ['view','perspective','insight'],
+  transparency: ['openness','clarity','accountability'],
+  index: ['indicator','measure','gauge'],
+  review: ['examination','assessment','analysis','evaluation'],
+  lower: ['reduced','decreased','less','diminished'],
+  complex: ['complicated','intricate','elaborate'],
+  drawbacks: ['disadvantages','downsides','weaknesses'],
+  generally: ['usually','typically','commonly','mainly'],
+  prominent: ['notable','distinguished','outstanding','leading'],
+  held: ['conducted','organized','convened'],
+  refugees: ['displaced people','asylum seekers','exiles'],
+  scandals: ['controversies','disgraces','outrages'],
+  institutions: ['organizations','establishments','bodies'],
+  suffer: ['undergo','endure','experience'],
+  decision: ['choice','resolution','determination'],
+  led: ['headed','directed','guided'],
+  migrant: ['immigrant','emigrant','worker','traveler'],
+  massive: ['enormous','huge','vast','immense'],
+  previous: ['prior','earlier','preceding','former'],
+  fraud: ['scam','swindle','deceit','cheat'],
+  forge: ['falsify','counterfeit','fabricate'],
+  price: ['cost','charge','fee','rate'],
+  expiry: ['expiration','end','termination'],
+  codes: ['rules','standards','regulations'],
+  pirate: ['copier','counterfeiter','bootlegger'],
+  // Astronomy
+  astronomy: ['astrophysics','cosmology','space science'],
+  'solar system': ['planetary system','sun system'],
+  space: ['outer space','cosmos','sky'],
+  galaxy: ['milky way','nebula','star system'],
+  'heavenly body': ['celestial body','astronomical object'],
+  planets: ['worlds','orbs','spheres'],
+  satellite: ['moon','orbiter','probe'],
+  atmosphere: ['air','sky','aero sphere'],
+  orbit: ['path','trajectory','revolution'],
+  stars: ['sun','celestial bodies','luminaries'],
+  asteroid: ['minor planet','planetoid','space rock'],
+  meteor: ['shooting star','falling star','fireball'],
+  universe: ['cosmos','creation','existence'],
+  astronaut: ['space traveler','cosmonaut','spaceman'],
+  astronomer: ['astrophysicist','cosmologist','stargazer'],
+  observatory: ['observing station','planetarium','telescope facility'],
+  telescope: ['optical instrument','astronomical scope','lens'],
+  nebula: ['cloud','gas cloud','stellar nursery'],
+  comet: ['icy body','cosmic snowball'],
+  gravity: ['gravitation','pull','attraction'],
+  spacecraft: ['space vehicle','space ship','capsule'],
+  rocket: ['missile','spacecraft','launcher','booster'],
+  collision: ['crash','impact','smash'],
+  sun: ['star','daystar','sol'],
+  'milky way': ['galaxy','star system'],
+  'weather forecast': ['weather report','meteorological forecast'],
+  shape: ['form','configuration','structure'],
+  gaseous: ['vaporous','aeriform','gaslike'],
+  'light year': ['light-year','distance unit'],
+  diameter: ['width','breadth','thickness'],
+  exploration: ['survey','investigation','discovery'],
+  'space mission': ['space voyage','space flight','expedition'],
+  'space station': ['space base','orbital station','outpost'],
+  swarms: ['hordes','multitudes','hosts'],
+  remote: ['distant','far','isolated'],
+  brightness: ['luminosity','shine','brilliance'],
+  size: ['dimension','extent','scale'],
+  rotate: ['revolve','spin','turn'],
+  celestial: ['heavenly','astronomical','cosmic'],
+  energy: ['power','force','strength','might'],
+  extraterrestrial: ['alien','outerspace','otherworldly'],
+  measurements: ['data','observations','figures','statistics'],
+  mystery: ['enigma','puzzle','conundrum'],
+  signals: ['waves','transmissions','broadcasts'],
+  hover: ['float','drift','loom'],
+  transmit: ['send','relay','broadcast','transfer'],
+  reflect: ['mirror','send back','echo'],
+  distance: ['length','range','span','separation'],
+  disappear: ['vanish','fade','evaporate'],
+  collide: ['crash','impact','smash into'],
+  'science-fiction': ['sci-fi','speculative fiction'],
+  extinction: ['eradication','annihilation','extermination'],
+  equator: ['equatorial line','latitude'],
+  invasion: ['attack','assault','incursion'],
+  spherical: ['round','globular','orb-shaped'],
+  lunar: ['moon-related','selene'],
+  height: ['altitude','elevation','level'],
+  mass: ['weight','heft','bulk'],
+  rocky: ['stony','solid','granular'],
+  dimensions: ['size','measurements','extent'],
+  observe: ['watch','view','survey','monitor'],
+  settle: ['colonize','inhabit','occupy','establish'],
+  glimpse: ['glance','peek','sight','view'],
+  dust: ['powder','particles','debris'],
+  sparkle: ['twinkle','glitter','shine','flash'],
+  aliens: ['extraterrestrials','ETs','space beings'],
+  astrology: ['horoscope','star signs','zodiac'],
+  astrophysics: ['astronomy','cosmology','space physics'],
+  objects: ['bodies','items','entities'],
+  telecommunication: ['communication','transmission','networking'],
+  broadcasting: ['transmission','airing','telecasting'],
+  debris: ['fragments','remains','wreckage'],
+  incandescent: ['glowing','radiant','luminous'],
+  myth: ['legend','folktale','fable'],
+  NASA: ['space agency','National Aeronautics and Space Administration'],
+  direction: ['way','course','route'],
+  eclipse: ['obscuration','covering','darkening'],
+  constellation: ['star group','galactic cluster','pattern'],
+  gigantic: ['huge','enormous','immense','colossal'],
+  alteration: ['change','modification','adjustment'],
+  // Feelings
+  admire: ['appreciate','esteem','respect'],
+  aggression: ['hostility','offensiveness','attack'],
+  attitude: ['outlook','perspective','stance'],
+  confident: ['sure','assured','self-assured','poised'],
+  embarrass: ['humiliate','ashame','disgrace'],
+  emotions: ['feelings','sentiments','affections'],
+  fear: ['fright','dread','terror','anxiety'],
+  friendship: ['companionship','fellowship','affection'],
+  amity: ['harmony','peace','accord','friendliness'],
+  passion: ['enthusiasm','ardor','zeal','fervor'],
+  laughter: ['laughing','amusement','glee'],
+  optimism: ['hopefulness','positive thinking','cheerfulness'],
+  pleasure: ['delight','enjoyment','satisfaction','joy'],
+  relatives: ['family','kin','relations','kindred'],
+  satisfaction: ['contentment','fulfillment','gratification'],
+  'self esteem': ['self worth','pride','self regard'],
+  affection: ['fondness','tenderness','love','warmth'],
+  anger: ['fury','rage','ire','resentment'],
+  humour: ['wit','comedy','jocularity','playfulness'],
+  discipline: ['self control','order','training','regulation'],
+  enjoy: ['like','love','appreciate','relish'],
+  feel: ['sense','experience','perceive','notice'],
+  fun: ['enjoyment','entertainment','amusement','recreation'],
+  idleness: ['laziness','inactivity','lethargy','sloth'],
+  joy: ['happiness','delight','glee','exhilaration'],
+  delight: ['pleasure','enjoyment','gratification','rapture'],
+  mood: ['temper','humor','disposition','frame of mind'],
+  temper: ['mood','character','disposition','nature'],
+  calm: ['composed','serene','peaceful','tranquil'],
+  pacific: ['peaceful','nonviolent','harmonious','conciliatory'],
+  pity: ['sympathy','compassion','commiseration','mercy'],
+  relationship: ['connection','association','bond','affiliation'],
+  sad: ['unhappy','sorrowful','melancholy','grief-stricken'],
+  depressing: ['dismal','gloomy','bleak','dreary'],
+  'self-centred': ['egocentric','selfish','self-absorbed','narcissistic'],
+  share: ['divide','distribute','partake','contribute'],
+  active: ['energetic','dynamic','vigorous','lively'],
+  upset: ['distressed','perturbed','agitated','troubled'],
+  passive: ['submissive','inactive','unresponsive','compliant'],
+  vital: ['essential','crucial','critical','indispensable'],
+  hatred: ['loathing','abhorrence','revulsion','detestation'],
+  confidence: ['self assurance','poise','faith','trust'],
+  violence: ['brutality','force','aggression','ferocity'],
+  consciousness: ['awareness','sensibility','wakefulness'],
+  appreciation: ['gratitude','recognition','acknowledgment'],
+  rage: ['fury','anger','wrath','frenzy']
+};
+
+function acceptedAnswers(term){
+  const set = new Set([norm(term.en)]);
+  const syns = SYNONYMS[term.en.toLowerCase()] || [];
+  syns.forEach(s=>set.add(norm(s)));
+  return set;
+}
+
+function isCorrectAnswer(term, input){ return acceptedAnswers(term).has(norm(input)); }
+
+// Created by awwab sohail — APP STATE
+// ============================================================
+//  APP STATE
+// ============================================================
+let currentUnit = null;
+let mode = 'flash';
+let flashIdx=0, flashOrder=[], flashKnown=[], flashReview=[], flashFlipped=false;
+let drillIdx=0, drillOrder=[], drillScore=0, drillStreak=0, drillLocked=false;
+let quizIdx=0, quizOrder=[], quizScore=0, quizStreak=0, quizLocked=false;
+let chalIdx=0, chalOrder=[], chalScore=0, chalLocked=false, chalTimer=null, chalTimeLeft=0;
+let sentState = { idx:0, order:[], score:0, streak:0, locked:false };
+let sentHardState = { idx:0, order:[], score:0, streak:0, locked:false };
+const CHAL_SECONDS = 4;
+
+function getTerms(){ return currentUnit ? currentUnit.terms : []; }
+function getTerm(id){ return getTerms().find(t=>t.id===id); }
+
+function render(){
+  const stage = document.getElementById('stage');
+  if(chalTimer){ clearInterval(chalTimer); chalTimer=null; }
+  updateUnitBar();
+  const tabContainer = document.getElementById('tabContainer');
+  if(tabContainer) tabContainer.style.display = currentUnit ? 'flex' : 'none';
+  if(!currentUnit){ renderLanding(stage); return; }
+  if(mode==='flash') renderFlash(stage);
+  else if(mode==='list') renderList(stage);
+  else if(mode==='drill') renderDrill(stage);
+  else if(mode==='quiz') renderQuiz(stage);
+  else if(mode==='challenge') renderChallenge(stage);
+  else if(mode==='sentences') renderSentences(stage);
+  else if(mode==='sentences-hard') renderSentences(stage);
+  else renderLanding(stage);
+}
+
+// Created by awwab sohail — UNIT SWITCH BAR
+// ============================================================
+//  UNIT SWITCH BAR
+// ============================================================
+function updateUnitBar(){
+  const bar = document.getElementById('unitBar');
+  if(!currentUnit){ bar.style.display='none'; bar.innerHTML=''; return; }
+  bar.style.display='flex';
+  const n = getTerms().length || 1;
+  const pct = (v)=> Math.min(100, Math.round((v/n)*100));
+  bar.innerHTML = `
+    <div class="unitBar-top">
+      <span class="cur">${currentUnit.icon} You are now in: <b>${currentUnit.title}</b></span>
+      <button id="switchUnitBtn">🔁 تغيير الوحدة</button>
+    </div>
+    <div class="unit-progress">
+      <span>📚 <b>${pct(flashIdx)}%</b></span>
+      <span>✍️ <b>${pct(drillIdx)}%</b></span>
+      <span>🎯 <b>${pct(quizIdx)}%</b></span>
+      <span>⚡ <b>${pct(chalIdx)}%</b></span>
+      <span>📝 <b>${pct(sentState.idx)}%</b></span>
+      <span>🔥 <b>${pct(sentHardState.idx)}%</b></span>
+    </div>
+  `;
+  document.getElementById('switchUnitBtn').onclick = backToUnits;
+}
+
+// Created by awwab sohail — LANDING
+// ============================================================
+//  LANDING
+// ============================================================
+function renderLanding(stage){
+  stage.innerHTML = `
+    <div style="text-align:center;margin-bottom:12px;font-family:'Tajawal',sans-serif;font-size:15px;color:var(--ink-dim);">اختر وحدة التدريب</div>
+    <div class="landing-grid">
+      ${Object.entries(UNITS).map(([key,u])=>{
+        const mastery = getUnitMasteryPct(u.id, u.terms.length);
+        return `
+        <div class="unit-card" data-key="${key}">
+          <div class="icon">${u.icon}</div>
+          <div class="name">${u.title}</div>
+          <div class="sub">${u.titleAr}</div>
+          <div class="desc">${u.desc}</div>
+          <div class="count">${u.terms.length} مصطلح${mastery>0 ? ` · 📈 ${mastery}% متقن` : ''}</div>
+        </div>
+      `;}).join('')}
+    </div>
+  `;
+  document.querySelectorAll('.unit-card').forEach(card=>{
+    card.addEventListener('click',()=>{
+      const key = card.dataset.key;
+      currentUnit = UNITS[key];
+      initUnit();
+      render();
+    });
+  });
+}
+
+function initUnit(){
+  const n = getTerms().length;
+  const terms = getTerms();
+  const uid = currentUnit ? currentUnit.id : null;
+  flashOrder = smartOrder(uid, n, terms);
+  flashIdx = 0; flashKnown=[]; flashReview=[];
+  drillOrder = smartOrder(uid, n, terms);
+  drillIdx=0; drillScore=0; drillStreak=0;
+  quizOrder = smartOrder(uid, n, terms);
+  quizIdx=0; quizScore=0; quizStreak=0;
+  chalOrder = smartOrder(uid, n, terms);
+  chalIdx=0; chalScore=0;
+  sentState = { idx:0, order:smartOrder(uid, n, terms), score:0, streak:0, locked:false };
+  sentHardState = { idx:0, order:smartOrder(uid, n, terms), score:0, streak:0, locked:false };
+}
+
+function backToUnits(){
+  if(chalTimer){ clearInterval(chalTimer); chalTimer=null; }
+  currentUnit = null;
+  render();
+}
+
+// Created by awwab sohail — FULL LIST (glossary / review)
+// ============================================================
+//  FULL LIST (glossary / review)
+// ============================================================
+function renderList(stage){
+  const terms = getTerms();
+  if(terms.length===0){ stage.innerHTML='<div style="text-align:center;color:var(--ink-dim);">لا توجد مصطلحات</div>'; return; }
+  stage.innerHTML = `
+    <div class="fc-progress">📋 كل مصطلحات ${currentUnit.icon} ${currentUnit.titleAr} — ${terms.length} مصطلح</div>
+    <input type="text" class="drill-input" id="listSearch" autocomplete="off" placeholder="🔍 ابحث بالإنجليزي أو العربي..." style="margin-bottom:14px;">
+    <div class="term-list" id="termList"></div>
+  `;
+  const listEl = document.getElementById('termList');
+  function draw(filter){
+    const f = (filter||'').trim().toLowerCase();
+    const rows = terms.filter(t => !f || t.en.toLowerCase().includes(f) || t.ar.includes(f));
+    if(rows.length===0){
+      listEl.innerHTML = `<div style="text-align:center;color:var(--ink-faint);font-family:'Tajawal',sans-serif;font-size:13px;padding:20px 0;">ما فيه نتائج مطابقة</div>`;
+      return;
+    }
+    listEl.innerHTML = rows.map((t,i)=>`
+      <div class="term-row">
+        <span class="term-row-num">${i+1}</span>
+        <span class="term-row-en">${t.en}</span>
+        <span class="term-row-ar">${t.ar}</span>
+        ${speakBtn(t.en)}
+      </div>
+    `).join('');
+  }
+  draw('');
+  document.getElementById('listSearch').addEventListener('input', (e)=> draw(e.target.value));
+}
+
+// Created by awwab sohail — FLASHCARDS
+// ============================================================
+//  FLASHCARDS
+// ============================================================
+function renderFlash(stage){
+  const terms = getTerms();
+  if(terms.length===0){ stage.innerHTML='<div style="text-align:center;color:var(--ink-dim);">لا توجد مصطلحات</div>'; return; }
+  if(flashIdx >= terms.length){
+    const total = flashKnown.length + flashReview.length;
+    const pctNow = total>0 ? Math.round((flashKnown.length/total)*100) : 0;
+    const prevBest = recordBest(currentUnit?.id, 'flash', pctNow);
+    const masteryPct = getUnitMasteryPct(currentUnit?.id, terms.length);
+    stage.innerHTML = `
+      <div class="results">
+        <div class="label" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);">📊 جلسة البطاقات</div>
+        <div class="big">✅ ${flashKnown.length} / ${total}</div>
+        <div class="sub">معروفة: ${flashKnown.length} · للمراجعة: ${flashReview.length}${prevBest!==null ? ` · أفضل نتيجة سابقة: ${prevBest}%` : ''}</div>
+        <div class="sub">📈 إتقانك لهذه الوحدة: ${masteryPct}%</div>
+        ${flashReview.length>0 ? `<button class="btn primary" id="reviewBtn">🔁 راجع الصعبة فقط</button>` : ''}
+        <button class="btn" id="restartFlash" style="margin-top:10px;">🔄 إعادة الكل</button>
+        <button class="btn" id="backBtn2" style="margin-top:10px;">🏠 رجوع للوحدات</button>
+      </div>
+    `;
+    document.getElementById('reviewBtn')?.addEventListener('click',()=>{
+      flashOrder = [...flashReview];
+      flashIdx = 0;
+      flashReview = [];
+      render();
+    });
+    document.getElementById('restartFlash')?.addEventListener('click',()=>{
+      const n=terms.length; flashOrder=smartOrder(currentUnit?.id, n, terms); flashIdx=0; flashKnown=[]; flashReview=[]; render();
+    });
+    document.getElementById('backBtn2')?.addEventListener('click',backToUnits);
+    return;
+  }
+  const term = terms[flashOrder[flashIdx]];
+  stage.innerHTML = `
+    <div class="fc-progress">📇 ${flashIdx+1} / ${terms.length} · معروفة: ${flashKnown.length} · للمراجعة: ${flashReview.length}</div>
+    <div class="fc-audio">${speakBtn(term.en,'lg')} <span>استمع لنطق الكلمة</span></div>
+    <div class="flip-card ${flashFlipped?'flipped':''}" id="flipCard">
+      <div class="flip-inner">
+        <div class="face front">
+          <div class="label">🇬🇧 ENGLISH</div>
+          <div class="term-en">${term.en}</div>
+          <div class="hint">👆 اضغط للقلب</div>
+        </div>
+        <div class="face back">
+          <div class="label">🇸🇦 ARABIC</div>
+          <div class="term-ar">${term.ar}</div>
+          <div class="hint" style="font-size:11px;color:var(--ink-faint);">اختر: ✅ أعرفها  |  🔁 أحتاج مراجعة</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="btn good" id="fcKnown">✅ أعرفها</button>
+      <button class="btn bad" id="fcReview">🔁 مراجعة</button>
+    </div>
+  `;
+  const card = document.getElementById('flipCard');
+  card.addEventListener('click', (e)=>{
+    if(e.target.closest('.fc-controls') || e.target.closest('.speak-btn')) return;
+    flashFlipped = !flashFlipped;
+    card.classList.toggle('flipped');
+  });
+  document.getElementById('fcKnown').onclick = ()=>{
+    recordWordResult(currentUnit?.id, term.id, true);
+    flashKnown.push(flashOrder[flashIdx]);
+    flashIdx++;
+    flashFlipped = false;
+    showFloatingFeedback('✅ أعرفها!', 'good');
+    render();
+  };
+  document.getElementById('fcReview').onclick = ()=>{
+    recordWordResult(currentUnit?.id, term.id, false);
+    flashReview.push(flashOrder[flashIdx]);
+    flashIdx++;
+    flashFlipped = false;
+    showFloatingFeedback('🔁 للمراجعة', 'bad');
+    render();
+  };
+  document.addEventListener('keydown', function handler(e){
+    if(!currentUnit || mode!=='flash') return;
+    if(e.key === ' '){ e.preventDefault(); flashFlipped=!flashFlipped; document.getElementById('flipCard')?.classList.toggle('flipped'); }
+    if(e.key === 'ArrowRight'){ document.getElementById('fcKnown')?.click(); document.removeEventListener('keydown', handler); }
+    if(e.key === 'ArrowLeft'){ document.getElementById('fcReview')?.click(); document.removeEventListener('keydown', handler); }
+    setTimeout(()=>document.addEventListener('keydown', handler), 100);
+  });
+}
+
+// Created by awwab sohail — WRITING DRILL
+// ============================================================
+//  WRITING DRILL
+// ============================================================
+function renderDrill(stage){
+  const terms = getTerms();
+  if(terms.length===0){ stage.innerHTML='<div style="text-align:center;color:var(--ink-dim);">لا توجد مصطلحات</div>'; return; }
+  if(drillIdx >= terms.length){
+    const pct = Math.round((drillScore/terms.length)*100);
+    const prevBest = recordBest(currentUnit?.id, 'drill', pct);
+    stage.innerHTML = `
+      <div class="results">
+        <div class="label" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);">✍️ نتيجة الكتابة</div>
+        <div class="big">${drillScore} / ${terms.length}</div>
+        <div class="sub">${pct}% — ${pct>=80?'ممتاز! 🌟':pct>=60?'جيد 👍':'راجع البطاقات 🔄'}${prevBest!==null ? ` · أفضل نتيجة سابقة: ${prevBest}%` : ''}</div>
+        <button class="btn primary" id="restartDrill">🔄 إعادة</button>
+        <button class="btn" id="backBtn3" style="margin-top:10px;">🏠 رجوع</button>
+      </div>
+    `;
+    document.getElementById('restartDrill').onclick = ()=>{ drillOrder=smartOrder(currentUnit?.id, terms.length, terms); drillIdx=0; drillScore=0; drillStreak=0; render(); };
+    document.getElementById('backBtn3').onclick = backToUnits;
+    return;
+  }
+  const term = terms[drillOrder[drillIdx]];
+  drillLocked = false;
+  stage.innerHTML = `
+    <div class="drill-prompt">
+      <div class="label">✍️ اكتب المصطلح بالإنجليزي</div>
+      <div class="word">${term.ar}</div>
+    </div>
+    <input type="text" class="drill-input" id="drillInput" autocomplete="off" spellcheck="false" placeholder="type here...">
+    <div class="drill-feedback" id="drillFeedback"></div>
+    <div class="drill-actions">
+      <button class="btn primary" id="drillCheck">تحقق ✅</button>
+    </div>
+    <div class="meta-bar">
+      <span>SCORE: <b id="dScore">${drillScore}</b></span>
+      <span>STREAK: <b id="dStreak">${drillStreak}</b></span>
+      <span>${drillIdx+1} / ${terms.length}</span>
+    </div>
+  `;
+  const input = document.getElementById('drillInput');
+  input.focus();
+  const feedback = document.getElementById('drillFeedback');
+  const checkBtn = document.getElementById('drillCheck');
+
+  function check(){
+    if(drillLocked) return;
+    const val = input.value.trim();
+    if(!val){ feedback.innerHTML='✏️ اكتب الإجابة أولاً'; return; }
+    if(isCorrectAnswer(term, val)){
+      recordWordResult(currentUnit?.id, term.id, true);
+      drillLocked = true;
+      input.classList.add('correct','pop-fx');
+      drillScore++; drillStreak++;
+      feedback.innerHTML = `✅ ${CHEERS[Math.floor(Math.random()*CHEERS.length)]} ${speakBtn(term.en)}`;
+      document.getElementById('dScore').textContent = drillScore;
+      document.getElementById('dStreak').textContent = drillStreak;
+      checkBtn.textContent = 'التالي ▶';
+      checkBtn.onclick = ()=>{ drillIdx++; render(); };
+    } else {
+      recordWordResult(currentUnit?.id, term.id, false);
+      input.classList.add('wrong','shake-fx');
+      drillStreak = 0;
+      document.getElementById('dStreak').textContent = drillStreak;
+      const syns = [...acceptedAnswers(term)].slice(0,3).join(' أو ');
+      feedback.innerHTML = `❌ الجواب الصحيح: <span class="answer">${term.en}</span> ${speakBtn(term.en)} ${syns ? '· ('+syns+')' : ''}`;
+      setTimeout(()=>{ input.classList.remove('wrong','shake-fx'); input.value=''; input.focus(); }, 900);
+    }
+  }
+  checkBtn.onclick = check;
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') check(); });
+}
+
+// Created by awwab sohail — QUIZ
+// ============================================================
+//  QUIZ
+// ============================================================
+function pickDistractors(term, n=3){
+  const terms = getTerms();
+  const sameCat = terms.filter(t=>t.id!==term.id && t.cat===term.cat);
+  const pool = shuffle(sameCat);
+  let picks = pool.slice(0,n);
+  if(picks.length < n){
+    const rest = shuffle(terms.filter(t=>t.id!==term.id && !picks.includes(t)));
+    picks = picks.concat(rest.slice(0, n-picks.length));
+  }
+  return picks;
+}
+
+function renderQuiz(stage){
+  const terms = getTerms();
+  if(terms.length===0){ stage.innerHTML='<div style="text-align:center;color:var(--ink-dim);">لا توجد مصطلحات</div>'; return; }
+  if(quizIdx >= terms.length){
+    const pct = Math.round((quizScore/terms.length)*100);
+    const prevBest = recordBest(currentUnit?.id, 'quiz', pct);
+    stage.innerHTML = `
+      <div class="results">
+        <div class="label" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);">🎯 نتيجة الكويز</div>
+        <div class="big">${quizScore} / ${terms.length}</div>
+        <div class="sub">${pct}% — ${pct>=85?'ممتاز! 🏆':pct>=60?'جيد 👍':'راجع البطاقات 🔄'}${prevBest!==null ? ` · أفضل نتيجة سابقة: ${prevBest}%` : ''}</div>
+        <button class="btn primary" id="restartQuiz">🔄 إعادة</button>
+        <button class="btn" id="backBtn4" style="margin-top:10px;">🏠 رجوع</button>
+      </div>
+    `;
+    document.getElementById('restartQuiz').onclick = ()=>{ quizOrder=smartOrder(currentUnit?.id, terms.length, terms); quizIdx=0; quizScore=0; quizStreak=0; render(); };
+    document.getElementById('backBtn4').onclick = backToUnits;
+    return;
+  }
+  const term = terms[quizOrder[quizIdx]];
+  quizLocked = false;
+  const distractors = pickDistractors(term,3);
+  const options = shuffle([term, ...distractors]);
+  stage.innerHTML = `
+    <div class="quiz-prompt">
+      <div class="label">🎯 اختر الترجمة الصحيحة</div>
+      <div class="word">${term.ar}</div>
+    </div>
+    <div class="quiz-options" id="quizOpts">
+      ${options.map(o=>`<div class="quiz-opt" data-id="${o.id}"><span>${o.en}</span>${speakBtn(o.en)}</div>`).join('')}
+    </div>
+    <div class="quiz-actions" id="quizActions"></div>
+    <div class="meta-bar">
+      <span>SCORE: <b id="qScore">${quizScore}</b></span>
+      <span>STREAK: <b id="qStreak">${quizStreak}</b></span>
+      <span>${quizIdx+1} / ${terms.length}</span>
+    </div>
+  `;
+  document.querySelectorAll('.quiz-opt').forEach(opt=>{
+    opt.addEventListener('click', (e)=>{
+      if(e.target.closest('.speak-btn')) return;
+      if(quizLocked) return;
+      quizLocked = true;
+      const chosenId = opt.dataset.id;
+      document.querySelectorAll('.quiz-opt').forEach(o=>{
+        o.classList.add('locked');
+        if(String(o.dataset.id)===String(term.id)) o.classList.add('correct');
+      });
+      if(String(chosenId) === String(term.id)){
+        recordWordResult(currentUnit?.id, term.id, true);
+        quizScore++; quizStreak++;
+        showFloatingFeedback('✅ '+CHEERS[Math.floor(Math.random()*CHEERS.length)], 'good');
+      } else {
+        recordWordResult(currentUnit?.id, term.id, false);
+        opt.classList.add('wrong');
+        quizStreak = 0;
+        showFloatingFeedback('❌ الجواب: '+term.en, 'bad');
+      }
+      document.getElementById('qScore').textContent = quizScore;
+      document.getElementById('qStreak').textContent = quizStreak;
+      const actions = document.getElementById('quizActions');
+      if(quizIdx+1 >= terms.length){
+        actions.innerHTML = `<button class="btn primary" id="quizFinish">عرض النتيجة 📊</button>`;
+        document.getElementById('quizFinish').onclick = ()=>{ quizIdx++; render(); };
+      } else {
+        actions.innerHTML = `<button class="btn primary" id="quizNext">التالي ▶</button>`;
+        document.getElementById('quizNext').onclick = ()=>{ quizIdx++; render(); };
+      }
+    });
+  });
+}
+
+// Created by awwab sohail — CHALLENGE
+// ============================================================
+//  CHALLENGE
+// ============================================================
+function renderChallenge(stage){
+  const terms = getTerms();
+  if(terms.length===0){ stage.innerHTML='<div style="text-align:center;color:var(--ink-dim);">لا توجد مصطلحات</div>'; return; }
+  if(chalIdx >= terms.length){
+    const pct = Math.round((chalScore/terms.length)*100);
+    const prevBest = recordBest(currentUnit?.id, 'challenge', pct);
+    stage.innerHTML = `
+      <div class="results">
+        <div class="label" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);">⚡ نتيجة التحدي</div>
+        <div class="big pop-fx">${chalScore} / ${terms.length}</div>
+        <div class="sub">${pct}%${prevBest!==null ? ` · أفضل نتيجة سابقة: ${prevBest}%` : ''}</div>
+        <div class="badge">${pct>=80?'🏆 خبير!':pct>=50?'🥈 جيد':'🔄 حاول مرة أخرى'}</div>
+        <button class="btn primary" id="restartChal">🔄 إعادة</button>
+        <button class="btn" id="backBtn5" style="margin-top:10px;">🏠 رجوع</button>
+      </div>
+    `;
+    document.getElementById('restartChal').onclick = ()=>{ chalOrder=smartOrder(currentUnit?.id, terms.length, terms); chalIdx=0; chalScore=0; render(); };
+    document.getElementById('backBtn5').onclick = backToUnits;
+    return;
+  }
+  const term = terms[chalOrder[chalIdx]];
+  chalLocked = false;
+  chalTimeLeft = CHAL_SECONDS * 1000;
+  const distractors = pickDistractors(term,3);
+  const options = shuffle([term, ...distractors]);
+  stage.innerHTML = `
+    <div class="chal-topbar">
+      <span>⚡ CHALLENGE</span>
+      <span>SCORE: <b style="color:var(--amber)">${chalScore}</b> / ${chalIdx} </span>
+    </div>
+    <div class="chal-timer-track"><div class="chal-timer-fill" id="chalFill"></div></div>
+    <div class="chal-prompt">
+      <div class="label">⏱ اختر بسرعة!</div>
+      <div class="word">${term.ar}</div>
+    </div>
+    <div class="chal-options" id="chalOpts">
+      ${options.map(o=>`<div class="chal-opt" data-id="${o.id}">${o.en}</div>`).join('')}
+    </div>
+    <div class="chal-timeout-msg" id="chalMsg"></div>
+    <div class="meta-bar">
+      <span>ROUND</span>
+      <span>${chalIdx+1} / ${terms.length}</span>
+    </div>
+  `;
+  const fill = document.getElementById('chalFill');
+  const totalMs = CHAL_SECONDS*1000;
+  chalTimer = setInterval(()=>{
+    chalTimeLeft -= 50;
+    const pct = Math.max(0,(chalTimeLeft/totalMs)*100);
+    fill.style.width = pct+'%';
+    if(pct < 30) fill.classList.add('urgent');
+    if(chalTimeLeft <= 0){
+      clearInterval(chalTimer); chalTimer=null;
+      lockChallenge(null, term);
+    }
+  }, 50);
+  document.querySelectorAll('.chal-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      if(chalLocked) return;
+      lockChallenge(opt.dataset.id, term);
+    });
+  });
+  function lockChallenge(chosenId, term){
+    if(chalLocked) return;
+    chalLocked = true;
+    if(chalTimer){ clearInterval(chalTimer); chalTimer=null; }
+    document.querySelectorAll('.chal-opt').forEach(o=>{
+      o.classList.add('locked');
+      if(String(o.dataset.id)===String(term.id)) o.classList.add('correct');
+    });
+    const msg = document.getElementById('chalMsg');
+    if(chosenId !== null && String(chosenId) === String(term.id)){
+      recordWordResult(currentUnit?.id, term.id, true);
+      chalScore++;
+      showFloatingFeedback('✅ '+CHEERS[Math.floor(Math.random()*CHEERS.length)], 'good');
+    } else if(chosenId === null){
+      recordWordResult(currentUnit?.id, term.id, false);
+      msg.textContent = '⏱ انتهى الوقت!';
+      showFloatingFeedback('⏱ انتهى الوقت!', 'bad');
+    } else {
+      recordWordResult(currentUnit?.id, term.id, false);
+      const wrongEl = document.querySelector(`.chal-opt[data-id="${chosenId}"]`);
+      if(wrongEl) wrongEl.classList.add('wrong');
+      showFloatingFeedback('❌ الجواب: '+term.en, 'bad');
+    }
+    setTimeout(()=>{
+      chalIdx++;
+      if(chalIdx >= terms.length) render();
+      else render();
+    }, 600);
+  }
+}
+
+// Created by awwab sohail — SENTENCES (Easy & Challenge)
+// ============================================================
+//  SENTENCES (Easy & Challenge)
+// ============================================================
+function renderSentences(stage){
+  const terms = getTerms();
+  if(terms.length===0){ stage.innerHTML='<div style="text-align:center;color:var(--ink-dim);">لا توجد مصطلحات</div>'; return; }
+  const isHard = mode==='sentences-hard';
+  const S = isHard ? sentHardState : sentState;
+  if(S.idx >= terms.length){
+    const pct = Math.round((S.score/terms.length)*100);
+    const bestKey = isHard ? 'sentencesHard' : 'sentences';
+    const prevBest = recordBest(currentUnit?.id, bestKey, pct);
+    stage.innerHTML = `
+      <div class="results">
+        <div class="label" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--amber-dim);">${isHard?'🔥 نتيجة الجُمل الصعبة':'📝 نتيجة الجُمل'}</div>
+        <div class="big">${S.score} / ${terms.length}</div>
+        <div class="sub">${pct}% — ${pct>=80?'ممتاز! 🌟':pct>=60?'جيد 👍':'راجع الجُمل 🔄'}${prevBest!==null ? ` · أفضل نتيجة سابقة: ${prevBest}%` : ''}</div>
+        <button class="btn primary" id="restartSent">🔄 إعادة</button>
+        <button class="btn" id="backBtn6" style="margin-top:10px;">🏠 رجوع</button>
+      </div>
+    `;
+    document.getElementById('restartSent').onclick = ()=>{ S.order=smartOrder(currentUnit?.id, terms.length, terms); S.idx=0; S.score=0; S.streak=0; render(); };
+    document.getElementById('backBtn6').onclick = backToUnits;
+    return;
+  }
+  const term = terms[S.order[S.idx]];
+  S.locked = false;
+  const sentenceEn = isHard ? term.challengeEn : term.easyEn;
+  const sentenceAr = isHard ? term.challengeAr : term.easyAr;
+  const label = isHard ? '🔥 جملة صعبة' : '📝 جملة عادية';
+  
+  stage.innerHTML = `
+    <div class="drill-prompt">
+      <div class="label">${label}</div>
+      <div class="word" style="font-size:24px;font-family:'Tajawal',sans-serif;color:var(--ink);">${sentenceAr}</div>
+      <div style="font-size:13px;color:var(--ink-faint);margin-top:8px;font-family:'Tajawal',sans-serif;">💡 اكتب الجملة بالإنجليزي (بأسلوبك)</div>
+    </div>
+    <textarea class="drill-input" id="sentInput" rows="3" style="resize:vertical;font-family:'IBM Plex Mono',monospace;font-size:15px;direction:ltr;text-align:left;padding:12px;" placeholder="Write the sentence in English..."></textarea>
+    <div class="drill-feedback" id="sentFeedback"></div>
+    <div class="drill-actions">
+      <button class="btn primary" id="sentCheck">تحقق ✅</button>
+      <button class="btn" id="sentSkip">تخطي ⏭</button>
+    </div>
+    <div class="meta-bar">
+      <span>SCORE: <b id="sScore">${S.score}</b></span>
+      <span>STREAK: <b id="sStreak">${S.streak}</b></span>
+      <span>${S.idx+1} / ${terms.length}</span>
+    </div>
+  `;
+  const input = document.getElementById('sentInput');
+  input.focus();
+  const feedback = document.getElementById('sentFeedback');
+  const checkBtn = document.getElementById('sentCheck');
+  const skipBtn = document.getElementById('sentSkip');
+  skipBtn.onclick = ()=>{
+    if(S.locked) return;
+    S.streak = 0;
+    S.idx++;
+    render();
+  };
+
+  function getKeywords(sentence){
+    return sentence.toLowerCase().split(/\s+/).filter(w => w.length>2 && !STOPWORDS.has(w));
+  }
+
+  function checkSentence(){
+    if(S.locked) return;
+    const val = input.value.trim();
+    if(!val){ feedback.innerHTML='✏️ اكتب الجملة أولاً'; return; }
+    
+    const keywords = getKeywords(sentenceEn);
+    const targetWord = term.en.toLowerCase();
+    const userWords = val.toLowerCase().split(/\s+/);
+    
+    const hasTarget = userWords.some(w => w===targetWord || (SYNONYMS[targetWord]||[]).some(s=>w===norm(s)));
+    
+    let matched = 0;
+    keywords.forEach(kw => {
+      if(userWords.some(w => w===kw || (SYNONYMS[kw]||[]).some(s=>w===norm(s)))) matched++;
+    });
+    
+    const ratio = keywords.length > 0 ? matched / keywords.length : 1;
+    const pct = Math.round(ratio * 100);
+    
+    if(hasTarget && pct >= 50){
+      recordWordResult(currentUnit?.id, term.id, true);
+      S.locked = true;
+      S.score++; S.streak++;
+      feedback.innerHTML = `✅ ${CHEERS[Math.floor(Math.random()*CHEERS.length)]} (${pct}% تطابق) ${speakBtn(sentenceEn)}`;
+      document.getElementById('sScore').textContent = S.score;
+      document.getElementById('sStreak').textContent = S.streak;
+      checkBtn.textContent = 'التالي ▶';
+      checkBtn.onclick = ()=>{ S.idx++; render(); };
+      skipBtn.style.display = 'none';
+    } else if(hasTarget && pct >= 30){
+      recordWordResult(currentUnit?.id, term.id, false);
+      S.locked = true;
+      S.streak = 0;
+      document.getElementById('sStreak').textContent = S.streak;
+      feedback.innerHTML = `⚠️ شبه صحيح (${pct}%) — الجواب الصحيح:<br><span class="answer">${sentenceEn}</span> ${speakBtn(sentenceEn)}`;
+      checkBtn.textContent = 'التالي ▶';
+      checkBtn.onclick = ()=>{ S.idx++; render(); };
+      skipBtn.style.display = 'none';
+    } else {
+      recordWordResult(currentUnit?.id, term.id, false);
+      S.streak = 0;
+      document.getElementById('sStreak').textContent = S.streak;
+      let msg = `❌ الجواب الصحيح:<br><span class="answer">${sentenceEn}</span> ${speakBtn(sentenceEn)}`;
+      if(!hasTarget) msg = `❌ المصطلح "${term.en}" غير موجود!<br><span class="answer">${sentenceEn}</span> ${speakBtn(sentenceEn)}`;
+      feedback.innerHTML = msg;
+      input.classList.add('wrong','shake-fx');
+      setTimeout(()=>{ input.classList.remove('wrong','shake-fx'); input.value=''; input.focus(); }, 1200);
+    }
+  }
+  checkBtn.onclick = checkSentence;
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); checkSentence(); } });
+}
+
+// Created by awwab sohail — TABS SETUP
+// ============================================================
+//  TABS SETUP
+// ============================================================
+function setupTabs(){
+  const tabs = [
+    {id:'flash', label:'📚 بطاقات'},
+    {id:'list', label:'📋 قائمة'},
+    {id:'drill', label:'✍️ كتابة'},
+    {id:'quiz', label:'🎯 كويز'},
+    {id:'challenge', label:'⚡ تحدي'},
+    {id:'sentences', label:'📝 جُمل'},
+    {id:'sentences-hard', label:'🔥 جُمل صعبة'}
+  ];
+  const container = document.createElement('div');
+  container.className = 'tabs';
+  container.id = 'tabContainer';
+  tabs.forEach(t=>{
+    const div = document.createElement('div');
+    div.className = 'tab' + (mode===t.id?' active':'');
+    div.dataset.mode = t.id;
+    div.textContent = t.label;
+    container.appendChild(div);
+  });
+  const stage = document.getElementById('stage');
+  stage.parentNode.insertBefore(container, stage);
+  
+  container.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click',()=>{
+      if(!currentUnit){ return; }
+      container.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      mode = t.dataset.mode;
+      render();
+    });
+  });
+}
+
+// Created by awwab sohail — INIT
+// ============================================================
+//  INIT
+// ============================================================
+setupTabs();
+render();
+const unitCountEl = document.getElementById('unitCount');
+if(unitCountEl) unitCountEl.textContent = Object.keys(UNITS).length;
+window.backToUnits = backToUnits;
+</script>
+</body>
+</html>
