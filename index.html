@@ -983,43 +983,50 @@ body.no-fx *,body.no-fx *::before,body.no-fx *::after{animation:none!important;t
 :root[data-theme="pink"] .mic-btn.listening{ background:linear-gradient(135deg,#e11d6a,#ff7ab6); }
 
 
-/* ===================== 🔥 الثيم الناري (أسود + أحمر/برتقالي) ===================== */
+/* ===================== 🖤 ثيم الرجال Men (أسود + أبيض فضي + هالة) ===================== */
 :root[data-theme="carbon"]{
-  --bg:#0c0c0f;
-  --bg-grad:radial-gradient(900px 520px at 8% -10%, rgba(239,68,68,.26), transparent 60%), radial-gradient(800px 520px at 100% 0%, rgba(249,115,22,.15), transparent 55%), radial-gradient(700px 500px at 50% 115%, rgba(185,28,28,.20), transparent 60%), #0c0c0f;
-  --bg-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M0 24L24 0M-6 6L6 -6M18 30L30 18' stroke='%23ffffff' stroke-opacity='.05' stroke-width='1.4'/%3E%3C/svg%3E");
-  --panel:#16161b; --panel-raised:#1d1d24;
-  --ink:#f3f3f5; --ink-dim:#a7a7b3; --ink-faint:#6b6b78;
-  --line:#2c2c36; --line-soft:#22222b;
-  --primary:#ef4444; --primary-2:#f97316; --primary-soft:#2a1416; --on-primary:#fff;
-  --yellow:#fb923c; --yellow-soft:#2b1a10;
-  --blue:#f87171; --blue-soft:#2a1416;
-  --pink:#ff5d73; --pink-soft:#3a1620;
-  --good:#34d399; --good-soft:#0f3329;
-  --radius:12px;
-  --sh-sm:0 1px 2px rgba(0,0,0,.5), 0 2px 10px rgba(0,0,0,.35);
-  --sh-md:0 6px 16px rgba(0,0,0,.5), 0 14px 34px rgba(0,0,0,.4);
-  --sh-lg2:0 14px 36px rgba(0,0,0,.6), 0 26px 60px rgba(220,38,38,.25);
-  --hero:linear-gradient(135deg,#1c1c22 0%,#8a1c1c 55%,#ea580c 128%);
-  --focus:0 0 0 4px rgba(239,68,68,.30);
-  --notebook-line:rgba(255,255,255,.02);
+  --bg:#08080b;
+  --bg-grad:radial-gradient(900px 560px at 50% -14%, rgba(205,212,235,.20), transparent 60%), radial-gradient(700px 500px at 0% 105%, rgba(120,130,170,.16), transparent 60%), radial-gradient(700px 500px at 100% 105%, rgba(255,255,255,.07), transparent 60%), #08080b;
+  --bg-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52'%3E%3Ccircle cx='8' cy='10' r='1.2' fill='%23ffffff' fill-opacity='.10'/%3E%3Ccircle cx='36' cy='34' r='.9' fill='%23aab4d6' fill-opacity='.12'/%3E%3Cpath d='M44 6l1.4 3 3 1.4-3 1.4-1.4 3-1.4-3-3-1.4 3-1.4z' fill='%23ffffff' fill-opacity='.09'/%3E%3C/svg%3E");
+  --panel:#111116; --panel-raised:#1a1a21;
+  --ink:#f4f5f8; --ink-dim:#aeb2c0; --ink-faint:#70758a;
+  --line:#2b2c36; --line-soft:#1f2029;
+  --primary:#e9ebf2; --primary-2:#8f96ad; --primary-soft:#1d1e27; --on-primary:#0a0a0e;
+  --yellow:#d9dbe4; --yellow-soft:#23242d;
+  --blue:#aab4d6; --blue-soft:#1b1d29;
+  --pink:#ff6b7f; --pink-soft:#301820;
+  --good:#3ecf8e; --good-soft:#0e2f22;
+  --radius:16px;
+  --sh-sm:0 1px 2px rgba(0,0,0,.6), 0 2px 12px rgba(0,0,0,.5);
+  --sh-md:0 8px 20px rgba(0,0,0,.6), 0 0 26px rgba(190,200,235,.12);
+  --sh-lg2:0 16px 40px rgba(0,0,0,.7), 0 0 60px rgba(190,200,235,.22);
+  --hero:linear-gradient(135deg,#050507 0%,#17181f 55%,#4b5064 132%);
+  --focus:0 0 0 4px rgba(200,208,240,.35);
+  --notebook-line:rgba(255,255,255,.015);
   color-scheme:dark;
 }
 :root[data-theme="carbon"] body{ background:var(--bg-pattern), var(--bg-grad); background-attachment:fixed; }
 :root[data-theme="carbon"] #vtStars{ display:none; }
-:root[data-theme="carbon"] .bac-badge{ color:#b91c1c; }
-:root[data-theme="carbon"] .masthead{ border:1px solid rgba(248,113,113,.28); }
-:root[data-theme="carbon"] .masthead h1{ text-shadow:0 0 22px rgba(251,146,60,.55); }
-:root[data-theme="carbon"] .fab{ background:linear-gradient(135deg,#ef4444,#f97316); color:#fff; box-shadow:0 10px 28px -6px rgba(239,68,68,.65); }
+html[data-theme="carbon"]::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 50% at 50% 38%,rgba(210,218,245,.12),transparent 70%),radial-gradient(130% 100% at 50% 50%,transparent 52%,rgba(0,0,0,.7) 100%);animation:auraPulse 5s ease-in-out infinite}
+:root[data-theme="carbon"] .bac-badge{ color:#14151c; }
+:root[data-theme="carbon"] .masthead{ border:1px solid rgba(215,220,240,.35); animation:menGlow 4.5s ease-in-out infinite; }
+@keyframes menGlow{50%{box-shadow:0 0 42px rgba(200,208,240,.32)}}
+:root[data-theme="carbon"] .masthead h1{ text-shadow:0 0 20px rgba(220,226,250,.55); }
+:root[data-theme="carbon"] .fab{ background:linear-gradient(135deg,#f4f5f8,#8f96ad); color:#0a0a0e; box-shadow:0 0 28px rgba(200,208,240,.4); }
 :root[data-theme="carbon"] .card, :root[data-theme="carbon"] .menu-card, :root[data-theme="carbon"] .unit-card{ border-color:var(--line); box-shadow:var(--sh-sm); }
-:root[data-theme="carbon"] .btn.primary, :root[data-theme="carbon"] .nav-btn.active{ box-shadow:0 8px 22px rgba(239,68,68,.38) !important; }
-:root[data-theme="carbon"] .mic-btn{ box-shadow:0 12px 28px rgba(239,68,68,.45); }
-:root[data-theme="carbon"] .mic-btn.listening{ background:linear-gradient(135deg,#dc2626,#fb923c); }
-/* شرر عائم */
+:root[data-theme="carbon"] .unit-card:hover,:root[data-theme="carbon"] .menu-card:hover,:root[data-theme="carbon"] .wl-sub:hover{ border-color:#d7dcf0!important; box-shadow:0 0 30px rgba(200,208,240,.28)!important; }
+:root[data-theme="carbon"] .btn.primary, :root[data-theme="carbon"] .nav-btn.active{ box-shadow:0 8px 24px rgba(200,208,240,.22) !important; }
+:root[data-theme="carbon"] .mic-btn{ box-shadow:0 12px 30px rgba(200,208,240,.3); }
+:root[data-theme="carbon"] .mic-btn.listening{ background:linear-gradient(135deg,#8f96ad,#f4f5f8); }
+:root[data-theme="carbon"] ::selection{ background:#e9ebf2; color:#0a0a0e; }
+:root[data-theme="carbon"] .hero2 h2{ background:linear-gradient(90deg,#ffffff,#9aa3c4,#ffffff); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; }
+:root[data-theme="carbon"] .wl-hero{ background:var(--hero); color:#fff; }
+:root[data-theme="carbon"] .wl-btn.main{ background:#f4f5f8; color:#0a0a0e; }
+/* هالة/غبار فضي عائم */
 #emberLayer{ display:none; }
 :root[data-theme="carbon"] #emberLayer{ display:block; position:fixed; inset:0; z-index:5; pointer-events:none; overflow:hidden; }
 .em{ position:absolute; left:var(--x); bottom:-20px; width:var(--s); height:var(--s); border-radius:50%; background:var(--c); box-shadow:0 0 calc(var(--s) * 2.2) calc(var(--s) * .5) var(--c); opacity:0; animation:emRise var(--d) linear var(--dl) infinite; will-change:transform,opacity; }
-@keyframes emRise{ 0%{ transform:translate3d(0,0,0) scale(1); opacity:0; } 10%{ opacity:.9; } 50%{ opacity:.55; transform:translate3d(calc(var(--dx) * .5),-55vh,0) scale(.85); } 90%{ opacity:.7; } 100%{ transform:translate3d(var(--dx),-112vh,0) scale(.4); opacity:0; } }
+@keyframes emRise{ 0%{ transform:translate3d(0,0,0) scale(1); opacity:0; } 10%{ opacity:.8; } 50%{ opacity:.45; transform:translate3d(calc(var(--dx) * .5),-55vh,0) scale(.85); } 90%{ opacity:.6; } 100%{ transform:translate3d(var(--dx),-112vh,0) scale(.4); opacity:0; } }
 body.no-fx #emberLayer{ display:none !important; }
 @media (prefers-reduced-motion:reduce){ #emberLayer{ display:none !important; } }
 
@@ -1045,48 +1052,7 @@ body.no-fx #bflyLayer{ display:none !important; }
 .theme-switch .tl{ font:700 10px 'Plus Jakarta Sans',sans-serif; letter-spacing:.4px; direction:ltr; }
 @media(max-width:560px){ .masthead .theme-switch{ grid-column:1 / -1 !important; grid-row:auto !important; justify-self:center !important; margin:2px 0 0 !important; } }
 </style>
-<style id="vt-mint-install">
-/* ===================== ✨ ثيم Mix (فضي + ذهبي) ===================== */
-:root[data-theme="mint"]{
-  --bg:#dfe2e8;
-  --bg-grad:radial-gradient(900px 520px at 8% -8%, rgba(201,162,60,.28), transparent 60%), radial-gradient(800px 540px at 100% 0%, rgba(120,128,145,.30), transparent 55%), linear-gradient(165deg,#e6e8ed 0%,#cdd1d9 48%,#e1e4e9 100%);
-  --bg-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Ccircle cx='6' cy='6' r='1.6' fill='%23ffffff' fill-opacity='.55'/%3E%3Ccircle cx='29' cy='29' r='1.6' fill='%23b08a2e' fill-opacity='.22'/%3E%3Cpath d='M40 8l2 4 4 2-4 2-2 4-2-4-4-2 4-2z' fill='%23b08a2e' fill-opacity='.2'/%3E%3C/svg%3E");
-  --panel:#eef0f3; --panel-raised:#f6f7f9;
-  --ink:#20232b; --ink-dim:#555b68; --ink-faint:#8b909c;
-  --line:#c3c8d1; --line-soft:#d3d7de;
-  --primary:#9e7618; --primary-2:#d4b24c; --primary-soft:#f1e7cb; --on-primary:#2a2006;
-  --yellow:#b8892a; --yellow-soft:#f1e7cb;
-  --blue:#5f6674; --blue-soft:#e3e6ec;
-  --pink:#b0443d; --pink-soft:#f6e1de;
-  --good:#0f9f6e; --good-soft:#d8f6e9;
-  --radius:16px;
-  --sh-sm:0 1px 2px rgba(32,35,43,.08), 0 2px 10px rgba(32,35,43,.07);
-  --sh-md:0 6px 16px rgba(32,35,43,.12), 0 14px 30px rgba(158,118,24,.10);
-  --sh-lg2:0 12px 32px rgba(32,35,43,.22), 0 24px 56px rgba(158,118,24,.16);
-  --hero:linear-gradient(135deg,#23262e 0%,#3b3f49 50%,#b08a2e 128%);
-  --focus:0 0 0 4px rgba(176,138,46,.30);
-  --notebook-line:rgba(32,35,43,.035);
-  color-scheme:light;
-}
-:root[data-theme="mint"] body{ background:var(--bg-pattern), var(--bg-grad); background-attachment:fixed; }
-:root[data-theme="mint"] #vtStars{ display:none; }
-:root[data-theme="mint"] .bac-badge{ color:#8a6a1c; }
-:root[data-theme="mint"] .masthead{ border:1px solid rgba(201,162,60,.45); }
-:root[data-theme="mint"] .masthead h1{ text-shadow:0 2px 12px rgba(0,0,0,.35); }
-:root[data-theme="mint"] .fab{ background:linear-gradient(135deg,#e6c36a,#b08a2e); color:#2a2006; box-shadow:0 10px 28px -6px rgba(176,138,46,.5); }
-:root[data-theme="mint"] .card, :root[data-theme="mint"] .menu-card, :root[data-theme="mint"] .unit-card{ border-color:var(--line); box-shadow:var(--sh-sm); }
-:root[data-theme="mint"] .btn.primary, :root[data-theme="mint"] .nav-btn.active{ box-shadow:0 8px 22px rgba(176,138,46,.35) !important; }
-:root[data-theme="mint"] .unit-card .bar > i, :root[data-theme="mint"] #unitBar .bar > i{ background:var(--grad); }
-:root[data-theme="mint"] .mic-btn{ box-shadow:0 12px 28px rgba(176,138,46,.35); }
-#mixLayer{ display:none; }
-:root[data-theme="mint"] #mixLayer{ display:block; position:fixed; inset:0; z-index:5; pointer-events:none; overflow:hidden; }
-.mx{ position:absolute; left:var(--x); bottom:-50px; width:var(--s); height:var(--s); opacity:0; color:var(--c); animation:mxRise var(--d) linear var(--dl) infinite; will-change:transform,opacity; }
-.mx svg{ width:100%; height:100%; display:block; animation:mxSpin var(--r) linear infinite; }
-@keyframes mxRise{ 0%{ transform:translate3d(0,0,0); opacity:0; } 10%{ opacity:.6; } 90%{ opacity:.6; } 100%{ transform:translate3d(var(--dx),-115vh,0); opacity:0; } }
-@keyframes mxSpin{ to{ transform:rotate(360deg); } }
-body.no-fx #mixLayer{ display:none !important; }
-@media (prefers-reduced-motion:reduce){ #mixLayer{ display:none !important; } }
-
+<style id="vt-install-btn">
 /* ===================== 📲 زر التثبيت الواضح ===================== */
 .top-install{ display:none; align-items:center; justify-content:center; gap:10px; width:100%; margin:0 0 14px; padding:13px 18px; border:none; border-radius:16px; cursor:pointer; background:var(--grad); color:var(--on-primary); font:800 16px 'Tajawal',sans-serif; box-shadow:0 10px 24px rgba(0,0,0,.22); animation:ctaPulse 2.6s ease-in-out infinite; }
 .top-install small{ font:600 12px 'Tajawal',sans-serif; opacity:.9; }
@@ -1422,7 +1388,7 @@ button,[role="button"],.unit-card,.menu-card,.chal-opt{-webkit-user-select:none;
 /* ⚡ وضع الأجهزة الضعيفة */
 html.lite *,html.lite *::before,html.lite *::after{animation:none!important;transition:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;scroll-behavior:auto!important}
 html.lite body{background-image:none!important}
-html.lite #vtStars,html.lite #emberLayer,html.lite #bflyLayer,html.lite #mixLayer,html.lite .wl-glow,html.lite .masthead-lily,html.lite .wl-sub::after,html.lite #vtConfetti{display:none!important}
+html.lite #vtStars,html.lite #emberLayer,html.lite #bflyLayer,html.lite .wl-glow,html.lite .masthead-lily,html.lite .wl-sub::after,html.lite #vtConfetti{display:none!important}
 html.lite .wl-sub{transform:none!important}
 </style>
 <style>
@@ -1496,24 +1462,101 @@ html.lite .wl-sub{transform:none!important}
 .ht-let{width:54px;height:54px;border-radius:16px;border:2px solid var(--line);background:var(--panel-raised);color:var(--ink);font:800 26px 'Tajawal',sans-serif;cursor:pointer;box-shadow:var(--sh-sm);transition:transform .2s,border-color .2s,opacity .2s;touch-action:manipulation}
 .ht-let:hover:not(:disabled){transform:translateY(-4px) rotate(-3deg);border-color:var(--primary)}.ht-let:active:not(:disabled){transform:scale(.92)}.ht-let.used{opacity:.22}
 </style>
-<style>
-/* ===== تبديل سريع للوحدات والأوضاع ===== */
-.unit-switch{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 1px 4px;scroll-snap-type:x proximity}
-.unit-switch::-webkit-scrollbar{display:none}
-#unitBar .unit-switch .us{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;scroll-snap-align:center;padding:7px 12px;border-radius:99px;font-size:12px;white-space:nowrap;background:var(--panel-raised);color:var(--ink-dim);border:1px solid var(--line);box-shadow:none!important;touch-action:manipulation}
-#unitBar .unit-switch .us.on{background:var(--primary);color:var(--on-primary);border-color:transparent;font-weight:800}
-#unitBar .unit-switch .us:hover:not(.on){border-color:var(--primary);color:var(--ink);background:var(--panel-raised)}
-body[data-view="study"] #tabs{position:sticky;top:6px;z-index:25}
-@media(max-width:700px){
-  body[data-view="study"] .tabs{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity}
-  body[data-view="study"] .tabs::-webkit-scrollbar{display:none}
-  body[data-view="study"] .tab{flex:0 0 auto!important;min-width:86px;white-space:nowrap;font-size:12px;scroll-snap-align:center}
+<style id="bac-identity">
+/* ===== هوية Jib El BAC: الطالب + الكتب + العبارات التحفيزية ===== */
+:root[data-theme="bac"]{
+  --bg:#1a0b0d;
+  --bg-grad:radial-gradient(900px 520px at 100% -10%,rgba(255,106,0,.30),transparent 60%),radial-gradient(800px 560px at 0% 0%,rgba(255,45,60,.22),transparent 55%),#1a0b0d;
+  --bg-pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg fill='none' stroke='%23ff7a2f' stroke-opacity='.13' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M18 30l14-6 14 6-14 6zM24 34v7q8 4 16 0v-7'/%3E%3Cpath d='M78 84h14v16H78zM92 84l8-3v16l-8 3'/%3E%3Cpath d='M92 22l4 8 8 4-8 4-4 8-4-8-8-4 8-4z'/%3E%3C/g%3E%3C/svg%3E");
+  --panel:#27131a; --panel-raised:#321a22;
+  --ink:#fff3ea; --ink-dim:#e0b9a6; --ink-faint:#9a7566;
+  --line:#4a2530; --line-soft:#3a1d26;
+  --primary:#ff5a1f; --primary-2:#ff9a1f; --primary-soft:#3a1a14; --on-primary:#fff;
+  --yellow:#ffb020; --yellow-soft:#3a2a10;
+  --blue:#ff7a2f; --blue-soft:#3a1a14;
+  --pink:#ff4d6d; --pink-soft:#3a1620;
+  --good:#2fd08a; --good-soft:#0f3329;
+  --radius:18px;
+  --sh-sm:0 1px 2px rgba(0,0,0,.45),0 2px 10px rgba(0,0,0,.3);
+  --sh-md:0 6px 16px rgba(0,0,0,.45),0 14px 34px rgba(0,0,0,.35);
+  --sh-lg2:0 14px 36px rgba(0,0,0,.5),0 24px 60px rgba(255,70,30,.28);
+  --hero:linear-gradient(120deg,#ff2d3d 0%,#ff5a1f 55%,#ff8a00 115%);
+  --focus:0 0 0 4px rgba(255,106,0,.32);
+  color-scheme:dark;
 }
-/* ===== دخول مباشر من بطاقة المادة ===== */
-.card-units{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:12px}
-.card-units .cu{padding:6px 11px;border-radius:99px;border:1px solid var(--line);background:var(--panel-raised);color:var(--ink);font:700 12px 'Tajawal',sans-serif;cursor:pointer;transition:transform .2s,border-color .2s,background .2s;touch-action:manipulation}
-.card-units .cu:hover{transform:translateY(-2px);border-color:var(--primary);background:var(--primary-soft)}
-.card-units .cu:active{transform:scale(.95)}
+:root[data-theme="bac"] body{ background:var(--bg-pattern),var(--bg-grad); background-attachment:fixed; }
+:root[data-theme="bac"] #vtStars{ display:none; }
+:root[data-theme="bac"] .bac-badge{ color:#d9360b; }
+:root[data-theme="bac"] .masthead h1{ text-shadow:0 2px 16px rgba(120,10,0,.45); }
+:root[data-theme="bac"] .fab{ background:linear-gradient(135deg,#ff3b3b,#ff9a1f); color:#fff; box-shadow:0 10px 28px -6px rgba(255,80,30,.65); }
+:root[data-theme="bac"] .btn.primary,:root[data-theme="bac"] .nav-btn.active{ box-shadow:0 8px 22px rgba(255,80,30,.38)!important; }
+:root[data-theme="bac"] .mic-btn{ box-shadow:0 12px 28px rgba(255,80,30,.45); }
+:root[data-theme="bac"] .card,:root[data-theme="bac"] .menu-card,:root[data-theme="bac"] .unit-card{ border-color:var(--line); box-shadow:var(--sh-sm); }
+:root[data-theme="bac"] .unit-card:hover,:root[data-theme="bac"] .menu-card:hover{ border-color:#ff7a2f; box-shadow:0 10px 30px rgba(255,90,31,.25); }
+
+/* الأثواب الأخرى تأخذ نفس الروح: تدرّج حار + قبعة وكتب */
+:root[data-theme="pink"]{ --hero:linear-gradient(120deg,#ff5f9e 0%,#ff6a6a 55%,#ffa24c 125%); }
+
+/* ===== شريط الهوية داخل الهيدر ===== */
+.masthead{ position:relative; }
+.bac-strip{ grid-column:1/-1; grid-row:3; display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:12px; text-align:center; font-family:'Tajawal',sans-serif; position:relative; z-index:1; }
+.bac-tag{ margin:0; font-size:18px; font-weight:800; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.25); }
+.bac-chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px 12px; font-size:12.5px; font-weight:700; color:rgba(255,255,255,.95); }
+.bac-chips span::before{ content:'✓'; display:inline-grid; place-items:center; width:17px; height:17px; margin-inline-end:5px; border-radius:50%; background:#22c55e; color:#fff; font-size:11px; font-weight:800; vertical-align:1px; }
+.bac-motto{ display:inline-block; min-height:28px; padding:3px 16px; border-radius:99px; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); font-size:14px; font-weight:800; color:#fff; transition:opacity .45s; }
+.bac-motto.swap{ opacity:0; }
+.bac-art{ position:absolute; inset-inline-start:-6px; bottom:-14px; width:104px; height:auto; z-index:0; pointer-events:none; transform:rotate(-6deg); filter:drop-shadow(0 8px 14px rgba(0,0,0,.35)); opacity:.95; }
+.bac-trophy{ position:absolute; inset-inline-end:12px; top:10px; font-size:30px; z-index:0; opacity:.5; transform:rotate(8deg); pointer-events:none; }
+@media(max-width:560px){ .bac-art{ width:78px; bottom:-10px; } .bac-tag{ font-size:15px; } .bac-chips{ font-size:11.5px; } .bac-trophy{ display:none; } }
+@media(min-width:561px){ .masthead .bac-strip{ padding-inline:90px; } }
+body[data-view="study"] .bac-strip,body[data-view="study"] .bac-art,body[data-view="study"] .bac-trophy{ display:none; }
+@media(prefers-reduced-motion:reduce){ .bac-motto{ transition:none; } }
+</style>
+<style id="bac-fixes">
+/* إصلاحات الهيدر */
+.bac-trophy{ display:none!important; }
+:root[data-theme="0048"] .bac-art{ display:none; }
+.theme-switch button.active .tl{ color:#1b1b22!important; }
+
+/* ===== رسالة الدعاء والمشاركة ===== */
+.dua-ov{ position:fixed; inset:0; z-index:99999; display:none; align-items:center; justify-content:center; padding:18px; background:rgba(10,5,20,.62); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); }
+.dua-ov.on{ display:flex; animation:duaIn .35s ease-out; }
+@keyframes duaIn{ from{opacity:0} to{opacity:1} }
+.dua-box{ width:100%; max-width:420px; border-radius:26px; overflow:hidden; background:var(--panel); color:var(--ink); box-shadow:0 24px 70px rgba(0,0,0,.45); font-family:'Tajawal',sans-serif; text-align:center; }
+.dua-head{ padding:22px 20px 16px; background:linear-gradient(120deg,#ff2d3d,#ff5a1f 55%,#ff8a00 115%); color:#fff; }
+.dua-head .ic{ font-size:38px; line-height:1; } .dua-head h2{ margin:6px 0 0; font-size:20px; font-weight:800; }
+.dua-body{ padding:18px 20px 6px; font-size:15.5px; line-height:2; color:var(--ink-dim); }
+.dua-body b{ color:var(--ink); } .dua-body .hadith{ display:block; margin-top:8px; padding:8px 12px; border-radius:14px; background:var(--primary-soft,#fff3ea); color:var(--ink); font-weight:800; }
+.dua-act{ display:flex; flex-direction:column; gap:10px; padding:14px 20px 20px; }
+.dua-share{ border:none; cursor:pointer; padding:13px; border-radius:16px; font:800 16px 'Tajawal',sans-serif; color:#fff; background:linear-gradient(120deg,#ff3b3b,#ff9a1f); box-shadow:0 8px 20px rgba(255,80,30,.35); }
+.dua-row{ display:flex; gap:8px; } .dua-row a,.dua-row button{ flex:1; text-decoration:none; text-align:center; cursor:pointer; padding:10px 6px; border-radius:14px; border:1.5px solid var(--line); background:var(--panel-raised); color:var(--ink); font:700 13.5px 'Tajawal',sans-serif; }
+.dua-close{ border:none; background:none; cursor:pointer; color:var(--ink-faint); font:700 14px 'Tajawal',sans-serif; padding:4px; }
+.dua-share:focus-visible,.dua-row a:focus-visible,.dua-row button:focus-visible,.dua-close:focus-visible{ outline:3px solid #ff9a1f; outline-offset:2px; }
+</style>
+<style id="vt-extra">
+.soon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:0 0 22px}
+.soon-card{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 10px 14px;text-align:center;border-radius:20px;border:1.5px dashed color-mix(in srgb,var(--ac) 55%,var(--line));background:color-mix(in srgb,var(--ac) 8%,var(--panel));opacity:.95}
+.soon-card .si{font-size:34px;line-height:1;filter:grayscale(.15)}
+.soon-card b{font:800 15px 'Tajawal',sans-serif;color:var(--ink)}
+.soon-card em{font:800 11px 'Tajawal',sans-serif;font-style:normal;padding:3px 11px;border-radius:99px;background:var(--ac);color:#fff}
+@supports not (background:color-mix(in srgb,red,blue)){.soon-card{background:var(--panel);border-color:var(--line)}}
+.fb-card{display:flex;align-items:center;gap:14px;margin:6px 0 18px;padding:16px 18px;border-radius:22px;text-decoration:none;color:var(--ink);background:var(--panel);border:1.5px solid var(--line);box-shadow:var(--sh-sm);transition:transform .2s,box-shadow .2s,border-color .2s}
+.fb-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:#229ED9}
+.fb-ic{font-size:30px;flex:none}
+.fb-tx{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.fb-tx b{font:800 16px 'Tajawal',sans-serif}
+.fb-tx small{font:600 12.5px 'Tajawal',sans-serif;color:var(--ink-dim);line-height:1.5}
+.fb-go{flex:none;padding:9px 15px;border-radius:99px;background:#229ED9;color:#fff;font:800 12.5px 'Tajawal',sans-serif;white-space:nowrap}
+@media(max-width:480px){.fb-card{flex-wrap:wrap}.fb-go{width:100%;text-align:center}}
+.rw-teaser{position:relative;overflow:hidden;margin:16px 0 6px;padding:18px 16px 16px;border-radius:24px;text-align:center;color:#fff;background:linear-gradient(135deg,#1b1340,#5b2bd6 55%,#ff8a3d 130%);box-shadow:var(--sh-md);border:1px solid rgba(255,255,255,.22)}
+.rw-teaser::before{content:"";position:absolute;inset:-40% -10% auto auto;width:260px;height:260px;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 68%);pointer-events:none}
+.rw-pill{display:inline-block;padding:4px 13px;border-radius:99px;background:rgba(255,255,255,.2);font:800 11.5px 'Tajawal',sans-serif;letter-spacing:.3px}
+.rw-teaser h3{margin:9px 0 5px;font:800 20px 'Tajawal',sans-serif}
+.rw-teaser p{margin:0 auto 12px;max-width:520px;font:600 13.5px/1.7 'Tajawal',sans-serif;opacity:.95}
+.rw-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.rw-row span{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);font:700 12.5px 'Tajawal',sans-serif}
+@media(prefers-reduced-motion:no-preference){.rw-pill{animation:rwPulse 2.4s ease-in-out infinite}}
+@keyframes rwPulse{50%{box-shadow:0 0 0 6px rgba(255,255,255,.12)}}
 </style>
 </head>
 <body>
@@ -1537,10 +1580,17 @@ body[data-view="study"] #tabs{position:sticky;top:6px;z-index:25}
       <div class="creator-credit">by <b>awwab sohail</b> <span class="thanks">· big thanks to 0048</span></div>
       <div class="theme-switch" id="themeSwitch">
         <button type="button" id="gearBtn" title="الإعدادات" onclick="go('settings')">⚙️</button>
-        <button type="button" data-theme-btn="carbon" title="Boys theme">🔥 <span class="tl">Boys</span></button>
-        <button type="button" data-theme-btn="mint" title="Mix theme">✨ <span class="tl">Mix</span></button>
+        <button type="button" data-theme-btn="bac" title="Jib El BAC theme">🎓 <span class="tl">BAC</span></button>
+        <button type="button" data-theme-btn="carbon" title="ثيم الرجال">🖤 <span class="tl">Men</span></button>
         <button type="button" data-theme-btn="pink" title="Girls theme">🌸 <span class="tl">Girls</span></button>
         <button type="button" data-theme-btn="0048" title="0048 theme"><span class="tl">0048</span></button>
+      </div>
+<svg class="bac-art" viewBox="0 0 200 200" aria-hidden="true"><rect x="14" y="150" width="160" height="32" rx="7" fill="#e11d2e"/><rect x="26" y="157" width="140" height="18" rx="3" fill="#fff1e2"/><rect x="26" y="116" width="150" height="32" rx="7" fill="#3a5ef7"/><rect x="38" y="123" width="130" height="18" rx="3" fill="#fff1e2"/><path d="M52 84v30q48 24 96 0V84l-48 22z" fill="#2b2d63"/><path d="M100 30l92 34-92 34L8 64z" fill="#1f2147"/><path d="M100 64l66 6v34" fill="none" stroke="#ffb020" stroke-width="4" stroke-linecap="round"/><rect x="160" y="102" width="12" height="24" rx="5" fill="#ffb020"/></svg>
+      <div class="bac-trophy" aria-hidden="true">🏆</div>
+      <div class="bac-strip">
+        <p class="bac-tag">🔥 طريقك نحو التفوق في البكالوريا!</p>
+        <div class="bac-chips"><span>ملخصات وتمارين</span><span>مصطلحات دقيقة</span><span>مراجعة شاملة</span><span>محتوى منظم</span></div>
+        <div class="bac-motto" id="bacMotto">بكالوريا أفضل، مستقبل أجمل</div>
       </div>
     </div>
   </div>
@@ -1582,7 +1632,7 @@ function applyTheme(theme){
   document.querySelectorAll('#themeSwitch [data-theme-btn]').forEach(b=>{
     b.classList.toggle('active', b.dataset.themeBtn === theme);
   });
-  try{ const mt = document.querySelector('meta[name="theme-color"]'); if(mt) mt.content = ({pink:'#d6409f',carbon:'#0c0c0f',mint:'#d6d9df','0048':'#07050a'})[theme] || '#7c5cff'; }catch(err){ /* تجاهل */ }
+  try{ const mt = document.querySelector('meta[name="theme-color"]'); if(mt) mt.content = ({bac:'#ff3b2f',pink:'#d6409f',carbon:'#08080b','0048':'#07050a'})[theme] || '#7c5cff'; }catch(err){ /* تجاهل */ }
   try{ petals(theme === '0048'); feminize(theme === '0048'); }catch(err){}
   try{ localStorage.setItem(THEME_KEY, theme); }catch(err){ /* التخزين غير متاح، نتجاهل بصمت */ }
 }
@@ -1774,10 +1824,10 @@ function requestTheme(theme, done){
   applyTheme(theme); if(done) done(true);
 }
 function initTheme(){
-  let saved = 'mint';
-  try{ saved = localStorage.getItem(THEME_KEY) || 'mint'; }catch(err){ /* تجاهل */ }
-  if(!['mint','carbon','pink','0048'].includes(saved)) saved = 'mint';
-  if(saved === LOCKED_THEME && !isUnlocked()) saved = 'mint';
+  let saved = 'bac';
+  try{ saved = localStorage.getItem(THEME_KEY) || 'bac'; }catch(err){ /* تجاهل */ }
+  if(!['bac','carbon','pink','0048'].includes(saved)) saved = 'bac';
+  if(saved === LOCKED_THEME && !isUnlocked()) saved = 'bac';
   applyTheme(saved);
   document.querySelectorAll('#themeSwitch [data-theme-btn]').forEach(b=>{
     b.addEventListener('click', ()=> requestTheme(b.dataset.themeBtn));
@@ -3278,13 +3328,10 @@ function buildUnitBar(bar){
       <span class="cur">${set.icon} <b>${esc(set.title)}</b> <span class="cur-ar">${esc(set.titleAr)}</span></span>
       <button type="button" id="backBtn">${ST.mode==='menu' ? '↩ الرئيسية' : '↩ كل الأوضاع'}</button>
     </div>
-    ${(()=>{ const ids = langUnitIds().filter(id=>UNITS[id]); if(ids.length < 2 || set.virtual) return ''; return '<div class="unit-switch" role="tablist" aria-label="تبديل الوحدة">'+ids.map(id=>'<button type="button" class="us'+(set.id===id?' on':'')+'" role="tab" aria-selected="'+(set.id===id)+'" data-us="'+id+'">'+UNITS[id].icon+' <span>'+esc(UNITS[id].titleAr)+'</span></button>').join('')+'</div>'; })()}
     <div class="bar" title="الإتقان"><i style="width:${mp}%"></i></div>
     <div class="unit-progress">
       <span>📈 متقن <b>${mp}%</b></span><span>🆕 جديدة <b>${nw}</b></span><span>⏰ مستحقة <b>${due}</b></span><span>🎯 ضعيفة <b>${wk}</b></span><span>📚 <b>${terms.length}</b></span>
     </div>`;
-  $$('.unit-switch .us', bar).forEach(b=>b.addEventListener('click', ()=>{ const id = b.dataset.us; if(UNITS[id] && (!ST.set || ST.set.id !== id)) openSet(UNITS[id], ST.mode === 'menu' ? undefined : ST.mode); }));
-  const onUs = bar.querySelector('.unit-switch .us.on'); if(onUs){ try{ onUs.scrollIntoView({ inline:'center', block:'nearest' }); }catch(err){ /* تجاهل */ } }
   $('#backBtn').onclick = ()=>{ if(ST.mode === 'menu') leaveSet(); else { ST.mode = 'menu'; render(); window.scrollTo({ top:0 }); } };
 }
 function buildTabs(tabs){
@@ -3293,7 +3340,6 @@ function buildTabs(tabs){
   tabs.style.display = 'flex';
   tabs.innerHTML = modes.map(m=>`<button type="button" class="tab${ST.mode===m.id?' active':''}" data-mode="${m.id}">${m.label}</button>`).join('');
   on('.tab', e=>{ ST.mode = e.currentTarget.dataset.mode; render(); }, tabs);
-  const act = tabs.querySelector('.tab.active'); if(act){ try{ act.scrollIntoView({ inline:'center', block:'nearest' }); }catch(err){ /* تجاهل */ } }
 }
 
 // ============================================================
@@ -3305,6 +3351,17 @@ const SOCIALS = [
 ];
 function socialRow(){
   return `<div class="social-row"><div class="social-title">📣 تواصل معنا</div><div class="social-btns">${SOCIALS.map(x=>`<a class="social-btn" style="--sc:${x.color}" href="${esc(x.url)}" target="_blank" rel="noopener"><span class="si">${x.svg}</span><span class="st"><b>${esc(x.name)}</b><small>${esc(x.hint)}</small></span></a>`).join('')}</div></div>`;
+}
+function soonSubjects(){
+  const L=[['🌍','الجغرافيا','#16a085'],['📖','العربية','#8e5bd6'],['🕌','الشريعة','#1f9d6b'],['💭','الفلسفة','#e07a1f']];
+  return `<div class="sec-title wl-sec">⏳ مواد قادمة قريبًا <small>نشتغل عليها</small></div>
+  <div class="soon-grid">${L.map(x=>`<div class="soon-card" style="--ac:${x[2]}"><span class="si">${x[0]}</span><b>${x[1]}</b><em>قريبًا</em></div>`).join('')}</div>`;
+}
+function feedbackCard(){
+  return `<a class="fb-card" href="https://t.me/slam3likm" target="_blank" rel="noopener">
+    <span class="fb-ic">💡</span>
+    <span class="fb-tx"><b>شاركنا انتقاداتك وأفكارك</b><small>عندك اقتراح أو ملاحظة أو مادة تحب نضيفها؟ قلّنا على تيليجرام</small></span>
+    <span class="fb-go">✈️ تيليجرام</span></a>`;
 }
 function renderLangPicker(el){
   const info = {
@@ -3320,22 +3377,15 @@ function renderLangPicker(el){
           <div class="icon">${flagHTML(l, 60)}</div><div class="name">${info[l].title}</div><div class="sub">${info[l].sub}</div>
           <div class="desc">${info[l].desc}</div><div class="count">${terms.length} مصطلح · ${info[l].units.length} ${info[l].units.length>1?'وحدات':'وحدة'}</div>
           <div class="bar"><i style="width:${mp}%"></i></div><div class="mini">📈 ${mp}% متقن · ${seen}/${terms.length} تدربت</div>
-          <div class="card-units" aria-label="ادخل مباشرة إلى وحدة">${info[l].units.map(id=>UNITS[id]?'<button type="button" class="cu" data-lang="'+l+'" data-unit="'+id+'">'+UNITS[id].icon+' '+esc(UNITS[id].titleAr)+'</button>':'').join('')}</div>
         </div>`; }).join('')}
       <div class="unit-card" role="button" tabindex="0" id="openHistory" aria-label="التاريخ">
         <div class="icon" style="font-size:54px;line-height:60px">📜</div><div class="name">التاريخ</div><div class="sub">مادة جديدة</div>
-        <div class="desc">التواريخ والشخصيات والمصطلحات مع ألعاب حفظ وترتيب زمني</div><div class="count">${(window.__HT?window.__HT.E.length:0)} تاريخًا · 3 وحدات</div>
-        <div class="bar"><i style="width:${window.__HT?Math.round(window.__HT.E.filter(e=>window.__HT.lv(e.id)>=2).length/window.__HT.E.length*100):0}%"></i></div><div class="mini">📈 تواريخ الوحدات الثلاث · شخصيات · مصطلحات</div>
-        <div class="card-units" aria-label="ادخل مباشرة إلى قسم"><button type="button" class="cu" data-hist="dates">📅 التواريخ</button><button type="button" class="cu" data-hist="people">👤 الشخصيات</button><button type="button" class="cu" data-hist="terms">📖 المصطلحات</button></div>
+        <div class="desc">تواريخ البكالوريا ★ مع ألعاب حفظ وترتيب زمني</div><div class="count">${(window.__HT?window.__HT.E.length:0)} تاريخًا · 3 وحدات</div>
+        <div class="bar"><i style="width:${window.__HT?Math.round(window.__HT.E.filter(e=>window.__HT.lv(e.id)>=2).length/window.__HT.E.length*100):0}%"></i></div><div class="mini">📈 تواريخ الوحدات الثلاث، والشخصيات والمصطلحات قريبًا</div>
       </div>
-    </div>`;
-  $$('.card-units .cu', el).forEach(b=>b.addEventListener('click', e=>{
-    e.stopPropagation();
-    if(b.dataset.hist){ openHistoryAt(b.dataset.hist); return; }
-    meta.settings.lang = b.dataset.lang; meta.dailySet = null; saveMeta();
-    const u = UNITS[b.dataset.unit]; if(u) openSet(u);
-  }));
-  $$('.card-units .cu', el).forEach(b=>b.addEventListener('keydown', e=>e.stopPropagation()));
+    </div>
+    ${soonSubjects()}
+    ${feedbackCard()}`;
   const hb=$('#openHistory', el); if(hb){ hb.addEventListener('click', ()=>openHistory()); hb.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openHistory(); } }); }
   $$('.unit-card[data-lang]', el).forEach(c=>{
     const pick = ()=>{ meta.settings.lang = c.dataset.lang; meta.dailySet = null; saveMeta(); go('home'); };
@@ -3368,6 +3418,12 @@ function renderWelcome(el){
       ${L?'<button type="button" class="wl-btn ghost" id="wlCont">↩ تابع '+(L==='fr'?'Français':'English')+'</button>':''}
     </div>
   </section>
+  <section class="rw-teaser" aria-label="نظام المكافآت والجوائز">
+    <span class="rw-pill">🚧 إضافة قادمة قريبًا</span>
+    <h3>🏆 نظام المكافآت والجوائز</h3>
+    <p>اجمع النقاط كل ما تراجع، وافتح <b>ثيمات حصرية</b> وجوائز تحفيزية ننتظر نكشفلك عليها قريبًا. كل يوم مراجعة = خطوة أقرب للجائزة!</p>
+    <div class="rw-row"><span>🎨 ثيمات خاصة</span><span>🎁 جوائز تحفيزية</span><span>⭐ نقاط وإنجازات</span><span>🥇 تحديات ومستويات</span></div>
+  </section>
   <div class="wl-stats">
     <div><b>${total}</b><span>مصطلحًا ومعلومة</span></div>
     <div><b>3</b><span>مواد</span></div>
@@ -3379,14 +3435,14 @@ function renderWelcome(el){
     <div class="wl-sub" style="--ac:#3a5ef7;--i:0" role="button" tabindex="0" data-lang="en">
       <div class="ic">${flagHTML('en',54)}</div>
       <div class="tx"><div class="hd"><b>English</b></div>
-        <div class="tags jump" dir="ltr">${['business','safety','astronomy','feelings','civ'].filter(id=>UNITS[id]).map(id=>'<button type="button" data-u="'+id+'" data-l="en">'+UNITS[id].icon+' '+esc(UNITS[id].title)+'</button>').join('')}</div>
+        <div class="tags" dir="ltr"><span>Ethics in Business</span><span>Safety First</span><span>Astronomy</span><span>Feelings &amp; Emotions</span><span>Ancient Civilizations</span></div>
         <div class="pr"><div class="bar"><i style="width:${mp('en')}%"></i></div><span>${mp('en')}%</span></div>
         <small dir="ltr">${nEn} terms</small></div>
       <div class="go" aria-hidden="true">‹</div></div>
     <div class="wl-sub" style="--ac:#e8465b;--i:1" role="button" tabindex="0" data-lang="fr">
       <div class="ic">${flagHTML('fr',54)}</div>
       <div class="tx"><div class="hd"><b>Français</b></div>
-        <div class="tags jump" dir="ltr"><button type="button" data-u="french" data-l="fr">${UNITS.french.icon} Le texte historique</button></div>
+        <div class="tags" dir="ltr"><span>Projet 01</span><span>Le texte historique</span></div>
         <div class="pr"><div class="bar"><i style="width:${mp('fr')}%"></i></div><span>${mp('fr')}%</span></div>
         <small dir="ltr">${nFr} termes</small></div>
       <div class="go" aria-hidden="true">‹</div></div>
@@ -3398,12 +3454,14 @@ function renderWelcome(el){
         <small>اضغط على قسم للدخول مباشرة · الخرائط قريبًا 🗺️</small></div>
       <div class="go" aria-hidden="true">‹</div></div>
   </div>
+  ${soonSubjects()}
   <div class="sec-title wl-sec">🧭 كيف تشتغل؟</div>
   <div class="wl-steps">
     <div><i>1</i><b>اختر المادة</b><span>إنجليزي، فرنسي أو تاريخ</span></div>
     <div><i>2</i><b>تدرّب باللعب</b><span>بطاقات، كويز، مطابقة وتحديات</span></div>
     <div><i>3</i><b>تابع تقدّمك</b><span>يحفظ الموقع أخطاءك ويراجعها لك</span></div>
   </div>
+  ${feedbackCard()}
   ${typeof socialRow==='function'?socialRow():''}`;
   $('#wlStart',el).onclick=()=>{ const t=$('#wlSubjects',el); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); };
   const c=$('#wlCont',el); if(c) c.onclick=()=>go('home');
@@ -3415,7 +3473,6 @@ function renderWelcome(el){
     if(fine){ n.addEventListener('pointermove',e=>{ const r=n.getBoundingClientRect(); n.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*6+'deg'); n.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5))*5+'deg'); });
       n.addEventListener('pointerleave',()=>{ n.style.setProperty('--rx','0deg'); n.style.setProperty('--ry','0deg'); }); }
   });
-  $$('.wl-sub[data-lang] .jump button',el).forEach(x=>x.addEventListener('click',e=>{ e.stopPropagation(); meta.settings.lang=x.dataset.l; meta.dailySet=null; saveMeta(); const u=UNITS[x.dataset.u]; if(u) openSet(u); }));
   $$('.wl-sub[data-lang]',el).forEach(n=>act(n,()=>{ meta.settings.lang=n.dataset.lang; meta.dailySet=null; saveMeta(); go('home'); }));
 }
 
@@ -3675,13 +3732,13 @@ function renderStats(el){
 function renderSettings(el){
   const S = meta.settings, today = (meta.days && meta.days[dayKey()]) || {a:0,c:0};
   const goal = S.goal || 20, gp = Math.min(100, Math.round((today.a||0)/goal*100));
-  const th = document.documentElement.getAttribute('data-theme') || 'mint';
+  const th = document.documentElement.getAttribute('data-theme') || 'bac';
   el.innerHTML = `
     <div class="sec-title">⚙️ الإعدادات <small>خصّص الموقع على كيفك</small></div>
     <div class="card set-hero"><div class="set-goal"><b>🎯 هدفك اليوم</b><span>${today.a||0} / ${goal} إجابة</span></div><div class="bar"><i style="width:${gp}%"></i></div><div class="set-note">${gp>=100?'🔥 حققت هدف اليوم، ما شاء الله!':'باقي '+Math.max(0,goal-(today.a||0))+' إجابة لتحقق هدفك'}</div></div>
     <div class="sec-title">🎨 المظهر</div>
     <div class="card">
-      <div class="field"><span>الثيم</span><div class="seg" id="setTheme">${[['carbon','🔥 Boys'],['mint','✨ Mix'],['pink','🌸 Girls'],['0048','0048']].map(([k,l])=>`<button type="button" data-t="${k}" class="${th===k?'on':''}">${l}</button>`).join('')}</div></div>
+      <div class="field"><span>الثيم</span><div class="seg" id="setTheme">${[['bac','🎓 BAC'],['carbon','🖤 الرجال Men'],['pink','🌸 Girls'],['0048','0048']].map(([k,l])=>`<button type="button" data-t="${k}" class="${th===k?'on':''}">${l}</button>`).join('')}</div></div>
       <div class="field"><span>حجم الخط<small>للقراءة بشكل أريح</small></span><select data-set="zoom">${[[0.92,'صغير'],[1,'عادي'],[1.1,'كبير'],[1.2,'كبير جدًا']].map(v=>`<option value="${v[0]}"${String(S.zoom||1)===String(v[0])?' selected':''}>${v[1]}</option>`).join('')}</select></div>
       <div class="field"><span>الحركات والتأثيرات ✨<small>أوقفها لو جهازك بطيء</small></span><input type="checkbox" data-set="fx" ${S.fx===false?'':'checked'} aria-label="الحركات"></div>
     </div>
@@ -4517,9 +4574,9 @@ vtApply();
 })();
 </script>
 <script>
-// 🔥 شرر عائم للثيم الناري (CSS يخفيه في باقي الثيمات)
+// 🖤 هالة فضية عائمة لثيم الرجال (CSS يخفيه في باقي الثيمات)
 (function(){
-  const cols=['#ff6b3d','#ef4444','#fb923c','#fbbf24'];
+  const cols=['#ffffff','#cfd5ea','#9aa3c4','#e9ebf2'];
   const layer=document.createElement('div'); layer.id='emberLayer'; layer.setAttribute('aria-hidden','true');
   const n=innerWidth<600?12:20;
   for(let i=0;i<n;i++){
@@ -4531,20 +4588,6 @@ vtApply();
 })();
 </script>
 <script>
-// 💜 أشكال عائمة لثيم Mix
-(function(){
-  const sh=['<circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="6"/>','<circle cx="50" cy="50" r="30" fill="currentColor" fill-opacity=".35"/>',
-    '<path d="M50 6 L60 40 L94 50 L60 60 L50 94 L40 60 L6 50 L40 40Z" fill="currentColor" fill-opacity=".5"/>','<circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="16 12"/>'];
-  const cols=['#c9a23c','#9aa0ac','#e3c46f','#b8bdc7'];
-  const layer=document.createElement('div'); layer.id='mixLayer'; layer.setAttribute('aria-hidden','true');
-  const n=innerWidth<600?8:12;
-  for(let i=0;i<n;i++){
-    const d=document.createElement('div'); d.className='mx';
-    d.style.cssText=`--x:${(Math.random()*94).toFixed(1)}%;--s:${(14+Math.random()*26).toFixed(0)}px;--d:${(20+Math.random()*22).toFixed(1)}s;--dl:-${(Math.random()*36).toFixed(1)}s;--dx:${((Math.random()-.5)*120).toFixed(0)}px;--r:${(10+Math.random()*16).toFixed(1)}s;--c:${cols[i%cols.length]}`;
-    d.innerHTML='<svg viewBox="0 0 100 100">'+sh[i%sh.length]+'</svg>'; layer.appendChild(d);
-  }
-  document.body.appendChild(layer);
-})();
 // 📲 زر التثبيت الظاهر دائماً (ما لم يكن التطبيق مثبّتاً)
 (function(){
   const b=document.getElementById('topInstall'); if(!b) return;
@@ -5652,6 +5695,50 @@ window.__HT={E,H,lv,PE,pNear,TE,tlv};
 try{ if(ST.view==='welcome' || (!curLang() && ST.view!=='study' && ST.view!=='hist')) render(); }catch(err){}
 })();
 
+</script>
+<div class="dua-ov" id="duaOv" role="dialog" aria-modal="true" aria-labelledby="duaT">
+  <div class="dua-box">
+    <div class="dua-head"><div class="ic">🤲</div><h2 id="duaT">لحظة من فضلك</h2></div>
+    <div class="dua-body">
+      هذا الموقع <b>ليس ربحيًا</b>، هدفه أن نستفيد جميعًا في البكالوريا.<br>
+      <b>ادعُ لنا بالنجاح والتوفيق والهداية</b>، وشارك الموقع مع أصدقائك لتعمّ الفائدة.
+      <span class="hadith">«الدالّ على الخير كفاعله» 🌿</span>
+    </div>
+    <div class="dua-act">
+      <button type="button" class="dua-share" id="duaShare">📤 شارك الموقع مع أصدقائك</button>
+      <div class="dua-row">
+        <a id="duaWa" target="_blank" rel="noopener">واتساب</a>
+        <a id="duaTg" target="_blank" rel="noopener">تيليجرام</a>
+        <button type="button" id="duaCopy">نسخ الرابط</button>
+      </div>
+      <button type="button" class="dua-close" id="duaClose">تمّ، جزاكم الله خيرًا</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+var URL_='https://sohailbou123-ui.github.io/bac-vocab/',
+TXT='🎓 Jib El BAC — موقع مجاني لمراجعة البكالوريا: ملخصات وتمارين ومصطلحات. ليس ربحيًا، شاركه تعمّ الفائدة 🤲\n',
+ov=document.getElementById('duaOv'),shown=false,last=null;
+function $(i){return document.getElementById(i);}
+$('duaWa').href='https://wa.me/?text='+encodeURIComponent(TXT+URL_);
+$('duaTg').href='https://t.me/share/url?url='+encodeURIComponent(URL_)+'&text='+encodeURIComponent(TXT);
+function open_(){ if(shown)return; if(document.body.dataset.view==='study'){ setTimeout(open_,15000); return; } shown=true; last=document.activeElement; ov.classList.add('on'); $('duaShare').focus(); }
+function close_(){ ov.classList.remove('on'); if(last&&last.focus)try{last.focus();}catch(e){} }
+$('duaClose').onclick=close_;
+ov.addEventListener('click',function(e){ if(e.target===ov)close_(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&ov.classList.contains('on'))close_(); });
+$('duaShare').onclick=function(){ if(navigator.share){ navigator.share({title:'Jib El BAC',text:TXT,url:URL_}).catch(function(){}); } else { $('duaCopy').click(); } };
+$('duaCopy').onclick=function(){ var b=this,done=function(){ b.textContent='تم النسخ ✓'; setTimeout(function(){b.textContent='نسخ الرابط';},2000); };
+ if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(URL_).then(done,function(){}); } else { var t=document.createElement('textarea'); t.value=URL_; document.body.appendChild(t); t.select(); try{document.execCommand('copy');done();}catch(e){} t.remove(); } };
+setTimeout(open_,60000); /* بعد دقيقة من فتح الموقع، وفي كل مرة يُفتح فيها */
+})();
+</script>
+<script>
+(function(){var m=document.getElementById('bacMotto');if(!m)return;
+var q=['بكالوريا أفضل، مستقبل أجمل 🎓','كل مصطلح تحفظه خطوة نحو المعدل 🔥','معاً نحقق هدفنا ونرتقي بمستوانا 🚀','التعب اليوم، والفرحة يوم النتائج 🏆','لا تؤجل مراجعة اليوم إلى الغد 📚'],i=0;
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+setInterval(function(){m.classList.add('swap');setTimeout(function(){i=(i+1)%q.length;m.textContent=q[i];m.classList.remove('swap');},450);},5000);})();
 </script>
 </body>
 </html>
