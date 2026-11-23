@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script>try{var _l=localStorage.getItem('jibLite');if(_l==='1'||(_l===null&&((navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2))))document.documentElement.classList.add('lite')}catch(e){}</script>
 <meta charset="UTF-8">
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTGM37SG');</script>
@@ -1358,6 +1359,71 @@ button,[role="button"],.unit-card,.menu-card,.chal-opt{-webkit-user-select:none;
 .ht-prow .s{font:600 13.5px/1.7 'Tajawal',sans-serif;color:var(--primary);margin-top:2px}
 .ht-prow .full{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font:500 14.5px/2 'Tajawal',sans-serif;color:var(--ink)}
 .ht-prow.open .full{display:block}
+
+/* ===== الواجهة الرئيسية ===== */
+.wl-hero{position:relative;overflow:hidden;text-align:center;padding:34px 20px 28px;border-radius:30px;background:var(--grad);color:var(--on-primary,#fff);box-shadow:var(--sh-lg2);animation:riseIn .5s ease both}
+.wl-glow{position:absolute;inset:-40% -20% auto auto;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.35),transparent 65%);pointer-events:none}
+.wl-pill{display:inline-block;padding:5px 14px;border-radius:99px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);font:800 13px 'Plus Jakarta Sans','Tajawal',sans-serif;letter-spacing:.3px}
+.wl-hero h2{color:inherit!important;margin:12px 0 4px;font:800 44px/1.1 'Plus Jakarta Sans','Tajawal',sans-serif;direction:ltr;letter-spacing:-1px;text-shadow:0 3px 14px rgba(0,0,0,.25)}
+.wl-tag{color:inherit;margin:0 0 10px;font:800 19px/1.6 'Tajawal',sans-serif}
+.wl-lead{color:inherit;margin:0 auto;max-width:520px;font:500 15px/2 'Tajawal',sans-serif;opacity:.95}
+.wl-cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.wl-btn{padding:13px 26px;border-radius:99px;border:2px solid rgba(255,255,255,.9);font:800 16px 'Tajawal',sans-serif;cursor:pointer;transition:transform .15s}
+.wl-btn:hover{transform:translateY(-2px)}
+.wl-btn.main{background:#fff;color:#2b2140;box-shadow:0 8px 22px rgba(0,0,0,.25)}
+.wl-btn.ghost{background:transparent;color:inherit}
+.wl-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 10px}
+.wl-stats div{padding:14px 8px;border-radius:18px;background:var(--panel);border:1.5px solid var(--line);text-align:center}
+.wl-stats b{display:block;font:800 26px 'Plus Jakarta Sans','Tajawal',sans-serif;color:var(--primary)}
+.wl-stats span{font:600 12.5px 'Tajawal',sans-serif;color:var(--ink-dim)}
+.wl-tools{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:6px}
+.wl-tools span{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;background:var(--primary-soft);color:var(--ink);font:700 13.5px 'Tajawal',sans-serif}
+.wl-tools i{font-style:normal}
+.wl-sec{justify-content:center;font-size:19px}
+.wl-subjects{display:grid;gap:14px;max-width:640px;margin:0 auto}
+.wl-sub{display:flex;align-items:center;gap:16px;padding:18px;border-radius:22px;background:var(--panel);border:2px solid var(--line);cursor:pointer;text-align:start;transition:transform .2s,box-shadow .2s,border-color .2s;animation:riseIn .5s ease both}
+.wl-sub:hover{transform:translateY(-4px);box-shadow:var(--sh-lg2);border-color:var(--primary)}
+.wl-sub .ic{flex:none}.wl-sub .ic .flag-svg{border-radius:10px}
+.wl-sub .tx{flex:1;min-width:0}
+.wl-sub b{font:800 21px 'Plus Jakarta Sans','Tajawal',sans-serif;color:var(--ink);margin-inline-end:8px}
+.wl-sub em{font:700 14px 'Tajawal',sans-serif;color:var(--primary);font-style:normal}
+.wl-sub small{display:block;margin-top:4px;font:500 12.5px/1.8 'Tajawal',sans-serif;color:var(--ink-dim)}
+.wl-sub .bar{height:6px;border-radius:6px;background:var(--line);margin-top:10px;overflow:hidden}.wl-sub .bar i{display:block;height:100%;background:var(--grad)}
+.wl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:640px;margin:0 auto 10px}
+.wl-steps div{padding:16px 10px;border-radius:18px;background:var(--panel);border:1.5px solid var(--line);text-align:center}
+.wl-steps i{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--grad);color:var(--on-primary,#fff);font:800 15px 'Plus Jakarta Sans',sans-serif;font-style:normal;margin-bottom:6px}
+.wl-steps b{display:block;font:800 14.5px 'Tajawal',sans-serif;color:var(--ink)}.wl-steps span{display:block;margin-top:3px;font:500 12px/1.7 'Tajawal',sans-serif;color:var(--ink-dim)}
+@media(max-width:480px){.wl-hero h2{font-size:36px}.wl-steps{grid-template-columns:1fr}.wl-stats b{font-size:22px}}
+
+/* بطاقات المواد التفاعلية */
+.wl-subjects{perspective:900px}
+.wl-sub{position:relative;overflow:hidden;gap:14px;padding:18px 16px 16px 12px;border:2px solid var(--line);border-inline-start:6px solid var(--ac,var(--primary));background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 9%,var(--panel)),var(--panel) 62%);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease,box-shadow .25s,border-color .25s;animation:riseIn .55s ease both;animation-delay:calc(var(--i,0)*.08s);-webkit-tap-highlight-color:transparent}
+.wl-sub:hover{border-color:var(--ac);box-shadow:0 14px 34px -10px color-mix(in srgb,var(--ac) 55%,transparent);transform:translateY(-4px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.wl-sub:active{transform:scale(.975)}
+.wl-sub::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s ease;pointer-events:none}
+.wl-sub:hover::after{transform:translateX(120%)}
+.wl-sub .ic{display:grid;place-items:center;width:76px;height:76px;border-radius:22px;background:color-mix(in srgb,var(--ac) 14%,var(--panel));flex:none;transition:transform .3s}
+.wl-sub:hover .ic{transform:scale(1.08) rotate(-4deg)}
+.wl-sub .hd{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px}
+.wl-sub .hd em{color:var(--ac)}
+.wl-sub .tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.wl-sub .tags span,.wl-sub .tags button{padding:3px 10px;border-radius:99px;border:1px solid color-mix(in srgb,var(--ac) 35%,var(--line));background:color-mix(in srgb,var(--ac) 8%,var(--panel));color:var(--ink);font:600 11.5px 'Tajawal',sans-serif}
+.wl-sub .tags.jump button{cursor:pointer;padding:6px 12px;font-weight:700;font-size:12.5px;transition:transform .15s,background .15s}
+.wl-sub .tags.jump button:hover{background:var(--ac);color:#2b2140;transform:translateY(-2px)}
+.wl-sub .tags.jump button i{font-style:normal;opacity:.7;font-size:11px;margin-inline-start:3px}
+.wl-sub .pr{display:flex;align-items:center;gap:8px;margin-top:10px}.wl-sub .pr .bar{flex:1;margin:0}.wl-sub .pr .bar i{background:var(--ac)}
+.wl-sub .pr span{font:800 12px 'Plus Jakarta Sans',sans-serif;color:var(--ac);min-width:34px}
+.wl-sub small{margin-top:6px}
+.wl-sub .go{flex:none;align-self:center;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ac);color:#fff;font:800 24px/1 sans-serif;transition:transform .25s}
+.wl-sub:hover .go{transform:translateX(-6px)}
+.wl-sub .rip{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--ac);opacity:.35;animation:ripple .65s ease-out forwards;pointer-events:none}
+.wl-sub .ic{overflow:hidden}.wl-sub .ic svg,.wl-sub .ic .flag-svg{max-width:62px;height:auto}
+@media(max-width:480px){.wl-sub .ic{width:62px;height:62px}.wl-sub .go{width:32px;height:32px;font-size:20px}}
+/* ⚡ وضع الأجهزة الضعيفة */
+html.lite *,html.lite *::before,html.lite *::after{animation:none!important;transition:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;text-shadow:none!important;filter:none!important;scroll-behavior:auto!important}
+html.lite body{background-image:none!important}
+html.lite #vtStars,html.lite #emberLayer,html.lite #bflyLayer,html.lite #mixLayer,html.lite .wl-glow,html.lite .masthead-lily,html.lite .wl-sub::after,html.lite #vtConfetti{display:none!important}
+html.lite .wl-sub{transform:none!important}
 </style>
 <style>
 .ht-choose-h{text-align:center;margin:18px 0 6px}.ht-choose-h h2{font:800 24px 'Tajawal',sans-serif;margin:0 0 6px;color:var(--ink)}.ht-choose-h p{margin:0;color:var(--ink-dim);font-family:'Tajawal',sans-serif}
@@ -1429,6 +1495,25 @@ button,[role="button"],.unit-card,.menu-card,.chal-opt{-webkit-user-select:none;
 .ht-letters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
 .ht-let{width:54px;height:54px;border-radius:16px;border:2px solid var(--line);background:var(--panel-raised);color:var(--ink);font:800 26px 'Tajawal',sans-serif;cursor:pointer;box-shadow:var(--sh-sm);transition:transform .2s,border-color .2s,opacity .2s;touch-action:manipulation}
 .ht-let:hover:not(:disabled){transform:translateY(-4px) rotate(-3deg);border-color:var(--primary)}.ht-let:active:not(:disabled){transform:scale(.92)}.ht-let.used{opacity:.22}
+</style>
+<style>
+/* ===== تبديل سريع للوحدات والأوضاع ===== */
+.unit-switch{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 1px 4px;scroll-snap-type:x proximity}
+.unit-switch::-webkit-scrollbar{display:none}
+#unitBar .unit-switch .us{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;scroll-snap-align:center;padding:7px 12px;border-radius:99px;font-size:12px;white-space:nowrap;background:var(--panel-raised);color:var(--ink-dim);border:1px solid var(--line);box-shadow:none!important;touch-action:manipulation}
+#unitBar .unit-switch .us.on{background:var(--primary);color:var(--on-primary);border-color:transparent;font-weight:800}
+#unitBar .unit-switch .us:hover:not(.on){border-color:var(--primary);color:var(--ink);background:var(--panel-raised)}
+body[data-view="study"] #tabs{position:sticky;top:6px;z-index:25}
+@media(max-width:700px){
+  body[data-view="study"] .tabs{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity}
+  body[data-view="study"] .tabs::-webkit-scrollbar{display:none}
+  body[data-view="study"] .tab{flex:0 0 auto!important;min-width:86px;white-space:nowrap;font-size:12px;scroll-snap-align:center}
+}
+/* ===== دخول مباشر من بطاقة المادة ===== */
+.card-units{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:12px}
+.card-units .cu{padding:6px 11px;border-radius:99px;border:1px solid var(--line);background:var(--panel-raised);color:var(--ink);font:700 12px 'Tajawal',sans-serif;cursor:pointer;transition:transform .2s,border-color .2s,background .2s;touch-action:manipulation}
+.card-units .cu:hover{transform:translateY(-2px);border-color:var(--primary);background:var(--primary-soft)}
+.card-units .cu:active{transform:scale(.95)}
 </style>
 </head>
 <body>
@@ -3126,6 +3211,7 @@ function showFloatingFeedback(text, type){
   setTimeout(()=>el.remove(), 900);
 }
 function confetti(){
+  if(document.documentElement.classList.contains('lite')) return;
   const colors = ['#ffd23f','#3a5ef7','#ff4d6d','#159a5a'];
   for(let i=0;i<36;i++){
     const s = document.createElement('span');
@@ -3141,7 +3227,7 @@ function confetti(){
 // ============================================================
 function renderNav(){
   const nav = $('#mainNav'); if(!nav) return;
-  if(!curLang() && ST.view !== 'study'){ nav.innerHTML = ''; nav.style.display = 'none'; return; }
+  if((!curLang() && ST.view !== 'study') || ST.view === 'welcome' || ST.view === 'hist'){ nav.innerHTML = ''; nav.style.display = 'none'; return; }
   nav.style.display = '';
   const L = curLang(), due = dueTerms().length;
   const items = [
@@ -3152,7 +3238,7 @@ function renderNav(){
   ];
   nav.innerHTML = items.map(([id,ico,label,n])=>
     `<button type="button" class="nav-btn${id==='lang'?' lang':''}${ST.view===id?' active':''}" data-view="${id}">${ico} <span class="lbl">${label}</span><span class="n${n?'':' zero'}">${n}</span></button>`).join('');
-  on('.nav-btn', e=>{ const v = e.currentTarget.dataset.view; if(v === 'lang'){ meta.settings.lang = null; meta.dailySet = null; saveMeta(); go('home'); } else go(v); }, nav);
+  on('.nav-btn', e=>{ const v = e.currentTarget.dataset.view; if(v === 'lang'){ go('welcome'); } else go(v); }, nav);
 }
 
 function render(){
@@ -3170,6 +3256,7 @@ function render(){
   } else {
     bar.style.display = 'none'; bar.innerHTML = ''; tabs.style.display = 'none'; tabs.innerHTML = '';
     stage.className = '';
+    if(ST.view === 'welcome'){ renderWelcome(stage); if(changed) stage.classList.add('view'); return; }
     if(ST.view === 'hist'){ renderHistory(stage); const ub0 = $('.byline b'); if(ub0) ub0.textContent = '3 وحدات'; if(changed) stage.classList.add('view'); return; }
     const fn = curLang() ? ({ home:renderHome, review:renderReview, stats:renderStats, settings:renderSettings }[ST.view] || renderHome) : renderLangPicker;
     fn(stage);
@@ -3191,10 +3278,13 @@ function buildUnitBar(bar){
       <span class="cur">${set.icon} <b>${esc(set.title)}</b> <span class="cur-ar">${esc(set.titleAr)}</span></span>
       <button type="button" id="backBtn">${ST.mode==='menu' ? '↩ الرئيسية' : '↩ كل الأوضاع'}</button>
     </div>
+    ${(()=>{ const ids = langUnitIds().filter(id=>UNITS[id]); if(ids.length < 2 || set.virtual) return ''; return '<div class="unit-switch" role="tablist" aria-label="تبديل الوحدة">'+ids.map(id=>'<button type="button" class="us'+(set.id===id?' on':'')+'" role="tab" aria-selected="'+(set.id===id)+'" data-us="'+id+'">'+UNITS[id].icon+' <span>'+esc(UNITS[id].titleAr)+'</span></button>').join('')+'</div>'; })()}
     <div class="bar" title="الإتقان"><i style="width:${mp}%"></i></div>
     <div class="unit-progress">
       <span>📈 متقن <b>${mp}%</b></span><span>🆕 جديدة <b>${nw}</b></span><span>⏰ مستحقة <b>${due}</b></span><span>🎯 ضعيفة <b>${wk}</b></span><span>📚 <b>${terms.length}</b></span>
     </div>`;
+  $$('.unit-switch .us', bar).forEach(b=>b.addEventListener('click', ()=>{ const id = b.dataset.us; if(UNITS[id] && (!ST.set || ST.set.id !== id)) openSet(UNITS[id], ST.mode === 'menu' ? undefined : ST.mode); }));
+  const onUs = bar.querySelector('.unit-switch .us.on'); if(onUs){ try{ onUs.scrollIntoView({ inline:'center', block:'nearest' }); }catch(err){ /* تجاهل */ } }
   $('#backBtn').onclick = ()=>{ if(ST.mode === 'menu') leaveSet(); else { ST.mode = 'menu'; render(); window.scrollTo({ top:0 }); } };
 }
 function buildTabs(tabs){
@@ -3203,6 +3293,7 @@ function buildTabs(tabs){
   tabs.style.display = 'flex';
   tabs.innerHTML = modes.map(m=>`<button type="button" class="tab${ST.mode===m.id?' active':''}" data-mode="${m.id}">${m.label}</button>`).join('');
   on('.tab', e=>{ ST.mode = e.currentTarget.dataset.mode; render(); }, tabs);
+  const act = tabs.querySelector('.tab.active'); if(act){ try{ act.scrollIntoView({ inline:'center', block:'nearest' }); }catch(err){ /* تجاهل */ } }
 }
 
 // ============================================================
@@ -3229,19 +3320,103 @@ function renderLangPicker(el){
           <div class="icon">${flagHTML(l, 60)}</div><div class="name">${info[l].title}</div><div class="sub">${info[l].sub}</div>
           <div class="desc">${info[l].desc}</div><div class="count">${terms.length} مصطلح · ${info[l].units.length} ${info[l].units.length>1?'وحدات':'وحدة'}</div>
           <div class="bar"><i style="width:${mp}%"></i></div><div class="mini">📈 ${mp}% متقن · ${seen}/${terms.length} تدربت</div>
+          <div class="card-units" aria-label="ادخل مباشرة إلى وحدة">${info[l].units.map(id=>UNITS[id]?'<button type="button" class="cu" data-lang="'+l+'" data-unit="'+id+'">'+UNITS[id].icon+' '+esc(UNITS[id].titleAr)+'</button>':'').join('')}</div>
         </div>`; }).join('')}
       <div class="unit-card" role="button" tabindex="0" id="openHistory" aria-label="التاريخ">
         <div class="icon" style="font-size:54px;line-height:60px">📜</div><div class="name">التاريخ</div><div class="sub">مادة جديدة</div>
-        <div class="desc">تواريخ البكالوريا ★ مع ألعاب حفظ وترتيب زمني</div><div class="count">${(window.__HT?window.__HT.E.length:0)} تاريخًا · 3 وحدات</div>
-        <div class="bar"><i style="width:${window.__HT?Math.round(window.__HT.E.filter(e=>window.__HT.lv(e.id)>=2).length/window.__HT.E.length*100):0}%"></i></div><div class="mini">📈 تواريخ الوحدات الثلاث، والشخصيات والمصطلحات قريبًا</div>
+        <div class="desc">التواريخ والشخصيات والمصطلحات مع ألعاب حفظ وترتيب زمني</div><div class="count">${(window.__HT?window.__HT.E.length:0)} تاريخًا · 3 وحدات</div>
+        <div class="bar"><i style="width:${window.__HT?Math.round(window.__HT.E.filter(e=>window.__HT.lv(e.id)>=2).length/window.__HT.E.length*100):0}%"></i></div><div class="mini">📈 تواريخ الوحدات الثلاث · شخصيات · مصطلحات</div>
+        <div class="card-units" aria-label="ادخل مباشرة إلى قسم"><button type="button" class="cu" data-hist="dates">📅 التواريخ</button><button type="button" class="cu" data-hist="people">👤 الشخصيات</button><button type="button" class="cu" data-hist="terms">📖 المصطلحات</button></div>
       </div>
     </div>`;
+  $$('.card-units .cu', el).forEach(b=>b.addEventListener('click', e=>{
+    e.stopPropagation();
+    if(b.dataset.hist){ openHistoryAt(b.dataset.hist); return; }
+    meta.settings.lang = b.dataset.lang; meta.dailySet = null; saveMeta();
+    const u = UNITS[b.dataset.unit]; if(u) openSet(u);
+  }));
+  $$('.card-units .cu', el).forEach(b=>b.addEventListener('keydown', e=>e.stopPropagation()));
   const hb=$('#openHistory', el); if(hb){ hb.addEventListener('click', ()=>openHistory()); hb.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openHistory(); } }); }
   $$('.unit-card[data-lang]', el).forEach(c=>{
     const pick = ()=>{ meta.settings.lang = c.dataset.lang; meta.dailySet = null; saveMeta(); go('home'); };
     c.addEventListener('click', pick);
     c.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); pick(); } });
   });
+}
+
+
+// ============================================================
+//  WELCOME (الواجهة الرئيسية — أول ما يدخل الطالب)
+// ============================================================
+function renderWelcome(el){
+  const H=window.__HT||null, L=curLang();
+  const nEn=ALL_BY_LANG.en.length, nFr=ALL_BY_LANG.fr.length;
+  const nHist=H?H.E.length:0, nPeo=H?H.PE.length:0, nTer=H?H.TE.length:0;
+  const total=nEn+nFr+nHist+nPeo+nTer;
+  const mp=l=>masteryPct(ALL_BY_LANG[l]);
+  const hp=H?Math.round(((H.E.filter(e=>H.lv(e.id)>=2).length)+(H.PE.filter(x=>meta.histp&&meta.histp.lv&&meta.histp.lv[x.id]>=2).length)+(H.TE.filter(x=>meta.histt&&meta.histt.lv&&meta.histt.lv[x.id]>=2).length))/Math.max(1,nHist+nPeo+nTer)*100):0;
+  const tools=[['🃏','بطاقات'],['📝','كويز'],['✍️','كتابة'],['📖','مطالعة'],['🏆','تحدي']];
+  el.innerHTML=`
+  <section class="wl-hero">
+    <div class="wl-glow" aria-hidden="true"></div>
+    <span class="wl-pill">🎓 BAC 2027</span>
+    <h2>Jib El BAC</h2>
+    <p class="wl-tag">🔥 طريقك نحو التفوق في البكالوريا!</p>
+    <p class="wl-lead">لم تعد المراجعة مجرد حفظ وتكرار! 🚀<br>منصة تعليمية تجمع لك أدوات متنوعة لمراجعة دروسك والاستعداد للبكالوريا بطريقة <b>ممتعة وتفاعلية</b>.</p>
+    <div class="wl-cta">
+      <button type="button" class="wl-btn main" id="wlStart">ابدأ المراجعة ✨</button>
+      ${L?'<button type="button" class="wl-btn ghost" id="wlCont">↩ تابع '+(L==='fr'?'Français':'English')+'</button>':''}
+    </div>
+  </section>
+  <div class="wl-stats">
+    <div><b>${total}</b><span>مصطلحًا ومعلومة</span></div>
+    <div><b>3</b><span>مواد</span></div>
+    <div><b>${tools.length}+</b><span>أوضاع تدريب</span></div>
+  </div>
+  <div class="wl-tools">${tools.map(t=>'<span><i>'+t[0]+'</i>'+t[1]+'</span>').join('')}</div>
+  <div class="sec-title wl-sec" id="wlSubjects">📚 اختر مادتك <small>تقدر تبدّلها بأي وقت</small></div>
+  <div class="wl-subjects">
+    <div class="wl-sub" style="--ac:#3a5ef7;--i:0" role="button" tabindex="0" data-lang="en">
+      <div class="ic">${flagHTML('en',54)}</div>
+      <div class="tx"><div class="hd"><b>English</b></div>
+        <div class="tags jump" dir="ltr">${['business','safety','astronomy','feelings','civ'].filter(id=>UNITS[id]).map(id=>'<button type="button" data-u="'+id+'" data-l="en">'+UNITS[id].icon+' '+esc(UNITS[id].title)+'</button>').join('')}</div>
+        <div class="pr"><div class="bar"><i style="width:${mp('en')}%"></i></div><span>${mp('en')}%</span></div>
+        <small dir="ltr">${nEn} terms</small></div>
+      <div class="go" aria-hidden="true">‹</div></div>
+    <div class="wl-sub" style="--ac:#e8465b;--i:1" role="button" tabindex="0" data-lang="fr">
+      <div class="ic">${flagHTML('fr',54)}</div>
+      <div class="tx"><div class="hd"><b>Français</b></div>
+        <div class="tags jump" dir="ltr"><button type="button" data-u="french" data-l="fr">${UNITS.french.icon} Le texte historique</button></div>
+        <div class="pr"><div class="bar"><i style="width:${mp('fr')}%"></i></div><span>${mp('fr')}%</span></div>
+        <small dir="ltr">${nFr} termes</small></div>
+      <div class="go" aria-hidden="true">‹</div></div>
+    <div class="wl-sub hist" style="--ac:#d9a62e;--i:2" role="button" tabindex="0" id="wlHist">
+      <div class="ic" style="font-size:44px;line-height:54px">📜</div>
+      <div class="tx"><div class="hd"><b>التاريخ</b><em>مادة جديدة ✨</em></div>
+        <div class="tags jump"><button type="button" data-k="dates">📅 التواريخ <i>${nHist}</i></button><button type="button" data-k="people">👤 الشخصيات <i>${nPeo}</i></button><button type="button" data-k="terms">📖 المصطلحات <i>${nTer}</i></button></div>
+        <div class="pr"><div class="bar"><i style="width:${hp}%"></i></div><span>${hp}%</span></div>
+        <small>اضغط على قسم للدخول مباشرة · الخرائط قريبًا 🗺️</small></div>
+      <div class="go" aria-hidden="true">‹</div></div>
+  </div>
+  <div class="sec-title wl-sec">🧭 كيف تشتغل؟</div>
+  <div class="wl-steps">
+    <div><i>1</i><b>اختر المادة</b><span>إنجليزي، فرنسي أو تاريخ</span></div>
+    <div><i>2</i><b>تدرّب باللعب</b><span>بطاقات، كويز، مطابقة وتحديات</span></div>
+    <div><i>3</i><b>تابع تقدّمك</b><span>يحفظ الموقع أخطاءك ويراجعها لك</span></div>
+  </div>
+  ${typeof socialRow==='function'?socialRow():''}`;
+  $('#wlStart',el).onclick=()=>{ const t=$('#wlSubjects',el); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); };
+  const c=$('#wlCont',el); if(c) c.onclick=()=>go('home');
+  const hb=$('#wlHist',el), act=(n,f)=>{ n.addEventListener('click',f); n.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); f(); } }); };
+  if(hb){ act(hb,()=>openHistory()); $$('.jump button',hb).forEach(x=>x.addEventListener('click',e=>{ e.stopPropagation(); openHistoryAt(x.dataset.k); })); }
+  const fine=matchMedia('(hover:hover)').matches;
+  $$('.wl-sub',el).forEach(n=>{
+    n.addEventListener('pointerdown',e=>{ if(e.target.closest('.jump')) return; const r=n.getBoundingClientRect(),d=document.createElement('span'); d.className='rip'; d.style.cssText='left:'+(e.clientX-r.left)+'px;top:'+(e.clientY-r.top)+'px'; n.appendChild(d); setTimeout(()=>d.remove(),650); });
+    if(fine){ n.addEventListener('pointermove',e=>{ const r=n.getBoundingClientRect(); n.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*6+'deg'); n.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5))*5+'deg'); });
+      n.addEventListener('pointerleave',()=>{ n.style.setProperty('--rx','0deg'); n.style.setProperty('--ry','0deg'); }); }
+  });
+  $$('.wl-sub[data-lang] .jump button',el).forEach(x=>x.addEventListener('click',e=>{ e.stopPropagation(); meta.settings.lang=x.dataset.l; meta.dailySet=null; saveMeta(); const u=UNITS[x.dataset.u]; if(u) openSet(u); }));
+  $$('.wl-sub[data-lang]',el).forEach(n=>act(n,()=>{ meta.settings.lang=n.dataset.lang; meta.dailySet=null; saveMeta(); go('home'); }));
 }
 
 // ============================================================
@@ -4182,6 +4357,8 @@ document.addEventListener('keydown', e=>{
 // ============================================================
 //  INIT
 // ============================================================
+ST.view = 'welcome';   // كل دخول للموقع يبدأ من الواجهة الرئيسية
+try{ const h1=document.querySelector('.masthead-titles h1'); if(h1){ h1.style.cursor='pointer'; h1.title='الواجهة الرئيسية'; h1.addEventListener('click', ()=>{ stopTimers(); go('welcome'); }); } }catch(err){}
 render();
 
 </script>
@@ -4219,12 +4396,14 @@ const toast=t=>{const e=document.createElement('div');e.className='vt-toast';e.t
 const cv=document.createElement('canvas');cv.id='vtStars';document.body.prepend(cv);
 if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const x=cv.getContext('2d');let P=[];
  const rs=()=>{cv.width=innerWidth;cv.height=innerHeight;P=Array.from({length:Math.min(55,innerWidth/14|0)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.6+.3,v:Math.random()*.25+.05,a:Math.random()*6}))};rs();addEventListener('resize',rs);
- (function f(){x.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.y-=p.v;p.a+=.03;if(p.y<-5){p.y=cv.height+5;p.x=Math.random()*cv.width}x.globalAlpha=.35+.35*Math.sin(p.a);x.fillStyle=document.documentElement.getAttribute('data-theme')==='0048'?'#d01638':'#e0b458';x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});requestAnimationFrame(f)})()}
+ (function f(){if(document.documentElement.classList.contains('lite')){setTimeout(f,1500);return}x.clearRect(0,0,cv.width,cv.height);P.forEach(p=>{p.y-=p.v;p.a+=.03;if(p.y<-5){p.y=cv.height+5;p.x=Math.random()*cv.width}x.globalAlpha=.35+.35*Math.sin(p.a);x.fillStyle=document.documentElement.getAttribute('data-theme')==='0048'?'#d01638':'#e0b458';x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});requestAnimationFrame(f)})()}
 // زر المشاركة والتثبيت
 let dip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;const b=$('#vtInstall');if(b)b.style.display='flex';showInstall()});
 const w=document.createElement('div');w.className='fab-wrap';
-w.innerHTML=`<div class="fab-menu"><button data-a="tg">✈️ تيليجرام</button><button data-a="cp">🔗 نسخ الرابط</button><button data-a="du">🤲 أدعية</button><div style="display:none"><button data-a="in" id="vtInstall" style="display:none">📲 ثبّت التطبيق</button></div></div><button class="fab" aria-label="مشاركة">🚀</button>`;
+w.innerHTML=`<div class="fab-menu"><button data-a="tg">✈️ تيليجرام</button><button data-a="cp">🔗 نسخ الرابط</button><button data-a="du">🤲 أدعية</button><button data-a="lt" id="vtLite"></button><div style="display:none"><button data-a="in" id="vtInstall" style="display:none">📲 ثبّت التطبيق</button></div></div><button class="fab" aria-label="مشاركة">🚀</button>`;
 document.body.appendChild(w);
+function liteLbl(){const b=document.getElementById('vtLite');if(b)b.textContent=document.documentElement.classList.contains('lite')?'⚡ وضع الأجهزة الضعيفة: مفعّل ✓':'⚡ وضع الأجهزة الضعيفة: متوقف'}
+liteLbl();
 const DUA_GROUPS=[
  {id:'succ',name:'🎯 النجاح والتوفيق',items:[
   ['«وَمَا تَوْفِيقِي إِلَّا بِاللَّهِ ۚ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ أُنِيبُ»','سورة هود، الآية 88'],
@@ -4273,6 +4452,7 @@ w.addEventListener('click',async e=>{const b=e.target.closest('[data-a]');if(!b)
  if(a==='tg')open('https://t.me/share/url?url='+encodeURIComponent(URL_)+'&text='+encodeURIComponent(MSG));
  if(a==='cp'){try{await navigator.clipboard.writeText(URL_);toast('تم نسخ الرابط ✅')}catch(_){prompt('انسخ الرابط:',URL_)}}
  if(a==='du')openDuas();
+ if(a==='lt'){const on=!document.documentElement.classList.contains('lite');document.documentElement.classList.toggle('lite',on);try{localStorage.setItem('jibLite',on?'1':'0')}catch(_){}liteLbl();toast(on?'⚡ تم تفعيل وضع الأجهزة الضعيفة — موقع أخف وأسرع':'✨ عاد الموقع بكامل جودته')}
  if(a==='in'){if(dip){dip.prompt();dip=null}else if(/iphone|ipad|ipod/i.test(navigator.userAgent))iosGuide();else toast('افتح قائمة المتصفح ⋮ ثم «تثبيت التطبيق» أو «حفظ ومشاركة ← تثبيت» 📲')}
  w.classList.remove('open')});
 document.addEventListener('click',e=>{if(!w.contains(e.target))w.classList.remove('open')});
@@ -4288,7 +4468,7 @@ document.addEventListener('click',e=>{
 new MutationObserver(showInstall).observe(document.body,{childList:true,subtree:true});showInstall();
 addEventListener('appinstalled',()=>{const v=$('#vtInstall');if(v)v.style.display='none';toast('تم تثبيت التطبيق 🎉')});
 // احتفال عند بلوغ إنجازات الوحدات
-function confetti(){const c=document.createElement('canvas');c.id='vtConfetti';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d'),col=['#ffd23f','#ff4d6d','#3a5ef7','#2ecc71','#fff'];
+function confetti(){if(document.documentElement.classList.contains('lite'))return;const c=document.createElement('canvas');c.id='vtConfetti';c.width=innerWidth;c.height=innerHeight;document.body.appendChild(c);const x=c.getContext('2d'),col=['#ffd23f','#ff4d6d','#3a5ef7','#2ecc71','#fff'];
  const P=Array.from({length:150},()=>({x:innerWidth/2,y:innerHeight*.45,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,s:Math.random()*8+4,c:col[Math.random()*5|0],r:Math.random()*6,vr:(Math.random()-.5)*.4}));let t=0;
  (function f(){x.clearRect(0,0,c.width,c.height);P.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()});if(++t<170)requestAnimationFrame(f);else c.remove()})()}
 function win(u){confetti();navigator.vibrate&&navigator.vibrate([80,40,120]);const d=document.createElement('div');d.className='vt-win';
@@ -4548,6 +4728,7 @@ const dots=e=>'<span class="ht-dots" title="مستوى الحفظ">'+[1,2,3].map
 const topbar=(title,extra)=>'<div class="ht-top"><button type="button" class="ht-back" data-act="home">↩ التاريخ</button><b>'+title+'</b><span>'+(extra||'')+'</span></div>';
 
 window.openHistory=function(){ HT.s='choose'; clearT(); ST.view='hist'; render(); window.scrollTo({top:0}); };
+window.openHistoryAt=function(k){ openHistory(); try{ ({dates:vHome,people:vPHome,terms:vTHome})[k](); }catch(e){} };
 window.renderHistory=function(stage){
   HT.el=stage; stage.onclick=onClick; stage.onkeydown=onKey; stage.oninput=onInput; draw();
 };
@@ -5106,7 +5287,7 @@ function onClick(e){
   const b=e.target.closest('[data-act]'); if(!b||!HT.el.contains(b)||b.disabled)return;
   const a=b.dataset.act,v=b.dataset.v,h=H();
   switch(a){
-    case 'back': clearT(); go('home'); break;
+    case 'back': clearT(); go('welcome'); break;
     case 'choose': HT.c=HT.q=HT.o=HT.sp=HT.m=HT.y=HT.pc=HT.pq=HT.pm=HT.pt=null; vChoose(); break;
     case 'dates': vHome(); break;
     case 'soon': toast('📖 المصطلحات قادمة قريبًا إن شاء الله'); break;
@@ -5467,8 +5648,8 @@ function vPList(){
 function onInput(e){
   if(e.target.id==='htPq'||e.target.id==='htTq'){ const q=pnm(e.target.value.trim()); HT.el.querySelectorAll('.ht-prow').forEach(r=>{ r.hidden=!!q&&!r.dataset.q.includes(q); }); }
 }
-window.__HT={E,H,lv,PE,pNear};
-try{ if(!curLang() && ST.view!=='study' && ST.view!=='hist') render(); }catch(err){}
+window.__HT={E,H,lv,PE,pNear,TE,tlv};
+try{ if(ST.view==='welcome' || (!curLang() && ST.view!=='study' && ST.view!=='hist')) render(); }catch(err){}
 })();
 
 </script>
