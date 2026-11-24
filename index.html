@@ -1625,13 +1625,23 @@ html.lite .stg,html.lite [class*="stg"]{ opacity:1 !important; transform:none !i
 .fab-menu button[data-a="sg"]{background:linear-gradient(120deg,#ff3b3b,#ff9a1f);color:#fff;border-color:transparent;font-weight:800}
 .vd-tabs{flex-wrap:wrap}
 .vd-tab{flex:1 0 auto}
+.sd-avatar{width:72px;height:72px;margin:0 auto 10px;border:2.5px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;transform:rotate(-7deg);box-shadow:0 6px 14px rgba(0,0,0,.22)}
+.sd-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.sd-logo{text-align:start}
+.sd-row{display:flex;align-items:center;gap:10px}
+.sd-logo .sd-avatar{width:56px;height:56px;flex:none;margin:0;border:3px solid #fff;border-radius:50%;transform:none;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.sd-tt{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+.sd-logo .sd-tt b{font-size:19px;line-height:1.1}
+.sd-logo .sd-pill{font:800 11px 'Tajawal',sans-serif;letter-spacing:0;background:#fff;color:#14171f;border-radius:99px;padding:2px 10px}
+.sd-logo .sd-cr{margin-top:10px;font-size:11px;color:var(--ink-dim)}
+.sd-logo .sd-cr b{display:inline;font:800 11px 'Tajawal',sans-serif;color:var(--ink)}
 </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTGM37SG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<aside id="side" aria-label="اختصارات الموقع"><div class="sd-logo"><b>Jib El BAC</b><span>BAC 2027</span></div>
+<aside id="side" aria-label="اختصارات الموقع"><div class="sd-logo"><div class="sd-row"><div class="sd-avatar"><img alt="" width="56" height="56"></div><div class="sd-tt"><b>Jib El BAC</b><span class="sd-pill">BAC 2027</span></div></div><div class="sd-cr">by <b>awwab sohail</b> · big thanks to 0048</div></div>
 <button type="button" class="sd-item" data-to="wlSubjects"><i>🎓</i><span>اختر مادتك</span></button>
 <button type="button" class="sd-item" data-jib="learner"><i>📖</i><span>أدعية المتعلم</span></button>
 <div class="sd-grp"><button type="button" class="sd-item" data-p="1" aria-expanded="false"><i>⚙️</i><span>الإعدادات</span></button>
@@ -5893,6 +5903,7 @@ setInterval(function(){m.classList.add('swap');setTimeout(function(){i=(i+1)%q.l
 <script>
 (function(){
 var URL_='https://sohailbou123-ui.github.io/bac-vocab/',TXT='🎓 Jib El BAC — موقع مجاني لمراجعة البكالوريا: ملخصات وتمارين ومصطلحات. شاركه تعمّ الفائدة 🤲\n';
+(function(){ var a=document.querySelector('.masthead-avatar img'), t=document.querySelector('#side .sd-avatar img'); if(a&&t) t.src=a.src; else if(t) t.parentNode.style.display='none'; })();
 function scrollTo_(id){ var e=document.getElementById(id); if(e) e.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'}); }
 document.getElementById('side').addEventListener('click',function(e){
   var b=e.target.closest('[data-to]'); if(!b) return; var id=b.dataset.to;
