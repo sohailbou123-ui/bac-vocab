@@ -8,6 +8,7 @@
 <!-- End Google Tag Manager -->
 <meta name="theme-color" content="#15130d">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>🎓🔥 Jib El BAC | طريقك نحو التفوق في البكالوريا!</title>
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1513,6 +1514,36 @@ body[data-view="study"] .bac-strip,body[data-view="study"] .bac-art,body[data-vi
 @media(prefers-reduced-motion:reduce){ .bac-motto{ transition:none; } }
 </style>
 <style id="bac-fixes">
+.mys-fab{ position:fixed; right:12px; bottom:calc(12px + env(safe-area-inset-bottom,0px)); z-index:900; width:46px; height:46px; padding:0; border-radius:50%; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; line-height:1; color:#fff; font-family:'Tajawal',sans-serif; background:linear-gradient(135deg,#8b5cf6,#ec4899); box-shadow:0 4px 12px -4px rgba(168,85,247,.6); opacity:.88; transition:opacity .2s; }
+.mys-fab:hover{ opacity:1; }
+.mys-t{ font-size:12px; font-weight:800; }
+.mys-fab:focus-visible{ outline:3px solid #fff; outline-offset:2px; }
+body[data-view="study"] .mys-fab{ display:none; }
+@media(prefers-reduced-motion:reduce){ .mys-fab,.mys-q{ animation:none; } }
+
+/* 🖱️ إصلاح النقر: البطاقة ما تتحرّك تحت المؤشر (كان الرفع عند المرور يُفلت النقر عند الحواف) */
+.unit-card:hover,.menu-card:hover,.wl-sub:hover{ transform:none !important; }
+.unit-card,.menu-card{ transform:none; }
+.wl-sub{ transform:none !important; }
+/* ⚡ وضع الأجهزة الضعيفة: لا تُخفِ المحتوى (كان .stg يبدأ شفافاً ويعتمد على الحركة) */
+html.lite .stg,html.lite [class*="stg"]{ opacity:1 !important; transform:none !important; }
+
+.dua-box.rk-box{ max-width:560px; max-height:92vh; overflow:auto; }
+.rk-path{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:10px 18px 4px; }
+.rk{ position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px; padding:16px 8px 14px; border-radius:20px; border:1px solid color-mix(in srgb,var(--c) 60%,transparent); background:radial-gradient(circle at 50% 0%,color-mix(in srgb,var(--c) 38%,transparent),color-mix(in srgb,var(--c) 8%,transparent) 70%); box-shadow:0 0 18px color-mix(in srgb,var(--c) 28%,transparent); animation:rkIn .5s ease-out both, rkFloat 3.2s ease-in-out infinite; }
+.rk:nth-child(1){animation-delay:0s,0s}.rk:nth-child(2){animation-delay:.08s,.4s}.rk:nth-child(3){animation-delay:.16s,.8s}.rk:nth-child(4){animation-delay:.24s,1.2s}.rk:nth-child(5){animation-delay:.32s,1.6s}.rk:nth-child(6){animation-delay:.4s,2s}
+.rk:nth-child(6){ border-width:2px; box-shadow:0 0 26px color-mix(in srgb,var(--c) 55%,transparent); }
+@keyframes rkIn{ from{opacity:0;transform:translateY(8px) scale(.94)} to{opacity:1;transform:none} }
+@keyframes rkFloat{ 0%,100%{translate:0 0} 50%{translate:0 -4px} }
+.rk-i{ font-size:42px; line-height:1; filter:drop-shadow(0 0 10px var(--c)); }
+.rk-t{ display:flex; flex-direction:column; gap:2px; }
+.rk-t b{ color:var(--c); font-size:17px; font-weight:800; }
+.rk-t small{ color:var(--ink-dim); font-size:12px; font-weight:600; }
+.rk-s{ display:none; }
+@media(max-width:420px){ .rk-path{ grid-template-columns:repeat(2,1fr); } }
+.rk-ask{ padding-top:14px; padding-bottom:0; }
+@media(prefers-reduced-motion:reduce){ .rk{ animation:none !important; } }
+
 /* إصلاحات الهيدر */
 .bac-trophy{ display:none!important; }
 :root[data-theme="0048"] .bac-art{ display:none; }
@@ -1594,7 +1625,7 @@ body[data-view="study"] .bac-strip,body[data-view="study"] .bac-art,body[data-vi
       </div>
     </div>
   </div>
-  <button type="button" id="topInstall" class="top-install">📲 ثبّت التطبيق على هاتفك <small>· يفتح أسرع ويشتغل كتطبيق</small></button>
+  <button type="button" id="topInstall" class="top-install">📲 ثبّت التطبيق على جهازك <small>· يفتح أسرع ويشتغل كتطبيق</small></button>
   <nav id="mainNav" class="nav" aria-label="التنقل الرئيسي"></nav>
   <div id="unitBar" style="display:none;"></div>
   <div id="tabs" class="tabs" style="display:none;" role="tablist"></div>
@@ -4430,7 +4461,6 @@ if(fine)document.addEventListener('pointermove',e=>{
   const c=e.target.closest&&e.target.closest('.unit-card,.menu-card');if(!c)return;
   const r=c.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
   c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
-  if(c.classList.contains('unit-card'))c.style.transform=`perspective(700px) rotateX(${(.5-y/r.height)*7}deg) rotateY(${(x/r.width-.5)*7}deg) translateY(-4px)`;
 });
 document.addEventListener('pointerout',e=>{const c=e.target.closest&&e.target.closest('.unit-card');if(c&&!c.contains(e.relatedTarget))c.style.transform=''});
 // تموّج عند الضغط + شرارات
@@ -4593,6 +4623,7 @@ vtApply();
   const b=document.getElementById('topInstall'); if(!b) return;
   const standalone=matchMedia('(display-mode:standalone)').matches||navigator.standalone;
   if(standalone) return;
+
   b.style.display='flex';
   b.onclick=()=>{ const v=document.getElementById('vtInstall'); if(v) v.click(); };
   addEventListener('appinstalled',()=>{ b.style.display='none'; });
@@ -5696,22 +5727,75 @@ try{ if(ST.view==='welcome' || (!curLang() && ST.view!=='study' && ST.view!=='hi
 })();
 
 </script>
+<div id="offGate" role="alertdialog" aria-live="assertive" style="display:none;position:fixed;inset:0;z-index:2147483647;align-items:center;justify-content:center;padding:24px;text-align:center;background:#0d0a12;color:#fff;font-family:'Tajawal',sans-serif">
+  <div style="max-width:360px"><div style="font-size:56px">📡</div><h2 style="margin:10px 0 8px;font-size:22px">لازم انترنت باش يشتغل الموقع</h2><p style="margin:0 0 18px;opacity:.8;line-height:1.9">Jib El BAC يحتاج اتصالًا بالإنترنت. تأكد من الاتصال وسيعاود الموقع الفتح تلقائيًا.</p><button type="button" id="offRetry" style="border:none;cursor:pointer;padding:12px 26px;border-radius:14px;font:800 16px 'Tajawal',sans-serif;color:#fff;background:linear-gradient(120deg,#ff3b3b,#ff9a1f)">🔄 إعادة المحاولة</button></div>
+</div>
+<script>
+/* 🌐 الموقع (والتطبيق المثبّت) يتطلب إنترنت: كل فتح يمرّ على الخادم ليُحسب في الزيارات */
+(function(){
+  if(!/^https?:$/.test(location.protocol)) return;
+  var g=document.getElementById('offGate'),busy=false;
+  function show(on){ g.style.display=on?'flex':'none'; document.documentElement.style.overflow=on?'hidden':''; }
+  function check(){
+    if(busy) return; busy=true;
+    if(navigator.onLine===false){ busy=false; show(true); return; }
+    var c=new AbortController(),t=setTimeout(function(){c.abort();},6000);
+    fetch(location.pathname+'?_p='+Date.now(),{method:'HEAD',cache:'no-store',signal:c.signal})
+      .then(function(){ show(false); })
+      .catch(function(){ show(true); })
+      .finally(function(){ clearTimeout(t); busy=false; });
+  }
+  addEventListener('online',check); addEventListener('offline',function(){ show(true); });
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) check(); });
+  document.getElementById('offRetry').onclick=check;
+  check(); setInterval(check,60000);
+})();
+</script>
+<button type="button" class="mys-fab" id="mysFab" aria-label="اضغط: جوائز ورانكات قادمة"><span class="mys-t">اضغط</span></button>
+<script>document.getElementById('mysFab').onclick=function(){ if(window.jibOpenRewards)window.jibOpenRewards(); };</script>
 <div class="dua-ov" id="duaOv" role="dialog" aria-modal="true" aria-labelledby="duaT">
+  <div class="dua-box rk-box">
+    <div class="dua-head"><div class="ic">🏆</div><h2 id="duaT">جوائز ومكافآت وثيمات خاصة قادمة</h2></div>
+    <div class="dua-body">
+      نحوس نخلي الموقع <b>ممتع أكثر</b>: <b>فعاليات</b> تحفّزك تقرا، <b>رانكات</b> ومستويات، وجوائز وثيمات خاصة، و<b>روح منافسة</b> بين الطلبة.
+    </div>
+    <div class="rk-path"><div class="rk" style="--c:#cd7f32"><div class="rk-i">🥉</div><div class="rk-t"><b>برونز</b><small>بداية الرحلة</small></div><div class="rk-s"></div></div><div class="rk" style="--c:#b8c4d6"><div class="rk-i">🥈</div><div class="rk-t"><b>فضة</b><small>صندوق فضي</small></div><div class="rk-s"></div></div><div class="rk" style="--c:#f5c242"><div class="rk-i">🥇</div><div class="rk-t"><b>ذهب</b><small>صندوق ذهبي</small></div><div class="rk-s"></div></div><div class="rk" style="--c:#38bdf8"><div class="rk-i">💎</div><div class="rk-t"><b>الماس</b><small>جوائز خاصة</small></div><div class="rk-s"></div></div><div class="rk" style="--c:#a78bfa"><div class="rk-i">🔮</div><div class="rk-t"><b>خرافي</b><small>ثيم حصري</small></div><div class="rk-s"></div></div><div class="rk" style="--c:#ff4d4d"><div class="rk-i">👑</div><div class="rk-t"><b>أسطوري</b><small>القمة والتاج</small></div><div class="rk-s"></div></div></div>
+    <div class="dua-body rk-ask"><small style="display:block;opacity:.8;margin-bottom:4px">(مجرد مثال للرانكات، وكل شي قابل للتغيير حسب اقتراحاتكم)</small><b>وش تقترحو؟</b> ابعثلي اقتراحك على تيليجرام 👇</div>
+    <div class="dua-act">
+      <a class="dua-share" id="duaTg" href="https://t.me/slam3likm" target="_blank" rel="noopener" style="text-align:center;text-decoration:none;display:block">✈️ ابعث اقتراحك على تيليجرام</a>
+      <button type="button" class="dua-close" id="duaClose">إغلاق</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+var ov=document.getElementById('duaOv'),shown=false,last=null;
+function open_(){ if(shown)return; if(document.body.dataset.view==='study'||document.querySelector('.dua-ov.on')){ setTimeout(open_,15000); return; } shown=true; last=document.activeElement; ov.classList.add('on'); document.getElementById('duaTg').focus(); }
+function close_(){ ov.classList.remove('on'); if(last&&last.focus)try{last.focus();}catch(e){} }
+document.getElementById('duaClose').onclick=close_;
+ov.addEventListener('click',function(e){ if(e.target===ov)close_(); });
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&ov.classList.contains('on'))close_(); });
+/* يظهر تلقائيًا مرة واحدة فقط بعد 10 ثواني، وبعدها عبر زر اللغز */
+window.jibOpenRewards=function(){ shown=false; if(ov.classList.contains('on'))return; shown=true; last=document.activeElement; ov.classList.add('on'); document.getElementById('duaTg').focus(); };
+setTimeout(open_,10000);
+})();
+</script>
+<div class="dua-ov" id="duaOv2" role="dialog" aria-modal="true" aria-labelledby="duaT2">
   <div class="dua-box">
-    <div class="dua-head"><div class="ic">🤲</div><h2 id="duaT">لحظة من فضلك</h2></div>
+    <div class="dua-head"><div class="ic">🤲</div><h2 id="duaT2">لحظة من فضلك</h2></div>
     <div class="dua-body">
       هذا الموقع <b>ليس ربحيًا</b>، هدفه أن نستفيد جميعًا في البكالوريا.<br>
       <b>ادعُ لنا بالنجاح والتوفيق والهداية</b>، وشارك الموقع مع أصدقائك لتعمّ الفائدة.
       <span class="hadith">«الدالّ على الخير كفاعله» 🌿</span>
     </div>
     <div class="dua-act">
-      <button type="button" class="dua-share" id="duaShare">📤 شارك الموقع مع أصدقائك</button>
+      <button type="button" class="dua-share" id="duaShare2">📤 شارك الموقع مع أصدقائك</button>
       <div class="dua-row">
-        <a id="duaWa" target="_blank" rel="noopener">واتساب</a>
-        <a id="duaTg" target="_blank" rel="noopener">تيليجرام</a>
-        <button type="button" id="duaCopy">نسخ الرابط</button>
+        <a id="duaWa2" target="_blank" rel="noopener">واتساب</a>
+        <a id="duaT2g" target="_blank" rel="noopener">تيليجرام</a>
+        <button type="button" id="duaCopy2">نسخ الرابط</button>
       </div>
-      <button type="button" class="dua-close" id="duaClose">تمّ، جزاكم الله خيرًا</button>
+      <button type="button" class="dua-close" id="duaClose2">تمّ، جزاكم الله خيرًا</button>
     </div>
   </div>
 </div>
@@ -5719,19 +5803,20 @@ try{ if(ST.view==='welcome' || (!curLang() && ST.view!=='study' && ST.view!=='hi
 (function(){
 var URL_='https://sohailbou123-ui.github.io/bac-vocab/',
 TXT='🎓 Jib El BAC — موقع مجاني لمراجعة البكالوريا: ملخصات وتمارين ومصطلحات. ليس ربحيًا، شاركه تعمّ الفائدة 🤲\n',
-ov=document.getElementById('duaOv'),shown=false,last=null;
+ov=document.getElementById('duaOv2'),shown=false,last=null;
 function $(i){return document.getElementById(i);}
-$('duaWa').href='https://wa.me/?text='+encodeURIComponent(TXT+URL_);
-$('duaTg').href='https://t.me/share/url?url='+encodeURIComponent(URL_)+'&text='+encodeURIComponent(TXT);
-function open_(){ if(shown)return; if(document.body.dataset.view==='study'){ setTimeout(open_,15000); return; } shown=true; last=document.activeElement; ov.classList.add('on'); $('duaShare').focus(); }
+$('duaWa2').href='https://wa.me/?text='+encodeURIComponent(TXT+URL_);
+$('duaT2g').href='https://t.me/share/url?url='+encodeURIComponent(URL_)+'&text='+encodeURIComponent(TXT);
+function open_(){ if(shown)return; if(document.body.dataset.view==='study'||document.querySelector('.dua-ov.on')){ setTimeout(open_,15000); return; } shown=true; last=document.activeElement; ov.classList.add('on'); $('duaShare2').focus(); }
 function close_(){ ov.classList.remove('on'); if(last&&last.focus)try{last.focus();}catch(e){} }
-$('duaClose').onclick=close_;
+$('duaClose2').onclick=close_;
 ov.addEventListener('click',function(e){ if(e.target===ov)close_(); });
 document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&ov.classList.contains('on'))close_(); });
-$('duaShare').onclick=function(){ if(navigator.share){ navigator.share({title:'Jib El BAC',text:TXT,url:URL_}).catch(function(){}); } else { $('duaCopy').click(); } };
-$('duaCopy').onclick=function(){ var b=this,done=function(){ b.textContent='تم النسخ ✓'; setTimeout(function(){b.textContent='نسخ الرابط';},2000); };
+$('duaShare2').onclick=function(){ if(navigator.share){ navigator.share({title:'Jib El BAC',text:TXT,url:URL_}).catch(function(){}); } else { $('duaCopy2').click(); } };
+$('duaCopy2').onclick=function(){ var b=this,done=function(){ b.textContent='تم النسخ ✓'; setTimeout(function(){b.textContent='نسخ الرابط';},2000); };
  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(URL_).then(done,function(){}); } else { var t=document.createElement('textarea'); t.value=URL_; document.body.appendChild(t); t.select(); try{document.execCommand('copy');done();}catch(e){} t.remove(); } };
-setTimeout(open_,60000); /* بعد دقيقة من فتح الموقع، وفي كل مرة يُفتح فيها */
+function again2_(){ shown=false; open_(); }
+setInterval(again2_,600000); /* كل 10 دقائق */
 })();
 </script>
 <script>
