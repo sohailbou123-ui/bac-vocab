@@ -1588,12 +1588,56 @@ html.lite .stg,html.lite [class*="stg"]{ opacity:1 !important; transform:none !i
 .rw-row span{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);font:700 12.5px 'Tajawal',sans-serif}
 @media(prefers-reduced-motion:no-preference){.rw-pill{animation:rwPulse 2.4s ease-in-out infinite}}
 @keyframes rwPulse{50%{box-shadow:0 0 0 6px rgba(255,255,255,.12)}}
+
+.mys-fab{display:none!important}
+#side{position:fixed;top:0;right:0;bottom:0;width:216px;z-index:70;display:flex;flex-direction:column;gap:6px;padding:20px 14px;background:var(--panel);border-left:2px solid var(--line);font-family:'Tajawal',sans-serif}
+.sd-logo{text-align:center;padding:4px 0 14px;border-bottom:1px solid var(--line-soft);margin-bottom:6px}
+.sd-logo b{display:block;font:800 21px 'Plus Jakarta Sans','Tajawal',sans-serif;color:var(--ink)}
+.sd-logo span{font-size:12px;color:var(--ink-dim);letter-spacing:.14em}
+.sd-item{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:0;border-radius:12px;background:transparent;color:var(--ink-dim);font:700 14.5px 'Tajawal',sans-serif;text-align:start;cursor:pointer}
+.sd-item i{font-style:normal;font-size:18px;width:24px;text-align:center}
+.sd-item:hover,.sd-item:focus-visible{background:var(--yellow-soft);color:var(--ink);outline:none}
+@media(min-width:900px){body{padding-right:calc(216px + 16px)}}
+@media(max-width:899px){
+ body{padding-bottom:84px}
+ #side{top:auto;left:0;right:0;width:auto;flex-direction:row;gap:2px;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));border-left:0;border-top:2px solid var(--line)}
+ .sd-logo{display:none}
+ .sd-item{flex:1;flex-direction:column;gap:2px;padding:6px 4px;font-size:12px;text-align:center}
+ .fab-wrap{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+
+.sd-grp{display:flex;flex-direction:column}
+.sd-panel{display:none;flex-direction:column;gap:6px;padding:4px 6px 10px}
+.sd-grp.open .sd-panel{display:flex}
+.sd-grp.open>.sd-item{background:var(--yellow);color:var(--ink)}
+.sd-act{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:1px solid var(--line-soft);border-radius:10px;background:var(--panel-raised);color:var(--ink);font:700 13px 'Tajawal',sans-serif;text-align:start;cursor:pointer;text-decoration:none}
+.sd-act:hover,.sd-act:focus-visible{border-color:var(--yellow);outline:none}
+@media(max-width:899px){
+ .sd-grp{flex:1;flex-direction:row}.sd-grp>.sd-item{flex:1}
+ .sd-panel{position:fixed;left:8px;right:8px;bottom:calc(66px + env(safe-area-inset-bottom,0px));z-index:80;padding:10px;background:var(--panel);border:2px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+}
+/* motivating rocket */
+.fab{position:relative}
+.fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--yellow);pointer-events:none;animation:fabRing 2.4s ease-out infinite}
+@keyframes fabRing{from{transform:scale(1);opacity:.75}to{transform:scale(1.75);opacity:0}}
+.fab-wrap.open .fab::after,html.lite .fab::after{animation:none;opacity:0}
+@media(prefers-reduced-motion:reduce){.fab::after{animation:none;opacity:0}}
+.fab-menu button[data-a="sg"]{background:linear-gradient(120deg,#ff3b3b,#ff9a1f);color:#fff;border-color:transparent;font-weight:800}
+.vd-tabs{flex-wrap:wrap}
+.vd-tab{flex:1 0 auto}
 </style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTGM37SG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<aside id="side" aria-label="اختصارات الموقع"><div class="sd-logo"><b>Jib El BAC</b><span>BAC 2027</span></div>
+<button type="button" class="sd-item" data-to="wlSubjects"><i>🎓</i><span>اختر مادتك</span></button>
+<button type="button" class="sd-item" data-jib="learner"><i>📖</i><span>أدعية المتعلم</span></button>
+<div class="sd-grp"><button type="button" class="sd-item" data-p="1" aria-expanded="false"><i>⚙️</i><span>الإعدادات</span></button>
+<div class="sd-panel"><button type="button" class="sd-act" data-jib="settings">⚙️ إعدادات التعلّم</button></div></div>
+<div class="sd-grp"><button type="button" class="sd-item" data-p="1" aria-expanded="false"><i>🤝</i><span>الدعم</span></button>
+<div class="sd-panel"><button type="button" class="sd-act" data-jib="share">📤 شارك الموقع</button><button type="button" class="sd-act" data-jib="tg">✈️ تيليجرام</button><button type="button" class="sd-act" data-jib="wa">🟢 واتساب</button><button type="button" class="sd-act" data-jib="copy">🔗 نسخ الرابط</button><a class="sd-act" href="https://t.me/slam3likm" target="_blank" rel="noopener">💬 تواصل معنا</a></div></div></aside>
 <div class="wrap" id="app">
   <div class="masthead">
     <div class="masthead-icon-stack">
@@ -3429,6 +3473,7 @@ function renderLangPicker(el){
 // ============================================================
 //  WELCOME (الواجهة الرئيسية — أول ما يدخل الطالب)
 // ============================================================
+function jibSections(){ return typeof socialRow==='function'?socialRow():''; }
 function renderWelcome(el){
   const H=window.__HT||null, L=curLang();
   const nEn=ALL_BY_LANG.en.length, nFr=ALL_BY_LANG.fr.length;
@@ -3493,7 +3538,7 @@ function renderWelcome(el){
     <div><i>3</i><b>تابع تقدّمك</b><span>يحفظ الموقع أخطاءك ويراجعها لك</span></div>
   </div>
   ${feedbackCard()}
-  ${typeof socialRow==='function'?socialRow():''}`;
+  ${jibSections()}`;
   $('#wlStart',el).onclick=()=>{ const t=$('#wlSubjects',el); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); };
   const c=$('#wlCont',el); if(c) c.onclick=()=>go('home');
   const hb=$('#wlHist',el), act=(n,f)=>{ n.addEventListener('click',f); n.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); f(); } }); };
@@ -4487,7 +4532,7 @@ if(!matchMedia('(prefers-reduced-motion:reduce)').matches){const x=cv.getContext
 // زر المشاركة والتثبيت
 let dip=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;const b=$('#vtInstall');if(b)b.style.display='flex';showInstall()});
 const w=document.createElement('div');w.className='fab-wrap';
-w.innerHTML=`<div class="fab-menu"><button data-a="tg">✈️ تيليجرام</button><button data-a="cp">🔗 نسخ الرابط</button><button data-a="du">🤲 أدعية</button><button data-a="lt" id="vtLite"></button><div style="display:none"><button data-a="in" id="vtInstall" style="display:none">📲 ثبّت التطبيق</button></div></div><button class="fab" aria-label="مشاركة">🚀</button>`;
+w.innerHTML=`<div class="fab-menu"><button data-a="sg">✨ اضغط</button><button data-a="lt" id="vtLite"></button><div style="display:none"><button data-a="in" id="vtInstall" style="display:none">📲 ثبّت التطبيق</button></div></div><button class="fab" aria-label="مشاركة">🚀</button>`;
 document.body.appendChild(w);
 function liteLbl(){const b=document.getElementById('vtLite');if(b)b.textContent=document.documentElement.classList.contains('lite')?'⚡ وضع الأجهزة الضعيفة: مفعّل ✓':'⚡ وضع الأجهزة الضعيفة: متوقف'}
 liteLbl();
@@ -4506,22 +4551,39 @@ const DUA_GROUPS=[
   ['«حَسْبِيَ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ ۖ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ»','سورة التوبة، الآية 129']]}
 ];
 function copyText(t){return (navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t):Promise.reject()).catch(()=>{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}a.remove();if(!ok)throw 0})}
-function openDuas(){
- if(document.querySelector('.vt-duas'))return;
+const LEARNER_DUAS=[
+ {id:'gen',name:'🌟 عامة',items:[
+  ['«وَقُل رَّبِّ زِدْنِي عِلْمًا»','سورة طه، الآية 114'],
+  ['اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا مُتَقَبَّلًا','دعاء عام للمتعلم']]},
+ {id:'before',name:'📖 قبل المذاكرة',items:[
+  ['بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ','قبل المذاكرة'],
+  ['اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا','قبل المذاكرة'],
+  ['«رَبِّ اشْرَحْ لِي صَدْرِي * وَيَسِّرْ لِي أَمْرِي * وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي * يَفْقَهُوا قَوْلِي»','سورة طه، الآيات 25–28']]},
+ {id:'during',name:'✍️ أثناء المذاكرة',items:[
+  ['اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا، وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلًا','أثناء المذاكرة'],
+  ['اللَّهُمَّ افْتَحْ عَلَيَّ فُتُوحَ الْعَارِفِينَ، وَارْزُقْنِي فَهْمَ النَّبِيِّينَ، وَحِفْظَ الْمُرْسَلِينَ','أثناء المذاكرة']]},
+ {id:'after',name:'✅ بعد الانتهاء',items:[
+  ['اللَّهُمَّ إِنِّي أَسْتَوْدِعُكَ مَا تَعَلَّمْتُ، فَرُدَّهُ إِلَيَّ عِنْدَ حَاجَتِي إِلَيْهِ، وَلَا تُنْسِنِيهِ يَا رَبَّ الْعَالَمِينَ','بعد الانتهاء'],
+  ['الْحَمْدُ لِلَّهِ الَّذِي بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ','بعد الانتهاء']]},
+ {id:'ikhlas',name:'🤍 دعاء الإخلاص',items:[
+  ['اللَّهُمَّ اجْعَلْ عَمَلِي خَالِصًا لِوَجْهِكَ الْكَرِيمِ، وَبَارِكْ لِي فِي عَمَلِي، وَانْفَعْنِي بِهِ، وَاجْعَلْهُ حُجَّةً لِي لَا عَلَيَّ','دعاء الإخلاص']]}
+];
+function openDuas(G,title,end){
+ G=G||LEARNER_DUAS.concat(DUA_GROUPS); if(document.querySelector('.vt-duas'))return;
  const d=document.createElement('div');d.className='vt-duas';
- d.innerHTML=`<div class="vd-box" role="dialog" aria-modal="true" aria-label="أدعية"><button type="button" class="vd-x" aria-label="إغلاق">✕</button><h3>🤲 أدعية للطالب</h3><p class="vd-sub">اختر نوع الدعاء</p><div class="vd-tabs"></div><div class="vd-list"></div><p class="vd-end">بالتوفيق والنجاح في الباك 🤍</p></div>`;
+ d.innerHTML=`<div class="vd-box" role="dialog" aria-modal="true" aria-label="أدعية"><button type="button" class="vd-x" aria-label="إغلاق">✕</button><h3>${title||'📖 أدعية المتعلم'}</h3><p class="vd-sub">اختر نوع الدعاء</p><div class="vd-tabs"></div><div class="vd-list"></div><p class="vd-end">${end||'بالتوفيق والنجاح في الباك 🤍'}</p></div>`;
  const tabs=d.querySelector('.vd-tabs'),list=d.querySelector('.vd-list');
- DUA_GROUPS.forEach((g,i)=>{const b=document.createElement('button');b.type='button';b.className='vd-tab';b.dataset.g=g.id;b.textContent=g.name;tabs.appendChild(b)});
+ G.forEach((g,i)=>{const b=document.createElement('button');b.type='button';b.className='vd-tab';b.dataset.g=g.id;b.textContent=g.name;tabs.appendChild(b)});
  function show(id){
   tabs.querySelectorAll('.vd-tab').forEach(b=>b.classList.toggle('on',b.dataset.g===id));
-  const g=DUA_GROUPS.find(x=>x.id===id);list.textContent='';list.scrollTop=0;
+  const g=G.find(x=>x.id===id);list.textContent='';list.scrollTop=0;
   g.items.forEach(([t,src])=>{const c=document.createElement('div');c.className='vd-card';
    const a=document.createElement('div');a.className='vd-t';a.textContent=t;
    const f=document.createElement('div');f.className='vd-foot';
    const sp=document.createElement('span');sp.textContent=src;
    const cb=document.createElement('button');cb.type='button';cb.className='vd-copy';cb.textContent='📋 نسخ';cb.dataset.t=t;
    f.append(sp,cb);c.append(a,f);list.appendChild(c)})}
- show('succ');
+ show(G[0].id);
  const close=()=>{d.remove();document.removeEventListener('keydown',onKey)};
  const onKey=e=>{if(e.key==='Escape')close()};
  document.addEventListener('keydown',onKey);
@@ -4534,7 +4596,10 @@ function openDuas(){
 }
 w.querySelector('.fab').onclick=()=>w.classList.toggle('open');
 if(!(matchMedia('(display-mode:standalone)').matches||navigator.standalone)){$('#vtInstall').style.display='flex'}
+window.openDuas=function(){openDuas()};
+window.openLearnerDuas=window.openDuas;
 w.addEventListener('click',async e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a;
+ if(a==='sg'&&window.jibOpenRewards)window.jibOpenRewards();
  if(a==='wa')open('https://wa.me/?text='+encodeURIComponent(MSG+URL_));
  if(a==='tg')open('https://t.me/share/url?url='+encodeURIComponent(URL_)+'&text='+encodeURIComponent(MSG));
  if(a==='cp'){try{await navigator.clipboard.writeText(URL_);toast('تم نسخ الرابط ✅')}catch(_){prompt('انسخ الرابط:',URL_)}}
@@ -5824,6 +5889,35 @@ setInterval(again2_,600000); /* كل 10 دقائق */
 var q=['بكالوريا أفضل، مستقبل أجمل 🎓','كل مصطلح تحفظه خطوة نحو المعدل 🔥','معاً نحقق هدفنا ونرتقي بمستوانا 🚀','التعب اليوم، والفرحة يوم النتائج 🏆','لا تؤجل مراجعة اليوم إلى الغد 📚'],i=0;
 if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 setInterval(function(){m.classList.add('swap');setTimeout(function(){i=(i+1)%q.length;m.textContent=q[i];m.classList.remove('swap');},450);},5000);})();
+</script>
+<script>
+(function(){
+var URL_='https://sohailbou123-ui.github.io/bac-vocab/',TXT='🎓 Jib El BAC — موقع مجاني لمراجعة البكالوريا: ملخصات وتمارين ومصطلحات. شاركه تعمّ الفائدة 🤲\n';
+function scrollTo_(id){ var e=document.getElementById(id); if(e) e.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'}); }
+document.getElementById('side').addEventListener('click',function(e){
+  var b=e.target.closest('[data-to]'); if(!b) return; var id=b.dataset.to;
+  if(ST.view!=='welcome'){ go('welcome'); setTimeout(function(){scrollTo_(id);},80); } else scrollTo_(id);
+});
+document.getElementById('side').addEventListener('click',function(e){
+  var t=e.target.closest('[data-p]'); if(!t) return; var g=t.closest('.sd-grp'), was=g.classList.contains('open');
+  document.querySelectorAll('#side .sd-grp.open').forEach(function(x){ x.classList.remove('open'); x.firstElementChild.setAttribute('aria-expanded','false'); });
+  if(!was){ g.classList.add('open'); t.setAttribute('aria-expanded','true'); }
+});
+document.addEventListener('click',function(e){ if(!e.target.closest('#side')) document.querySelectorAll('#side .sd-grp.open').forEach(function(x){ x.classList.remove('open'); }); });
+document.addEventListener('click',function(e){
+  var b=e.target.closest('[data-jib]'); if(!b) return; var a=b.dataset.jib;
+  if(a==='duas'&&window.openDuas) window.openDuas();
+  else if(a==='learner'&&window.openLearnerDuas) window.openLearnerDuas();
+  else if(a==='settings'){ if(curLang()) go('settings'); else showFloatingFeedback('اختر مادتك أولًا','bad'); }
+  else if(a==='tg') window.open('https://t.me/share/url?url='+encodeURIComponent(URL_)+'&text='+encodeURIComponent(TXT),'_blank','noopener');
+  else if(a==='wa') window.open('https://wa.me/?text='+encodeURIComponent(TXT+URL_),'_blank','noopener');
+  else if(a==='share'||a==='copy'){
+    if(a==='share'&&navigator.share){ navigator.share({title:'Jib El BAC',text:TXT,url:URL_}).catch(function(){}); return; }
+    var done=function(){ showFloatingFeedback('تم نسخ الرابط ✅','good'); };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(URL_).then(done,function(){ prompt('انسخ الرابط:',URL_); }); else prompt('انسخ الرابط:',URL_);
+  }
+});
+})();
 </script>
 </body>
 </html>
