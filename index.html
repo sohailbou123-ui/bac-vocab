@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <script>try{var _l=localStorage.getItem('jibLite');if(_l==='1'||(_l===null&&((navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2))))document.documentElement.classList.add('lite')}catch(e){}</script>
@@ -3936,25 +3936,6 @@ function renderWelcome(el){
       </div>
     </div>
   </section>
-  ${(meta.profile&&meta.profile.done)?'':`<section class="pf-cta" id="wlProf" role="button" tabindex="0" aria-label="خصّص بروفايلك">
-    <span class="pfc-av pf-av" id="pfcAv"></span>
-    <div class="pfc-tx"><b>🎨 خصّص بروفايلك وصورتك</b><span>أضف صورتك، غيّر اسمك ولون خلفيتك واختر إطارك — كلها متاحة لك، اضغط وجرّب!</span></div>
-    <span class="pfc-btn">✏️ خصّص الآن</span>
-  </section>`}
-  <div class="wl-widerow"><button type="button" class="pfc-wide" id="wlWide" title="تبديل عرض الصفحة"></button></div>
-  <section class="hb-stats" aria-label="قريبًا">
-    <div class="hb-st"><span class="ico">🏆</span><div class="tx"><span class="lb">المستوى</span><span class="vl sn">🔒 قريبًا</span></div></div>
-    <div class="hb-st"><span class="ico">📊</span><div class="tx"><span class="lb">التقدّم</span><span class="vl sn">🔒 قريبًا</span></div></div>
-    <div class="hb-st"><span class="ico">🔥</span><div class="tx"><span class="lb">الأيام المتتالية</span><span class="vl sn">🔒 قريبًا</span></div></div>
-  </section>
-  <div class="hb-soonnote">🚧 المستوى والتقدّم والأيام المتتالية ستكون في التحديث القادم</div>
-  <section class="rw-teaser" aria-label="نظام المكافآت والجوائز">
-    <span class="rw-pill">🚧 إضافة قادمة قريبًا</span>
-    <h3>🏆 نظام المكافآت والجوائز</h3>
-    <p>اجمع النقاط كل ما تراجع، وافتح <b>ثيمات حصرية</b> وجوائز تحفيزية ننتظر نكشفلك عليها قريبًا. كل يوم مراجعة = خطوة أقرب للجائزة!</p>
-    <div class="rw-row"><span>🎨 ثيمات خاصة</span><span>🎁 جوائز تحفيزية</span><span>⭐ نقاط وإنجازات</span><span>🥇 تحديات ومستويات</span></div>
-  </section>
-  <div class="wl-tools">${tools.map(t=>'<span><i>'+t[0]+'</i>'+t[1]+'</span>').join('')}</div>
   <div class="hb-sec" id="wlSubjects"><b>📚 اختر مادتك</b><small>تقدر تبدّلها بأي وقت</small></div>
   <div class="hb-units hb-subjects">
     ${langCard('en','English',`5 وحدات · ${nEn} مصطلح`,mp('en'),['business','safety','astronomy','feelings','civ'])}
@@ -3971,11 +3952,26 @@ function renderWelcome(el){
     </div>
   </div>
   ${soonSubjects()}
+  <div class="wl-tools">${tools.map(t=>'<span><i>'+t[0]+'</i>'+t[1]+'</span>').join('')}</div>
   <div class="hb-sec"><b>🧭 كيف تشتغل؟</b><small>ثلاث خطوات بسيطة</small></div>
   <div class="wl-steps">
     <div><i>1</i><b>اختر المادة</b><span>إنجليزي، فرنسي أو تاريخ</span></div>
     <div><i>2</i><b>تدرّب باللعب</b><span>بطاقات، كويز، مطابقة وتحديات</span></div>
     <div><i>3</i><b>تابع تقدّمك</b><span>يحفظ الموقع أخطاءك ويراجعها لك</span></div>
+  </div>
+  <div class="wl-more">
+  ${(meta.profile&&meta.profile.done)?'':`<section class="pf-cta" id="wlProf" role="button" tabindex="0" aria-label="خصّص بروفايلك">
+    <span class="pfc-av pf-av" id="pfcAv"></span>
+    <div class="pfc-tx"><b>🎨 خصّص بروفايلك وصورتك</b><span>أضف صورتك، غيّر اسمك ولون خلفيتك واختر إطارك — كلها متاحة لك، اضغط وجرّب!</span></div>
+    <span class="pfc-btn">✏️ خصّص الآن</span>
+  </section>`}
+  <section class="rw-teaser" aria-label="نظام المكافآت والجوائز">
+    <span class="rw-pill">🚧 إضافة قادمة قريبًا</span>
+    <h3>🏆 نظام المكافآت والجوائز</h3>
+    <p>اجمع النقاط كل ما تراجع، وافتح <b>ثيمات حصرية</b> وجوائز تحفيزية ننتظر نكشفلك عليها قريبًا. كل يوم مراجعة = خطوة أقرب للجائزة!</p>
+    <div class="rw-row"><span>🎨 ثيمات خاصة</span><span>🎁 جوائز تحفيزية</span><span>⭐ نقاط وإنجازات</span><span>🥇 تحديات ومستويات</span></div>
+  </section>
+  <div class="wl-widerow"><button type="button" class="pfc-wide" id="wlWide" title="تبديل عرض الصفحة"></button></div>
   </div>
   ${feedbackCard()}
   ${jibSections()}
@@ -6676,5 +6672,61 @@ av.forEach(el=>{
 });
 })();
 </script>
+<style id="jib-declutter">
+/* ===== Jib El BAC — تخفيف ازدحام الصفحة الرئيسية =====
+   الهدف: الطالب يرى المواد فورًا، وكل ما عداها ثانوي ومضغوط. */
+
+/* 1) الهيدر: شعار + عنوان + شارة + الثيمات فقط. إخفاء الزخارف (اليد، الكأس، القبعة، الشريط) */
+body[data-view="welcome"] .masthead .bac-art,
+body[data-view="welcome"] .masthead .bac-trophy,
+body[data-view="welcome"] .masthead .bac-strip{ display:none !important; }
+body[data-view="welcome"] .masthead{ padding-top:12px !important; padding-bottom:12px !important; margin-bottom:12px !important; row-gap:4px !important; }
+body[data-view="welcome"] .masthead-avatar{ width:56px !important; height:56px !important; border-radius:14px !important; }
+body[data-view="welcome"] .masthead .masthead-icon-stack{ gap:8px !important; }
+body[data-view="welcome"] .masthead h1{ font-size:clamp(20px,5.2vw,27px) !important; white-space:nowrap; }
+body[data-view="welcome"] .masthead .creator-credit{ font-size:12px !important; margin-top:0 !important; }
+body[data-view="welcome"] .masthead .creator-credit b{ font-size:13px !important; }
+
+/* اليدان والانفجار: تصغير على الهاتف فقط كي لا يضيق الهيدر */
+@media(max-width:700px){
+  body[data-view="welcome"] .masthead .hf{ zoom:.6; }
+}
+
+/* 2) زر التثبيت: شريط رفيع هادئ بدل لافتة برتقالية كبيرة */
+body[data-view="welcome"] .top-install{ padding:8px 14px !important; margin:0 0 10px !important; font-size:13px !important; border-radius:12px !important; box-shadow:none !important; opacity:.92; }
+body[data-view="welcome"] .top-install small{ display:none !important; }
+
+/* 3) اللافتة الترحيبية: أقصر، وبلا فقرة التعريف على الهاتف */
+@media(max-width:700px){
+  body[data-view="welcome"] .hb-banner{ min-height:0 !important; margin-bottom:12px !important; }
+  body[data-view="welcome"] .hb-in{ padding:16px 16px 18px !important; }
+  body[data-view="welcome"] .hb-in h2{ font-size:22px !important; margin-bottom:2px !important; }
+  body[data-view="welcome"] .hb-in p.hb-lead,
+  body[data-view="welcome"] .hb-swoosh{ display:none !important; }
+  body[data-view="welcome"] .hb-in p{ font-size:14px !important; margin:4px 0 10px !important; }
+  body[data-view="welcome"] .hb-cta{ padding:10px 22px !important; font-size:15px !important; }
+}
+
+/* 4) أدوات التدريب: صف واحد قابل للتمرير بدل أسطر متعددة */
+body[data-view="welcome"] .wl-tools{ flex-wrap:nowrap !important; overflow-x:auto; gap:8px !important; margin:12px 0 4px !important; padding-bottom:4px; scrollbar-width:none; }
+body[data-view="welcome"] .wl-tools::-webkit-scrollbar{ display:none; }
+body[data-view="welcome"] .wl-tools > span{ flex:0 0 auto; font-size:12.5px !important; padding:6px 12px !important; }
+
+/* 5) المحتوى الثانوي (بروفايل، مكافآت، عرض الصفحة): مضغوط وأخف وزنًا في الأسفل */
+body[data-view="welcome"] .wl-more{ display:flex; flex-direction:column; gap:10px; margin-top:18px; }
+body[data-view="welcome"] .wl-more .pf-cta{ margin:0 !important; padding:10px 12px !important; gap:10px !important; }
+body[data-view="welcome"] .wl-more .pf-cta .pfc-tx span{ display:none !important; }
+body[data-view="welcome"] .wl-more .pfc-av{ width:40px !important; height:40px !important; }
+body[data-view="welcome"] .wl-more .rw-teaser{ margin:0 !important; padding:14px 14px !important; }
+body[data-view="welcome"] .wl-more .rw-teaser h3{ font-size:16px !important; margin:6px 0 !important; }
+body[data-view="welcome"] .wl-more .rw-teaser p{ font-size:13px !important; line-height:1.7 !important; margin:0 0 8px !important; }
+body[data-view="welcome"] .wl-more .rw-row span{ font-size:11.5px !important; padding:4px 9px !important; }
+body[data-view="welcome"] .wl-more .wl-widerow{ margin:0 !important; }
+
+/* 6) الأدعية السفلية: أصغر وأهدأ */
+body[data-view="welcome"] .contact-foot{ gap:6px !important; margin-top:16px !important; padding-top:12px !important; }
+body[data-view="welcome"] .contact-foot .dua{ font-size:12px !important; margin-top:0 !important; }
+
+</style>
 </body>
 </html>
