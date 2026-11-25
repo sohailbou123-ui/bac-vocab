@@ -2299,7 +2299,9 @@ async function passKind(v){
   const c = cyrb(s); return AH_ALT.includes(c) ? 'ahmed' : PASS_ALT.includes(c) ? '0048' : false;
 }
 let unlockedNow = false; // الفتح يبقى طالما التبويب مفتوحًا فقط، وبعد إغلاق المتصفح يُطلب الكود من جديد
-function isUnlocked(){ try{ return unlockedNow || sessionStorage.getItem(LOCK_KEY)==='1'; }catch(err){ return unlockedNow; } }
+function isUnlocked(){ return unlockedNow; } // الفتح في الذاكرة فقط: أي خروج أو إعادة تحميل يقفل الثيم من جديد
+try{ sessionStorage.removeItem(LOCK_KEY); }catch(e){}
+addEventListener('pagehide',()=>{ try{ if(unlockedNow||ahmedNow){ localStorage.setItem(THEME_KEY,'bac'); } sessionStorage.removeItem(LOCK_KEY); }catch(e){} });
 function askPassword(onOk){
   const old = document.getElementById('vtPass'); if(old) old.remove();
   const w = document.createElement('div'); w.id = 'vtPass'; w.className = 'vp-wrap';
@@ -2311,7 +2313,7 @@ function askPassword(onOk){
     const v = normPass(inp.value);
     const kind = await passKind(v);
     if(kind==='ahmed'){ ahmedNow = true; close(); revealAhmed(); onOk('ahmed'); }
-    else if(kind==='0048'){ unlockedNow = true; try{ sessionStorage.setItem(LOCK_KEY,'1'); }catch(e){} close(); onOk('0048'); setTimeout(celebrate,150); }
+    else if(kind==='0048'){ unlockedNow = true; close(); onOk('0048'); setTimeout(celebrate,150); }
     else { box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); inp.select(); }
   };
   w.querySelector('.vp-ok').onclick = submit;
