@@ -855,8 +855,14 @@
 .pf-av[data-f="rainbow"]{ border-color:#fff!important; box-shadow:0 0 0 3px #ff4d8d,0 0 0 6px #ffd24d,0 0 0 9px #4dd2ff!important; }
 .pf-av[data-f="diamond"]{ border-color:#bdf3ff!important; box-shadow:0 0 0 3px rgba(120,230,255,.6),0 0 22px #5fe3ff!important; animation:pfFire 1.8s ease-in-out infinite alternate; }
 @keyframes pfFire{ from{ filter:brightness(1) } to{ filter:brightness(1.25) } }
-.pf-ov{ position:fixed;top:0;right:0;bottom:0;left:0; inset:0; z-index:9999; background:rgba(0,0,0,.55); display:flex; align-items:center; justify-content:center; padding:12px; direction:rtl; }
-.pf-box{ width:100%; max-width:470px; max-height:92vh; overflow:auto; background:var(--panel,#fff); color:var(--ink,#222); border:1px solid var(--line,#ddd); border-radius:22px; padding:18px; box-shadow:0 20px 60px rgba(0,0,0,.4); font-family:'Tajawal',sans-serif; }
+.pf-ov{ position:fixed;top:0;right:0;bottom:0;left:0;inset:0;z-index:99999;background:rgba(0,0,0,.62);display:flex;align-items:center;justify-content:center;padding:12px;direction:rtl;overscroll-behavior:contain; }
+.pf-box{ width:100%;max-width:470px;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;background:var(--panel,#fff);color:var(--ink,#222);border:1px solid var(--line,#ddd);border-radius:22px;padding:18px; padding-bottom:calc(18px + env(safe-area-inset-bottom));box-shadow:0 20px 60px rgba(0,0,0,.4);font-family:'Tajawal',sans-serif; }
+.pf-box button,.pf-box input{touch-action:manipulation;}
+.pf-box input[type=file]{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;opacity:0!important;} 
+@media(max-width:600px){
+  .pf-ov{align-items:flex-start;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 8px calc(8px + env(safe-area-inset-bottom));}
+  .pf-box{max-width:520px;max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:18px;padding:15px;padding-bottom:calc(15px + env(safe-area-inset-bottom));}
+}
 .pf-top{ display:flex; align-items:center; gap:14px; }
 .pf-big{ width:84px; height:84px; flex:none; border-radius:50%; border:3px solid #fff; overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; font-size:44px; }
 .pf-top h3{ margin:0; font-size:19px; } .pf-top small{ color:var(--ink-dim,#777); display:block; margin-top:2px; }
@@ -2042,6 +2048,117 @@ html body[data-view] .hb-st .vl.sn{ font-size:clamp(14px,1.2vw,18px); color:var(
 .wr-on .wr .lf,.wr-on .wr .ol{ animation:wrPop .45s cubic-bezier(.3,1.6,.5,1) backwards; animation-delay:calc(var(--i)*38ms + .15s); }
 @keyframes wrDraw{ from{ stroke-dasharray:120; stroke-dashoffset:120 } to{ stroke-dasharray:120; stroke-dashoffset:0 } }
 @keyframes wrPop{ from{ transform:scale(0) } }
+</style>
+<style>
+
+/* ===== إصلاح ترويسة الهاتف: منع تداخل عناصر الثيم 0048 ===== */
+@media (max-width:600px){
+  .masthead{
+    display:flex!important;
+    flex-direction:row!important;
+    flex-wrap:wrap!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:9px 10px!important;
+    width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    padding:14px 12px 16px!important;
+    overflow:hidden;
+  }
+  .masthead .mh-prof{
+    order:1;
+    flex:0 0 46px;
+    width:46px;
+    height:46px;
+  }
+  .masthead-icon-stack{
+    order:2;
+    flex:0 0 auto;
+    min-width:0;
+    gap:6px!important;
+    align-items:center;
+  }
+  .masthead-avatar,.masthead-icon-stack .masthead-icon{
+    width:46px!important;
+    height:46px!important;
+    flex:0 0 46px;
+    border-radius:13px!important;
+  }
+  .masthead-titles{display:contents!important;}
+  .masthead .title-row{
+    order:3;
+    display:flex;
+    flex:1 1 105px;
+    min-width:0;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:3px 6px;
+    text-align:center;
+  }
+  .masthead .title-row h1{
+    font-size:clamp(17px,5vw,22px)!important;
+    line-height:1.15;
+    white-space:nowrap;
+    margin:0;
+  }
+  .masthead .bac-badge{font-size:9px!important;padding:3px 7px!important;}
+  .masthead .creator-credit{
+    order:4;
+    flex:1 0 100%;
+    min-width:0;
+    margin:0!important;
+    text-align:center;
+    font-size:11px!important;
+    line-height:1.4;
+    overflow-wrap:anywhere;
+  }
+  .masthead .theme-switch{
+    order:5;
+    flex:1 0 100%;
+    width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    display:flex!important;
+    flex-wrap:nowrap;
+    justify-content:center!important;
+    align-items:center;
+    gap:5px!important;
+    margin:2px 0 0!important;
+    padding:5px!important;
+  }
+  .masthead .theme-switch button{
+    flex:0 1 76px;
+    min-width:0;
+    width:auto!important;
+    height:36px!important;
+    padding:0 8px!important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    white-space:nowrap;
+    font-size:14px!important;
+  }
+  .masthead .theme-switch button .tl{
+    display:inline!important;
+    font-size:11px;
+  }
+  .masthead .marilyn-hi{display:none!important;}
+  .masthead .bac-art,.masthead .bac-trophy{display:none!important;}
+  .masthead .bac-strip{flex:1 0 100%;width:100%;min-width:0;box-sizing:border-box;}
+}
+@media (max-width:360px){
+  .masthead{gap:7px 6px!important;padding-inline:9px!important;}
+  .masthead .mh-prof{flex-basis:40px;width:40px;height:40px;}
+  .masthead-avatar,.masthead-icon-stack .masthead-icon{width:40px!important;height:40px!important;flex-basis:40px;}
+  .masthead .title-row{flex-basis:95px;}
+  .masthead .title-row h1{font-size:17px!important;}
+  .masthead .theme-switch button{padding:0 5px!important;font-size:13px!important;}
+  .masthead .theme-switch button .tl{font-size:10px;}
+}
+
 </style>
 </head>
 <body>
@@ -6611,8 +6728,31 @@ function draw(){ const box=document.querySelector('.pf-box'); if(!box) return; c
   box.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{ p.color=+b.dataset.c; save(); draw(); });
   box.querySelectorAll('.pf-grid [data-f]').forEach(b=>b.onclick=()=>{ if(b.disabled) return; p.frame=b.dataset.f; save(); draw(); });
   const rm=box.querySelector('#pfRm'); if(rm) rm.onclick=()=>{ p.img=''; save(); draw(); };
-  box.querySelector('#pfUp').onclick=()=>box.querySelector('#pfFile').click(); box.querySelector('#pfUp2').onclick=()=>box.querySelector('#pfFile').click();
-  box.querySelector('#pfFile').onchange=e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ const im=new Image(); im.onload=()=>{ const c=document.createElement('canvas'); c.width=c.height=160; const m=Math.min(im.width,im.height); c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,160,160); p.img=c.toDataURL('image/jpeg',.82); save(); draw(); }; im.src=r.result; }; r.readAsDataURL(f); };
+  const pfFile=box.querySelector('#pfFile');
+  const chooseProfileImage=()=>{ if(!pfFile) return; try{ pfFile.value=''; if(typeof pfFile.showPicker==='function') pfFile.showPicker(); else pfFile.click(); }catch(err){ try{ pfFile.click(); }catch(_){} } };
+  box.querySelector('#pfUp').onclick=chooseProfileImage;
+  box.querySelector('#pfUp2').onclick=chooseProfileImage;
+  pfFile.onchange=e=>{
+    const f=e.target.files&&e.target.files[0]; if(!f) return;
+    if(!f.type||!f.type.startsWith('image/')){ toastMsg('اختر ملف صورة صالحًا'); return; }
+    const r=new FileReader();
+    r.onerror=()=>toastMsg('تعذّر قراءة الصورة، حاول اختيارها مجددًا');
+    r.onload=()=>{
+      const im=new Image();
+      im.onerror=()=>toastMsg('تعذّر فتح الصورة، جرّب صورة أخرى');
+      im.onload=()=>{
+        try{
+          const c=document.createElement('canvas'); c.width=c.height=160;
+          const m=Math.min(im.width,im.height);
+          c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,160,160);
+          p.img=c.toDataURL('image/jpeg',.78); save(); draw();
+          toastMsg('تم تحديث صورتك الشخصية ✅');
+        }catch(err){ toastMsg('لم نتمكن من حفظ الصورة، جرّب صورة أصغر'); }
+      };
+      im.src=r.result;
+    };
+    r.readAsDataURL(f);
+  };
   box.querySelectorAll('#pfThemes [data-th]').forEach(b=>b.onclick=()=>{ requestTheme(b.dataset.th, ()=>draw()); });
   box.querySelectorAll('#pfLv,#pfLv2').forEach(x=>x.onclick=soon);
 }
