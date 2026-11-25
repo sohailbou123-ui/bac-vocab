@@ -855,14 +855,8 @@
 .pf-av[data-f="rainbow"]{ border-color:#fff!important; box-shadow:0 0 0 3px #ff4d8d,0 0 0 6px #ffd24d,0 0 0 9px #4dd2ff!important; }
 .pf-av[data-f="diamond"]{ border-color:#bdf3ff!important; box-shadow:0 0 0 3px rgba(120,230,255,.6),0 0 22px #5fe3ff!important; animation:pfFire 1.8s ease-in-out infinite alternate; }
 @keyframes pfFire{ from{ filter:brightness(1) } to{ filter:brightness(1.25) } }
-.pf-ov{ position:fixed;top:0;right:0;bottom:0;left:0;inset:0;z-index:99999;background:rgba(0,0,0,.62);display:flex;align-items:center;justify-content:center;padding:12px;direction:rtl;overscroll-behavior:contain; }
-.pf-box{ width:100%;max-width:470px;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;background:var(--panel,#fff);color:var(--ink,#222);border:1px solid var(--line,#ddd);border-radius:22px;padding:18px; padding-bottom:calc(18px + env(safe-area-inset-bottom));box-shadow:0 20px 60px rgba(0,0,0,.4);font-family:'Tajawal',sans-serif; }
-.pf-box button,.pf-box input{touch-action:manipulation;}
-.pf-box input[type=file]{position:fixed!important;left:-10000px!important;top:0!important;width:1px!important;height:1px!important;opacity:0!important;} 
-@media(max-width:600px){
-  .pf-ov{align-items:flex-start;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 8px calc(8px + env(safe-area-inset-bottom));}
-  .pf-box{max-width:520px;max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:18px;padding:15px;padding-bottom:calc(15px + env(safe-area-inset-bottom));}
-}
+.pf-ov{ position:fixed;top:0;right:0;bottom:0;left:0; inset:0; z-index:9999; background:rgba(0,0,0,.55); display:flex; align-items:center; justify-content:center; padding:12px; direction:rtl; }
+.pf-box{ width:100%; max-width:470px; max-height:92vh; overflow:auto; background:var(--panel,#fff); color:var(--ink,#222); border:1px solid var(--line,#ddd); border-radius:22px; padding:18px; box-shadow:0 20px 60px rgba(0,0,0,.4); font-family:'Tajawal',sans-serif; }
 .pf-top{ display:flex; align-items:center; gap:14px; }
 .pf-big{ width:84px; height:84px; flex:none; border-radius:50%; border:3px solid #fff; overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; font-size:44px; }
 .pf-top h3{ margin:0; font-size:19px; } .pf-top small{ color:var(--ink-dim,#777); display:block; margin-top:2px; }
@@ -2049,216 +2043,12 @@ html body[data-view] .hb-st .vl.sn{ font-size:clamp(14px,1.2vw,18px); color:var(
 @keyframes wrDraw{ from{ stroke-dasharray:120; stroke-dashoffset:120 } to{ stroke-dasharray:120; stroke-dashoffset:0 } }
 @keyframes wrPop{ from{ transform:scale(0) } }
 </style>
-<style>
-
-/* ===== إصلاح ترويسة الهاتف: منع تداخل عناصر الثيم 0048 ===== */
-@media (max-width:600px){
-  .masthead{
-    display:flex!important;
-    flex-direction:row!important;
-    flex-wrap:wrap!important;
-    align-items:center!important;
-    justify-content:center!important;
-    gap:9px 10px!important;
-    width:100%;
-    min-width:0;
-    box-sizing:border-box;
-    padding:14px 12px 16px!important;
-    overflow:hidden;
-  }
-  .masthead .mh-prof{
-    order:1;
-    flex:0 0 46px;
-    width:46px;
-    height:46px;
-  }
-  .masthead-icon-stack{
-    order:2;
-    flex:0 0 auto;
-    min-width:0;
-    gap:6px!important;
-    align-items:center;
-  }
-  .masthead-avatar,.masthead-icon-stack .masthead-icon{
-    width:46px!important;
-    height:46px!important;
-    flex:0 0 46px;
-    border-radius:13px!important;
-  }
-  .masthead-titles{display:contents!important;}
-  .masthead .title-row{
-    order:3;
-    display:flex;
-    flex:1 1 105px;
-    min-width:0;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:center;
-    gap:3px 6px;
-    text-align:center;
-  }
-  .masthead .title-row h1{
-    font-size:clamp(17px,5vw,22px)!important;
-    line-height:1.15;
-    white-space:nowrap;
-    margin:0;
-  }
-  .masthead .bac-badge{font-size:9px!important;padding:3px 7px!important;}
-  .masthead .creator-credit{
-    order:4;
-    flex:1 0 100%;
-    min-width:0;
-    margin:0!important;
-    text-align:center;
-    font-size:11px!important;
-    line-height:1.4;
-    overflow-wrap:anywhere;
-  }
-  .masthead .theme-switch{
-    order:5;
-    flex:1 0 100%;
-    width:100%;
-    min-width:0;
-    box-sizing:border-box;
-    display:flex!important;
-    flex-wrap:nowrap;
-    justify-content:center!important;
-    align-items:center;
-    gap:5px!important;
-    margin:2px 0 0!important;
-    padding:5px!important;
-  }
-  .masthead .theme-switch button{
-    flex:0 1 76px;
-    min-width:0;
-    width:auto!important;
-    height:36px!important;
-    padding:0 8px!important;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    white-space:nowrap;
-    font-size:14px!important;
-  }
-  .masthead .theme-switch button .tl{
-    display:inline!important;
-    font-size:11px;
-  }
-  .masthead .marilyn-hi{display:none!important;}
-  .masthead .bac-art,.masthead .bac-trophy{display:none!important;}
-  .masthead .bac-strip{flex:1 0 100%;width:100%;min-width:0;box-sizing:border-box;}
-}
-@media (max-width:360px){
-  .masthead{gap:7px 6px!important;padding-inline:9px!important;}
-  .masthead .mh-prof{flex-basis:40px;width:40px;height:40px;}
-  .masthead-avatar,.masthead-icon-stack .masthead-icon{width:40px!important;height:40px!important;flex-basis:40px;}
-  .masthead .title-row{flex-basis:95px;}
-  .masthead .title-row h1{font-size:17px!important;}
-  .masthead .theme-switch button{padding:0 5px!important;font-size:13px!important;}
-  .masthead .theme-switch button .tl{font-size:10px;}
-}
-
-</style>
-<style id='persistent-profile-nav'>
-
-/* ===== الملف الشخصي ظاهر دائمًا بجانب قائمة التنقل ===== */
-#side{
-  overflow-y:auto;
-  overflow-x:hidden;
-  overscroll-behavior:contain;
-  scrollbar-width:thin;
-}
-#side .sd-logo{
-  position:sticky;
-  top:0;
-  z-index:5;
-  flex-shrink:0;
-  background:var(--panel);
-  padding:10px 0 13px;
-}
-#side .sd-row{align-items:center;gap:10px;}
-#side .sd-logo .sd-avatar{
-  display:flex!important;
-  align-items:center;
-  justify-content:center;
-  flex:0 0 56px;
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  overflow:hidden;
-  cursor:pointer;
-}
-#side .sd-logo .sd-avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-#side .sd-logo .sd-tt{min-width:0;}
-#side .sd-logo .sd-cr{margin-top:8px;}
-@media(max-width:899px){
-  #side{
-    overflow-x:auto;
-    overflow-y:hidden;
-    align-items:center;
-  }
-  #side .sd-logo{
-    display:flex!important;
-    position:relative;
-    top:auto;
-    width:46px;
-    height:46px;
-    flex:0 0 46px;
-    align-items:center;
-    justify-content:center;
-    padding:0!important;
-    margin:0 2px 0 4px!important;
-    border:0!important;
-    background:transparent;
-  }
-  #side .sd-logo .sd-row{display:block;}
-  #side .sd-logo .sd-avatar{
-    width:40px!important;
-    height:40px!important;
-    flex-basis:40px;
-    border:2px solid var(--line);
-  }
-  #side .sd-logo .sd-tt,
-  #side .sd-logo .sd-cr{display:none!important;}
-  #side .sd-item{min-width:48px;}
-}
-
-</style>
-<style id='profile-sidebar-shortcut-v2'>
-#side .sd-profile-shortcut{display:flex!important;align-items:center;gap:11px;width:100%;min-width:0;box-sizing:border-box;margin:4px 0 12px;padding:11px 10px;border:1px solid var(--line);border-radius:15px;background:var(--panel);box-shadow:0 4px 14px rgba(0,0,0,.12);cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-#side .sd-profile-photo{display:flex!important;align-items:center;justify-content:center;flex:0 0 54px;width:54px;height:54px;overflow:hidden;border:3px solid var(--yellow);border-radius:50%;background:var(--panel);font-size:25px}
-#side .sd-profile-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-#side .sd-profile-label{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0;color:var(--ink)}
-#side .sd-profile-label b{font:800 14px 'Tajawal',sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#side .sd-profile-label span{font:500 10px 'Tajawal',sans-serif;color:var(--ink-dim);line-height:1.4}
-#side .sd-profile-edit{font-size:20px;color:var(--ink-dim)}
-#side .sd-profile-shortcut:active{transform:scale(.98)}
-@media(max-width:899px){#side .sd-profile-shortcut{width:auto;min-width:52px;max-width:58px;height:52px;margin:0 2px;padding:4px;justify-content:center;border-radius:14px}#side .sd-profile-photo{width:40px;height:40px;flex-basis:40px;border-width:2px}#side .sd-profile-label,#side .sd-profile-edit{display:none}}
-</style>
-<style id='single-profile-entry'>
-/* إزالة صورة الحساب المكررة من رأس القائمة والإبقاء على بطاقة واحدة */
-#side .sd-logo .sd-row #sdAv{display:none!important;}
-#side .sd-logo .sd-row{justify-content:center!important;}
-#side .sd-logo .sd-tt{align-items:center!important;text-align:center!important;}
-#side .sd-logo .sd-cr{text-align:center!important;}
-</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTGM37SG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <aside id="side" aria-label="اختصارات الموقع"><div class="sd-logo"><div class="sd-row"><div class="sd-avatar pf-av" id="sdAv" role="button" tabindex="0" title="ملفك الشخصي"></div><div class="sd-tt"><b>Jib El BAC</b><span class="sd-pill">BAC 2027</span></div></div><div class="sd-cr">by <b>awwab sohail</b> and <b>dadi ahmed</b></div></div>
-<div class="sd-profile-shortcut" role="button" tabindex="0" aria-label="فتح الملف الشخصي" title="الملف الشخصي">
-  <div class="sd-profile-photo pf-av" id="sideProfileAvatar"></div>
-  <div class="sd-profile-label"><b id="sideProfileName">ملفي الشخصي</b><span>عرض وتعديل الصورة والبيانات</span></div>
-  <span class="sd-profile-edit">✎</span>
-</div>
 <button type="button" class="sd-item" data-go="welcome"><i>🏠</i><span>الرئيسية</span></button>
 <button type="button" class="sd-item" data-to="wlSubjects"><i>🎓</i><span>اختر مادتك</span></button>
 <button type="button" class="sd-item" data-jib="learner"><i>📖</i><span>أدعية المتعلم</span></button>
@@ -6797,7 +6587,7 @@ function badges(S,p){ return [['🌱','أول خطوة',S.a>=1],['💯','100 إ�
 function av(p){ const c=COLORS[p.color]||COLORS[0]; return {bg:'linear-gradient(135deg,'+c[0]+','+c[1]+')', html:p.img?'<img alt="" src="'+p.img+'">':'<span class="pf-em">'+p.emoji+'</span>'}; }
 let last='';
 function refresh(){ const p=P(), S=stats(), a=av(p), key=JSON.stringify([p,S.lvl])+(document.getElementById('pfcAv')&&document.getElementById('pfcAv').childElementCount?'1':'0'); if(key===last) return; last=key;
-  ['pfAv','sdAv','pfcAv','mhAv','sideProfileAvatar'].forEach(id=>{ const e=document.getElementById(id); if(!e) return; e.style.background=a.bg; e.dataset.f=p.frame; e.innerHTML=a.html+'<span class="pf-lv">Lv 1</span>'+((id==='sdAv'||id==='mhAv')&&!p.img&&!p.done?'<span class="pf-cam">📷</span>':''); });
+  ['pfAv','sdAv','pfcAv','mhAv'].forEach(id=>{ const e=document.getElementById(id); if(!e) return; e.style.background=a.bg; e.dataset.f=p.frame; e.innerHTML=a.html+'<span class="pf-lv">Lv 1</span>'+((id==='sdAv'||id==='mhAv')&&!p.img&&!p.done?'<span class="pf-cam">📷</span>':''); });
   const sp=document.querySelector('#side .sd-tt b'); if(sp&&p.name) sp.textContent=p.name; else if(sp) sp.textContent='Jib El BAC'; }
 function toastMsg(m){ try{ showFloatingFeedback(m,'good'); }catch(e){} }
 function open(){ document.querySelector('.pf-ov')&&document.querySelector('.pf-ov').remove(); const ov=document.createElement('div'); ov.className='pf-ov'; ov.innerHTML='<div class="pf-box"></div>'; document.body.appendChild(ov); ov.addEventListener('click',e=>{ if(e.target===ov) ov.remove(); }); draw(); }
@@ -6821,37 +6611,14 @@ function draw(){ const box=document.querySelector('.pf-box'); if(!box) return; c
   box.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{ p.color=+b.dataset.c; save(); draw(); });
   box.querySelectorAll('.pf-grid [data-f]').forEach(b=>b.onclick=()=>{ if(b.disabled) return; p.frame=b.dataset.f; save(); draw(); });
   const rm=box.querySelector('#pfRm'); if(rm) rm.onclick=()=>{ p.img=''; save(); draw(); };
-  const pfFile=box.querySelector('#pfFile');
-  const chooseProfileImage=()=>{ if(!pfFile) return; try{ pfFile.value=''; if(typeof pfFile.showPicker==='function') pfFile.showPicker(); else pfFile.click(); }catch(err){ try{ pfFile.click(); }catch(_){} } };
-  box.querySelector('#pfUp').onclick=chooseProfileImage;
-  box.querySelector('#pfUp2').onclick=chooseProfileImage;
-  pfFile.onchange=e=>{
-    const f=e.target.files&&e.target.files[0]; if(!f) return;
-    if(!f.type||!f.type.startsWith('image/')){ toastMsg('اختر ملف صورة صالحًا'); return; }
-    const r=new FileReader();
-    r.onerror=()=>toastMsg('تعذّر قراءة الصورة، حاول اختيارها مجددًا');
-    r.onload=()=>{
-      const im=new Image();
-      im.onerror=()=>toastMsg('تعذّر فتح الصورة، جرّب صورة أخرى');
-      im.onload=()=>{
-        try{
-          const c=document.createElement('canvas'); c.width=c.height=160;
-          const m=Math.min(im.width,im.height);
-          c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,160,160);
-          p.img=c.toDataURL('image/jpeg',.78); save(); draw();
-          toastMsg('تم تحديث صورتك الشخصية ✅');
-        }catch(err){ toastMsg('لم نتمكن من حفظ الصورة، جرّب صورة أصغر'); }
-      };
-      im.src=r.result;
-    };
-    r.readAsDataURL(f);
-  };
+  box.querySelector('#pfUp').onclick=()=>box.querySelector('#pfFile').click(); box.querySelector('#pfUp2').onclick=()=>box.querySelector('#pfFile').click();
+  box.querySelector('#pfFile').onchange=e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>{ const im=new Image(); im.onload=()=>{ const c=document.createElement('canvas'); c.width=c.height=160; const m=Math.min(im.width,im.height); c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,160,160); p.img=c.toDataURL('image/jpeg',.82); save(); draw(); }; im.src=r.result; }; r.readAsDataURL(f); };
   box.querySelectorAll('#pfThemes [data-th]').forEach(b=>b.onclick=()=>{ requestTheme(b.dataset.th, ()=>draw()); });
   box.querySelectorAll('#pfLv,#pfLv2').forEach(x=>x.onclick=soon);
 }
-['pfAv','sdAv','mhAv','sideProfileAvatar'].forEach(id=>{ const e=document.getElementById(id); if(!e) return; e.addEventListener('click',open); e.addEventListener('keydown',k=>{ if(k.key==='Enter'||k.key===' '){ k.preventDefault(); open(); } }); });
+['pfAv','sdAv','mhAv'].forEach(id=>{ const e=document.getElementById(id); if(!e) return; e.addEventListener('click',open); e.addEventListener('keydown',k=>{ if(k.key==='Enter'||k.key===' '){ k.preventDefault(); open(); } }); });
 
-const sideProfileCard=document.querySelector('#side .sd-profile-shortcut');if(sideProfileCard){sideProfileCard.addEventListener('click',open);sideProfileCard.addEventListener('keydown',k=>{if(k.key==='Enter'||k.key===' '){k.preventDefault();open();}});const nameEl=document.getElementById('sideProfileName');const updateSideProfileName=()=>{const pp=P();if(nameEl)nameEl.textContent=pp.name||'ملفي الشخصي';};updateSideProfileName();} function soon(){ const ov=document.createElement('div'); ov.className='pf-ov'; ov.innerHTML='<div class="pf-box" style="text-align:center;max-width:340px"><div style="font-size:48px">🏅</div><div class="pf-sec" style="font-size:18px">المستويات والرتب</div><div class="pf-soon">🚧 بعدين!<br>سنضيف هذه الميزة لاحقًا</div><button class="pf-close">حسنًا</button></div>'; document.body.appendChild(ov); ov.addEventListener('click',e=>{ if(e.target===ov||e.target.closest('.pf-close')) ov.remove(); }); }
+function soon(){ const ov=document.createElement('div'); ov.className='pf-ov'; ov.innerHTML='<div class="pf-box" style="text-align:center;max-width:340px"><div style="font-size:48px">🏅</div><div class="pf-sec" style="font-size:18px">المستويات والرتب</div><div class="pf-soon">🚧 بعدين!<br>سنضيف هذه الميزة لاحقًا</div><button class="pf-close">حسنًا</button></div>'; document.body.appendChild(ov); ov.addEventListener('click',e=>{ if(e.target===ov||e.target.closest('.pf-close')) ov.remove(); }); }
 document.addEventListener('click',e=>{ if(e.target.closest&&e.target.closest('.hb-st')) soon(); });
 window.openProfile=open; window.__pfAv=()=>av(P()); refresh(); setInterval(refresh,3000);
 })();
