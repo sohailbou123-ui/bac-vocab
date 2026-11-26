@@ -2402,6 +2402,7 @@ function loadVoices(){ try{ ttsVoices = window.speechSynthesis.getVoices() || []
 if('speechSynthesis' in window){ loadVoices(); try{ window.speechSynthesis.onvoiceschanged = loadVoices; }catch(err){ /* تجاهل */ } }
 function speak(text, langKey){
   if(!text || !('speechSynthesis' in window)) return;
+  if(navigator.brave) return; // Brave: النطق الصوتي يسبب خروجاً/تعطلاً، نتجاهله
   if(typeof meta !== 'undefined' && meta && meta.settings && meta.settings.sound === false) return;
   try{
     const L = LANGS[langKey || 'en'] || LANGS.en;
@@ -4538,7 +4539,7 @@ function renderMatch(el){
     <div class="mode-head"><span class="fc-progress" style="margin:0">🃏 طابق الكلمة مع معناها · <b id="mRound"></b> / ${S.total0}</span><span class="fc-progress" style="margin:0">حركات: <b id="mMoves"></b></span></div>
     <div class="bar blue fc-progress-bar"><i id="mBar"></i></div>
     <div class="match-grid" id="mGrid"></div>
-    <div class="small-note">اختر كلمة أجنبية ثم معناها العربي، وتُستبدل المطابقات بكلمات جديدة</div>`;
+    <div class="small-note">اختر كلمة أجنبية ثم معناها العربي، وعند مطابقة كل البطاقات تظهر مجموعة جديدة</div>`;
   const grid = $('#mGrid');
   function paint(){
     grid.innerHTML = R.cards.map((c,i)=>{
@@ -4557,23 +4558,27 @@ function renderMatch(el){
     const i = +b.dataset.i, c = R.cards[i];
     if(!c || c.done || R.sel === i) return;
     const t = TERM_BY_KEY[c.key];
-    if(c.side === 'f') speak(t.en, t.lang);
     if(R.sel === null){ R.sel = i; paint(); return; }
     const ia = R.sel, a = R.cards[ia];
     if(a.side === c.side){ R.sel = i; paint(); return; }
     R.moves++;
     if(a.key === c.key){
       R.sel = null; a.done = c.done = true; R.locked = true; S.matchedN++; S.total++;
-      if(!R.missed.has(c.key)){ answer(t, true, 'match'); S.score++; }
+      if(!R.missed.has(c.key)){ S.score++; try{ answer(t, true, 'match'); }catch(err){ console.error(err); } }
       paint();
       setTimeout(()=>{
         if(ST.view !== 'study' || ST.mode !== 'match' || ST.match !== S) return;
-        R.cards[ia] = null; R.cards[i] = null; R.free.push(ia, i); matchFill(S); R.locked = false;
+        try{
+          R.cards[ia] = null; R.cards[i] = null; R.free.push(ia, i);
+          // لا نضيف كلمات جديدة إلا بعد مطابقة كل البطاقات الحالية (دفعة كاملة جديدة)
+          if(R.cards.every(x=>!x)){ R.free = [...Array(12).keys()]; matchFill(S); }
+        }catch(err){ console.error(err); }
+        R.locked = false;
         if(!R.cards.some(x=>x && !x.done) && S.pos >= S.list.length){ showFloatingFeedback('✅ '+cheer(), 'good'); render(); } else paint();
       }, 430);
     } else {
       R.locked = true; R.bad = [ia, i];
-      [a, c].forEach(x=>{ if(!R.missed.has(x.key)){ R.missed.add(x.key); answer(TERM_BY_KEY[x.key], false, 'match'); } });
+      [a, c].forEach(x=>{ if(!R.missed.has(x.key)){ R.missed.add(x.key); try{ answer(TERM_BY_KEY[x.key], false, 'match'); }catch(err){ console.error(err); } } });
       paint();
       setTimeout(()=>{ R.bad = []; R.sel = null; R.locked = false; if(ST.view === 'study' && ST.mode === 'match' && ST.match === S) paint(); }, 600);
     }
