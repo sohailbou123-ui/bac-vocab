@@ -3,6 +3,10 @@
 <head>
 <script>try{var _l=localStorage.getItem('jibLite');if(_l==='1'||(_l===null&&((navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=2))))document.documentElement.classList.add('lite')}catch(e){}</script>
 <meta charset="UTF-8">
+<!-- 🛡️ حماية -->
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script>if(self!==top&&/\.github\.io$/.test(location.hostname)){document.documentElement.style.display='none';try{top.location=self.location.href}catch(e){}}</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KTGM37SG');</script>
 <!-- End Google Tag Manager -->
@@ -2447,7 +2451,32 @@ let meta = loadJSON(META_KEY, {});
 function saveProgressData(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData)); }catch(err){ /* التخزين غير متاح */ } }
 function saveMeta(){ try{ localStorage.setItem(META_KEY, JSON.stringify(meta)); }catch(err){ /* التخزين غير متاح */ } }
 const DEFAULT_SETTINGS = { lang:null, goal:20, daily:10, dailyLang:'all', sound:true, quizDir:'toForeign', flashDir:'fa', chalSeconds:4 };
+// 🛡️ تنظيف البيانات المخزنة/المستوردة حتى لا يُحقن كود عبر نسخة احتياطية ملغّمة
+function sanitizeData(){
+  const isObj = v => v && typeof v === 'object';
+  const num = v => Number.isFinite(+v) ? +v : 0;
+  const clean = v => String(v).replace(/[<>"'`&]/g,'');
+  // كل النصوص داخل الإعدادات والتقدم تُنزع منها رموز HTML (ما عدا ما يكتبه الطالب، فهو يُعرض بأمان)
+  const walk = o => { Object.keys(o).forEach(k=>{
+    if(clean(k) !== k){ delete o[k]; return; }
+    const v = o[k];
+    if(isObj(v)) walk(v);
+    else if(typeof v === 'string' && !['g','name','bio','img'].includes(k)) o[k] = clean(v);
+  }); };
+  walk(meta); walk(progressData);
+  Object.values(isObj(meta.days) ? meta.days : {}).forEach(d=>{ if(isObj(d)){ d.a = num(d.a); d.c = num(d.c); } });
+  Object.values(progressData).forEach(u=>{ if(isObj(u) && isObj(u.best)) Object.keys(u.best).forEach(k=>u.best[k] = num(u.best[k])); });
+  const p = meta.profile;
+  if(isObj(p)){
+    if(!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+\/=]+$/.test(p.img||'')) p.img = '';
+    if(p.emoji != null) p.emoji = String(p.emoji).slice(0,8);
+    if(!['none','gold','fire','rainbow','diamond'].includes(p.frame)) p.frame = 'none';
+    p.color = num(p.color); p.bonus = num(p.bonus); p.claims = num(p.claims);
+    p.name = String(p.name||'').slice(0,18); p.bio = String(p.bio||'').slice(0,40);
+  } else delete meta.profile;
+}
 function ensureMeta(){
+  sanitizeData();
   if(!meta.days || typeof meta.days !== 'object') meta.days = {};
   if(!meta.favs || typeof meta.favs !== 'object') meta.favs = {};
   if(!Array.isArray(meta.mistakes)) meta.mistakes = [];
